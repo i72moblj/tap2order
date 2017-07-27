@@ -101,12 +101,21 @@ class Category
     }
 
     /**
-     * @param ArrayCollection $subcategories
+     * @param Subcategory $subcategory
+     * @return $this
      */
-    public function setSubcategories($subcategories)
+    public function addSubcategory(Subcategory $subcategory)
     {
-        $this->subcategories = $subcategories;
+        $this->subcategories[] = $subcategory;
+
+        return $this;
     }
 
-
+    /**
+     * @param Subcategory $subcategory
+     */
+    public function removeSubcategory(Subcategory $subcategory)
+    {
+        $this->subcategories->removeElement($subcategory);
+    }
 }

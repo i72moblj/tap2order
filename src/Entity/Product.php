@@ -11,10 +11,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @package App\Entity
  *
  * @ORM\Entity
- * @ORM\Table(name="entity")
+ * @ORM\Table(name="product")
  */
 class Product
 {
+    const REGULAR = 'normal';
+    const REDUCED = 'reducido';
+    const SUPERREDUCED = 'superreducido';
+
     /**
      * @var integer
      *
@@ -81,14 +85,13 @@ class Product
      */
     private $subcategory;
 
-
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Variety", inversedBy="products")
-     * @ORM\JoinTable(name="products_varieties")
+     * @ORM\ManyToMany(targetEntity="Choice", inversedBy="products")
+     * @ORM\JoinTable(name="products_choices")
      */
-    private $varieties;
+    private $choices;
 
     /**
      * @var ArrayCollection
@@ -103,10 +106,10 @@ class Product
      */
     public function __construct()
     {
-        $this->vat = "reducido";
+        $this->vat = Product::REDUCED;
         $this->quantity = 0;
         $this->isEnabled = true;
-        $this->varieties = new ArrayCollection();
+        $this->choices = new ArrayCollection();
         $this->allergens = new ArrayCollection();
     }
 
@@ -231,18 +234,72 @@ class Product
     }
 
     /**
-     * @param Variety $variety
+     * @return int
      */
-    public function addVariety(Variety $variety)
+    public function getSubcategory()
     {
-        $variety->addProduct($this);
-        $this->varieties = $variety;
+        return $this->subcategory;
     }
 
+    /**
+     * @param int $subcategory
+     */
+    public function setSubcategory($subcategory)
+    {
+        $this->subcategory = $subcategory;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getChoices()
+    {
+        return $this->choices;
+    }
+
+    /**
+     * @param Choice $choice
+     * @return $this
+     */
+    public function addChoice(Choice $choice)
+    {
+        $this->choices[] = $choice;
+
+        return $this;
+    }
+
+    /**
+     * @param Choice $choice
+     */
+    public function removeChoice(Choice $choice)
+    {
+        $this->choices->removeElement($choice);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAllergens()
+    {
+        return $this->allergens;
+    }
+
+    /**
+     * @param Allergen $allergen
+     * @return $this
+     */
     public function addAllergen(Allergen $allergen)
     {
-        $allergen->addProduct($this);
         $this->allergens[] = $allergen;
+
+        return $this;
     }
 
+    /**
+     * @param Allergen $allergen
+     */
+    public function removeAllergen(Allergen $allergen)
+    {
+        $this->allergens->removeElement($allergen);
+    }
 }

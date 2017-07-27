@@ -4,17 +4,16 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\All;
 
 
 /**
- * Class Variety
+ * Class Choice
  * @package App\Entity
  *
  * @ORM\Entity
- * @ORM\Table(name="variety")
+ * @ORM\Table(name="choice")
  */
-class Variety
+class Choice
 {
     /**
      * @var integer
@@ -44,63 +43,7 @@ class Variety
      *
      * @ORM\Column(type="decimal", scale=2, nullable=false)
      */
-    private $price;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=16 , nullable=false)
-     */
-    private $vat;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=128, nullable=true)
-     */
-    private $imagen;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=false)
-     */
-    private $isEnabled;
-
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="varieties")
-     */
-    private $products;
-
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Allergen", inversedBy="varieties")
-     * @ORM\JoinTable(name="varieties_allergens")
-     */
-    private $allergens;
-
-    /**
-     * Variety constructor.
-     */
-    public function __construct()
-    {
-        $this->price = 0;
-        $this->vat = "reducido";
-        $this->isEnabled = true;
-        $this->products = new ArrayCollection();
-        $this->allergens = new ArrayCollection();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $supplement;
 
     /**
      * @return string
@@ -137,33 +80,17 @@ class Variety
     /**
      * @return float
      */
-    public function getPrice()
+    public function getSupplement()
     {
-        return $this->price;
+        return $this->supplement;
     }
 
     /**
-     * @param float $price
+     * @param float $supplement
      */
-    public function setPrice($price)
+    public function setSupplement($supplement)
     {
-        $this->price = $price;
-    }
-
-    /**
-     * @return string
-     */
-    public function getVat()
-    {
-        return $this->vat;
-    }
-
-    /**
-     * @param string $vat
-     */
-    public function setVat($vat)
-    {
-        $this->vat = $vat;
+        $this->supplement = $supplement;
     }
 
     /**
@@ -199,20 +126,104 @@ class Variety
     }
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=128, nullable=true)
+     */
+    private $imagen;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $isEnabled;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="choices")
+     */
+    private $products;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Allergen", inversedBy="choices")
+     * @ORM\JoinTable(name="choices_allergens")
+     */
+    private $allergens;
+
+    /**
+     * Choice constructor.
+     */
+    public function __construct()
+    {
+        $this->supplement = 0;
+        $this->isEnabled = true;
+        $this->products = new ArrayCollection();
+        $this->allergens = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
      * @param Product $product
+     * @return $this
      */
     public function addProduct(Product $product)
     {
         $this->products[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * @param Product $product
+     */
+    public function removeProduct(Product $product)
+    {
+        $this->products->removeElement($product);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAllergens()
+    {
+        return $this->allergens;
+    }
+
+    /**
+     * @param Allergen $allergen
+     * @return $this
+     */
+    public function addAllergen(Allergen $allergen)
+    {
+        $this->allergens[] = $allergen;
+
+        return $this;
     }
 
     /**
      * @param Allergen $allergen
      */
-    public function addAllergen(Allergen $allergen)
+    public function removeAllergen(Allergen $allergen)
     {
-        $allergen->addVariety($this);
-        $this->allergens[] = $allergen;
+        $this->allergens->removeElement($allergen);
     }
-
 }

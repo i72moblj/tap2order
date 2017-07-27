@@ -70,22 +70,6 @@ class Subcategory
     }
 
     /**
-     * @return int
-     */
-    public function getSubcategory()
-    {
-        return $this->subcategory;
-    }
-
-    /**
-     * @param int $subcategory
-     */
-    public function setSubcategory($subcategory)
-    {
-        $this->subcategory = $subcategory;
-    }
-
-    /**
      * @return string
      */
     public function getName()
@@ -115,6 +99,49 @@ class Subcategory
     public function setIsEnabled($isEnabled)
     {
         $this->isEnabled = $isEnabled;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param int $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param Product $product
+     * @return $this
+     */
+    public function addProduct(Product $product)
+    {
+        $this->products[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * @param Product $product
+     */
+    public function removeProduct(Product $product)
+    {
+        $this->products->removeElement($product);
     }
 
 }

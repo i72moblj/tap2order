@@ -48,9 +48,9 @@ class Allergen
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Variety", mappedBy="allergens")
+     * @ORM\ManyToMany(targetEntity="Choice", mappedBy="allergens")
      */
-    private $varieties;
+    private $choices;
 
     /**
      * Allergen constructor.
@@ -60,7 +60,7 @@ class Allergen
     {
         $this->id = $id;
         $this->products = new ArrayCollection();
-        $this->varieties = new ArrayCollection();
+        $this->choices = new ArrayCollection();
     }
 
     /**
@@ -104,19 +104,56 @@ class Allergen
     }
 
     /**
+     * @return ArrayCollection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
      * @param Product $product
+     * @return $this
      */
     public function addProduct(Product $product)
     {
         $this->products[] = $product;
+
+        return $this;
     }
 
     /**
-     * @param Variety $variety
+     * @param Product $product
      */
-    public function addVariety(Variety $variety)
+    public function removeProduct(Product $product)
     {
-        $this->varieties[] = $variety;
+        $this->products->removeElement($product);
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getChoices()
+    {
+        return $this->choices;
+    }
+
+    /**
+     * @param Choice $choice
+     * @return $this
+     */
+    public function addChoice(Choice $choice)
+    {
+        $this->choices[] = $choice;
+
+        return $this;
+    }
+
+    /**
+     * @param Choice $choice
+     */
+    public function removeChoice(Choice $choice)
+    {
+        $this->choices->removeElement($choice);
+    }
 }
