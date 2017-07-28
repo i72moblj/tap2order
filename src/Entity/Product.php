@@ -15,9 +15,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Product
 {
-    const REGULAR = 'normal';
-    const REDUCED = 'reducido';
-    const SUPERREDUCED = 'superreducido';
+    const VAT_REGULAR = 'normal';
+    const VAT_REDUCED = 'reducido';
+    const VAT_SUPERREDUCED = 'superreducido';
 
     /**
      * @var integer
@@ -43,9 +43,9 @@ class Product
     private $description;
 
     /**
-     * @var float
+     * @var integer
      *
-     * @ORM\Column(type="decimal", scale=2, nullable=false)
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $price;
 
@@ -154,7 +154,7 @@ class Product
     }
 
     /**
-     * @return float
+     * @return integer
      */
     public function getPrice()
     {
@@ -162,7 +162,7 @@ class Product
     }
 
     /**
-     * @param float $price
+     * @param integer $price
      */
     public function setPrice($price)
     {

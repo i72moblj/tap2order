@@ -39,9 +39,9 @@ class Choice
     private $description;
 
     /**
-     * @var float
+     * @var integer
      *
-     * @ORM\Column(type="decimal", scale=2, nullable=false)
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $supplement;
 
@@ -78,7 +78,7 @@ class Choice
     }
 
     /**
-     * @return float
+     * @return integer
      */
     public function getSupplement()
     {
@@ -86,7 +86,7 @@ class Choice
     }
 
     /**
-     * @param float $supplement
+     * @param integer $supplement
      */
     public function setSupplement($supplement)
     {
