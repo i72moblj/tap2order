@@ -3,6 +3,7 @@
     "license": "proprietary",
     "require": {
         "php": "^7.1.3",
+        "sonata-project/admin-bundle": "^3.20",
         "symfony/debug-bundle": "^3.3",
         "symfony/debug-pack": "^1.0",
         "symfony/flex": "^1.0",
