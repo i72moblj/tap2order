@@ -61,6 +61,11 @@ class Subcategory
         $this->products = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getName() ?? '';
+    }
+
     /**
      * @return int
      */

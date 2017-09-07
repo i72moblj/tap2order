@@ -106,7 +106,7 @@ class Product
      */
     public function __construct()
     {
-        $this->vat = Product::REDUCED;
+        $this->vat = Product::VAT_REDUCED;
         $this->quantity = 0;
         $this->isEnabled = true;
         $this->choices = new ArrayCollection();

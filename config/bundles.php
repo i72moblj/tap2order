@@ -9,4 +9,11 @@ return [
     'Symfony\Bundle\DebugBundle\DebugBundle' => ['dev' => true, 'test' => true],
     'Symfony\Bundle\WebProfilerBundle\WebProfilerBundle' => ['dev' => true, 'test' => true],
     'Symfony\Bundle\MonologBundle\MonologBundle' => ['all' => true],
+    'Knp\Bundle\MenuBundle\KnpMenuBundle' => ['all' => true],
+    'Sonata\AdminBundle\SonataAdminBundle' => ['all' => true],
+    'Sonata\BlockBundle\SonataBlockBundle' => ['all' => true],
+    'Sonata\CoreBundle\SonataCoreBundle' => ['all' => true],
+    'Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle' => ['all' => true],
+    'Sonata\DatagridBundle\SonataDatagridBundle' => ['all' => true],
+    'Symfony\Bundle\SecurityBundle\SecurityBundle' => ['all' => true],
 ];
