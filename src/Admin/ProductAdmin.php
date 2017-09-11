@@ -72,9 +72,6 @@ class ProductAdmin extends AbstractAdmin
             ->add('price', TextType::class, [
                 'template' => 'backend/product/list_price.html.twig'
             ])
-//            ->add('price', MoneyType::class, [
-//                'divisor' => (1/100)
-//            ])
             ->add('vat')
             ->add('image', FileType::class, ['sortable' => false])
             ->add('quantity')
