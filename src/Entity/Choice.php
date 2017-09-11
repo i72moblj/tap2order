@@ -96,7 +96,7 @@ class Choice
     /**
      * @return string
      */
-    public function getImagen()
+    public function getImage()
     {
         return $this->imagen;
     }
@@ -104,7 +104,7 @@ class Choice
     /**
      * @param string $imagen
      */
-    public function setImagen($imagen)
+    public function setImage($imagen)
     {
         $this->imagen = $imagen;
     }
