@@ -69,7 +69,12 @@ class ProductAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('name')
             ->add('description', TextareaType::class, ['sortable' => false])
-            ->add('price')
+            ->add('price', TextType::class, [
+                'template' => 'backend/product/list_price.html.twig'
+            ])
+//            ->add('price', MoneyType::class, [
+//                'divisor' => (1/100)
+//            ])
             ->add('vat')
             ->add('image', FileType::class, ['sortable' => false])
             ->add('quantity')
