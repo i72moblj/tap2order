@@ -98,15 +98,15 @@ class Choice
      */
     public function getImage()
     {
-        return $this->imagen;
+        return $this->image;
     }
 
     /**
-     * @param string $imagen
+     * @param string $image
      */
-    public function setImage($imagen)
+    public function setImage($image)
     {
-        $this->imagen = $imagen;
+        $this->image = $image;
     }
 
     /**
@@ -130,7 +130,7 @@ class Choice
      *
      * @ORM\Column(type="string", length=128, nullable=true)
      */
-    private $imagen;
+    private $image;
 
     /**
      * @var boolean
