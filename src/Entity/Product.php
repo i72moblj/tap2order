@@ -113,6 +113,11 @@ class Product
         $this->allergens = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getName() ?? '';
+    }
+
     /**
      * @return int
      */

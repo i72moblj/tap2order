@@ -165,6 +165,11 @@ class Choice
         $this->allergens = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getName() ?? '';
+    }
+
     /**
      * @return int
      */
@@ -188,6 +193,7 @@ class Choice
     public function addProduct(Product $product)
     {
         $this->products[] = $product;
+        $product->addChoice($this);
 
         return $this;
     }
@@ -198,6 +204,7 @@ class Choice
     public function removeProduct(Product $product)
     {
         $this->products->removeElement($product);
+        $product->removeChoice($this);
     }
 
     /**

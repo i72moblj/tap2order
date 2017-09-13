@@ -53,14 +53,17 @@ class Allergen
     private $choices;
 
     /**
-     * Allergen constructor.
-     * @param int $id
+     * Allergen constructor
      */
-    public function __construct($id)
+    public function __construct()
     {
-        $this->id = $id;
         $this->products = new ArrayCollection();
         $this->choices = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getName() ?? '';
     }
 
     /**
@@ -118,6 +121,7 @@ class Allergen
     public function addProduct(Product $product)
     {
         $this->products[] = $product;
+        $product->addAllergen($this);
 
         return $this;
     }
@@ -128,6 +132,7 @@ class Allergen
     public function removeProduct(Product $product)
     {
         $this->products->removeElement($product);
+        $product->removeAllergen($this);
     }
 
     /**
@@ -145,6 +150,7 @@ class Allergen
     public function addChoice(Choice $choice)
     {
         $this->choices[] = $choice;
+        $choice->addAllergen($this);
 
         return $this;
     }
@@ -155,5 +161,6 @@ class Allergen
     public function removeChoice(Choice $choice)
     {
         $this->choices->removeElement($choice);
+        $choice->removeAllergen($this);
     }
 }

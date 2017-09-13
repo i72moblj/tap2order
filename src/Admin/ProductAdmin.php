@@ -7,8 +7,8 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -24,6 +24,9 @@ class ProductAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name', TextType::class)
+            ->add('subcategory', ModelType::class, [
+                'label' => 'Subcategory',
+            ])
             ->add('description', TextareaType::class)
             ->add('price', MoneyType::class, [
                 'divisor' => 100,
@@ -43,8 +46,11 @@ class ProductAdmin extends AbstractAdmin
                     'min' => 0,
                 ]
             ])
-            ->add('subcategory', ModelType::class, [
-                'label' => 'Subcategory',
+            ->add('choices', ModelType::class, [
+                'multiple' => true
+            ])
+            ->add('allergens', ModelType::class, [
+                'multiple' => true
             ])
             ->add('isEnabled', CheckboxType::class, [
                 'required' => false,
@@ -68,6 +74,11 @@ class ProductAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('subcategory', ModelType::class, [
+                'sortable' => true,
+                'sort_field_mapping'=> ['fieldName'=>'name'],
+                'sort_parent_association_mappings' => [['fieldName'=>'subcategory']]
+            ])
             ->add('description', TextareaType::class, ['sortable' => false])
             ->add('price', TextType::class, [
                 'template' => 'backend/product/list_price.html.twig'
@@ -75,11 +86,8 @@ class ProductAdmin extends AbstractAdmin
             ->add('vat')
             ->add('image', FileType::class, ['sortable' => false])
             ->add('quantity')
-            ->add('subcategory', EntityType::class, [
-                'sortable' => true,
-                'sort_field_mapping'=> ['fieldName'=>'name'],
-                'sort_parent_association_mappings' => [['fieldName'=>'subcategory']]
-            ])
+            ->add('choices', CollectionType::class)
+            ->add('allergens', CollectionType::class)
             ->add('isEnabled')
         ;
     }

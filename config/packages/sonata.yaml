@@ -16,19 +16,33 @@ services:
         class: App\Admin\CategoryAdmin
         arguments: [~, App\Entity\Category, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Category" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Categories" }
         public: true
 
     admin.subcategory:
         class: App\Admin\SubcategoryAdmin
         arguments: [~, App\Entity\Subcategory, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Subcategory" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Subcategories" }
         public: true
 
     admin.product:
         class: App\Admin\ProductAdmin
         arguments: [~, App\Entity\Product, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Product" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Products" }
+        public: true
+
+    admin.choice:
+        class: App\Admin\ChoiceAdmin
+        arguments: [~, App\Entity\Choice, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Choices" }
+        public: true
+
+    admin.allergen:
+        class: App\Admin\AllergenAdmin
+        arguments: [~, App\Entity\Allergen, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Allergens" }
         public: true
