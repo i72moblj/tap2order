@@ -1,0 +1,6 @@
+App\Entity\Category:
+    category_0:
+        name: Polos
+
+    category_1:
+        name: Gofres

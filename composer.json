@@ -19,7 +19,11 @@
         "symfony/yaml": "^3.3"
     },
     "require-dev": {
-        "symfony/dotenv": "^3.3"
+        "doctrine/data-fixtures": "^1.2",
+        "hautelook/alice-bundle": "^2.0@beta",
+        "nelmio/alice": "^3.0@beta",
+        "symfony/dotenv": "^3.3",
+        "theofidry/alice-data-fixtures": "^1.0@beta"
     },
     "config": {
         "preferred-install": {
