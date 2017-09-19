@@ -41,7 +41,7 @@ class Allergen
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="allergens")
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="allergens", cascade={"all"})
      */
     private $products;
 
@@ -120,8 +120,8 @@ class Allergen
      */
     public function addProduct(Product $product)
     {
-        $this->products[] = $product;
         $product->addAllergen($this);
+        $this->products[] = $product;
 
         return $this;
     }
@@ -131,8 +131,8 @@ class Allergen
      */
     public function removeProduct(Product $product)
     {
-        $this->products->removeElement($product);
         $product->removeAllergen($this);
+        $this->products->removeElement($product);
     }
 
     /**
@@ -149,8 +149,8 @@ class Allergen
      */
     public function addChoice(Choice $choice)
     {
-        $this->choices[] = $choice;
         $choice->addAllergen($this);
+        $this->choices[] = $choice;
 
         return $this;
     }
@@ -160,7 +160,7 @@ class Allergen
      */
     public function removeChoice(Choice $choice)
     {
-        $this->choices->removeElement($choice);
         $choice->removeAllergen($this);
+        $this->choices->removeElement($choice);
     }
 }

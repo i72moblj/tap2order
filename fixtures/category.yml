@@ -1,6 +1,16 @@
 App\Entity\Category:
-    category_0:
-        name: Polos
-
     category_1:
-        name: Gofres
+        name: Helados
+        isEnabled: 1
+    category_2:
+        name: Polos
+        isEnabled: 1
+    category_3:
+        name: Líquidos
+        isEnabled: 1
+    category_4:
+        name: Bebidas
+        isEnabled: 1
+    category_5:
+        name: Copas de helado
+        isEnabled: 1

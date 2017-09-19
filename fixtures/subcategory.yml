@@ -1,0 +1,37 @@
+App\Entity\Subcategory:
+    subcategory_1:
+        name: Tarrinas
+        isEnabled: 1
+        category: '@category_1'
+    subcategory_2:
+        name: Barquillos
+        isEnabled: 1
+        category: '@category_1'
+    subcategory_3:
+        name: Cortes
+        isEnabled: 1
+        category: '@category_1'
+    subcategory_4:
+        name: Polos de nieve
+        isEnabled: 1
+        category: '@category_2'
+    subcategory_5:
+        name: Polos de leche
+        isEnabled: 1
+        category: '@category_2'
+    subcategory_6:
+        name: Gran Bombón
+        isEnabled: 1
+        category: '@category_2'
+    subcategory_7:
+        name: Refrescos
+        isEnabled: 1
+        category: '@category_4'
+    subcategory_8:
+        name: Combinados
+        isEnabled: 1
+        category: '@category_4'
+    subcategory_9:
+        name: Cervezas
+        isEnabled: 1
+        category: '@category_4'

@@ -1,0 +1,34 @@
+App\Entity\Product:
+    product_1:
+        name: Tarrina pequeña
+        description: <sentence()>
+        price: 250
+        vat: reducido
+#        image:
+        quantity: 0
+        isEnabled: 1
+        subcategory: '@subcategory_1'
+        choices: ['@choice_1']
+        allergens: ['@allergen_1']
+#    product_2:
+#        name: Tarrina mediana
+#        description: <sentence()>
+#        price: 400
+#        vat: reducido
+##        image:
+#        quantity: 0
+#        isEnabled: 1
+#        subcategory: '@subcategory_1'
+##        choices:
+##        allergens:
+#    product_3:
+#        name: Tarrina grande
+#        description: <sentence()>
+#        price: 550
+#        vat: reducido
+##        image:
+#        quantity: 0
+#        isEnabled: 1
+#        subcategory: '@subcategory_1'
+##        choices:
+##        allergens:

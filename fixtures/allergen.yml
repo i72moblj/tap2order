@@ -1,0 +1,11 @@
+App\Entity\Allergen:
+    allergen_1:
+        name: Gluten
+#        logo:
+#        products: ['@product_1']
+        choices: ['@choice_1']
+#    allergen_2:
+#        name: Frutos secos
+##        logo:
+#        products: ['@product_1', '@product_2']
+#        choices: ['@choice_1', '@choice_2']
