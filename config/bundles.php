@@ -19,4 +19,8 @@ return [
     'Nelmio\Alice\Bridge\Symfony\NelmioAliceBundle' => ['dev' => true, 'test' => true],
     'Fidry\AliceDataFixtures\Bridge\Symfony\FidryAliceDataFixturesBundle' => ['dev' => true, 'test' => true],
     'Hautelook\AliceBundle\HautelookAliceBundle' => ['dev' => true, 'test' => true],
+    'Sonata\MediaBundle\SonataMediaBundle' => ['all' => true],
+    'Sonata\EasyExtendsBundle\SonataEasyExtendsBundle' => ['all' => true],
+    // You need to add this dependency to make media functional
+    'JMS\SerializerBundle\JMSSerializerBundle' => ['all' => true],
 ];
