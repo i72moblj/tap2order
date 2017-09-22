@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use Sonata\MediaBundle\Entity\BaseMedia as BaseMedia;
+use Sonata\MediaBundle\Entity\BaseMedia;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
