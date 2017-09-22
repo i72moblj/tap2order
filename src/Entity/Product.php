@@ -102,6 +102,29 @@ class Product
     private $allergens;
 
     /**
+     * One Product has One Media.
+     * @ORM\OneToOne(targetEntity="Media", cascade={"remove", "persist"})
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    private $media;
+
+    /**
+     * @return mixed
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param mixed $media
+     */
+    public function setMedia($media)
+    {
+        $this->media = $media;
+    }
+
+    /**
      * Product constructor.
      */
     public function __construct()
