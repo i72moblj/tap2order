@@ -109,22 +109,6 @@ class Product
     private $media;
 
     /**
-     * @return mixed
-     */
-    public function getMedia()
-    {
-        return $this->media;
-    }
-
-    /**
-     * @param mixed $media
-     */
-    public function setMedia($media)
-    {
-        $this->media = $media;
-    }
-
-    /**
      * Product constructor.
      */
     public function __construct()
@@ -329,5 +313,21 @@ class Product
     public function removeAllergen(Allergen $allergen)
     {
         $this->allergens->removeElement($allergen);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param mixed $media
+     */
+    public function setMedia($media)
+    {
+        $this->media = $media;
     }
 }

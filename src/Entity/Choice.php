@@ -46,6 +46,59 @@ class Choice
     private $supplement;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=128, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $isEnabled;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="choices")
+     */
+    private $products;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Allergen", inversedBy="choices")
+     * @ORM\JoinTable(name="choices_allergens")
+     */
+    private $allergens;
+
+    /**
+     * Choice constructor.
+     */
+    public function __construct()
+    {
+        $this->supplement = 0;
+        $this->isEnabled = true;
+        $this->products = new ArrayCollection();
+        $this->allergens = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getName() ?? '';
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @return string
      */
     public function getName()
@@ -123,59 +176,6 @@ class Choice
     public function setIsEnabled($isEnabled)
     {
         $this->isEnabled = $isEnabled;
-    }
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=128, nullable=true)
-     */
-    private $image;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=false)
-     */
-    private $isEnabled;
-
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="choices")
-     */
-    private $products;
-
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Allergen", inversedBy="choices")
-     * @ORM\JoinTable(name="choices_allergens")
-     */
-    private $allergens;
-
-    /**
-     * Choice constructor.
-     */
-    public function __construct()
-    {
-        $this->supplement = 0;
-        $this->isEnabled = true;
-        $this->products = new ArrayCollection();
-        $this->allergens = new ArrayCollection();
-    }
-
-    public function __toString()
-    {
-        return $this->getName() ?? '';
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
