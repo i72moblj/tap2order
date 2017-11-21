@@ -85,7 +85,10 @@ class Choice
         $this->allergens = new ArrayCollection();
     }
 
-    public function __toString()
+    /**
+     * @return string
+     */
+    public function __toString(): string
     {
         return $this->getName() ?? '';
     }
@@ -93,7 +96,7 @@ class Choice
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -101,7 +104,7 @@ class Choice
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -109,7 +112,7 @@ class Choice
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
@@ -117,7 +120,7 @@ class Choice
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -125,7 +128,7 @@ class Choice
     /**
      * @param string $description
      */
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
@@ -133,7 +136,7 @@ class Choice
     /**
      * @return integer
      */
-    public function getSupplement()
+    public function getSupplement(): int
     {
         return $this->supplement;
     }
@@ -141,7 +144,7 @@ class Choice
     /**
      * @param integer $supplement
      */
-    public function setSupplement($supplement)
+    public function setSupplement(int $supplement)
     {
         $this->supplement = $supplement;
     }
@@ -149,7 +152,7 @@ class Choice
     /**
      * @return string
      */
-    public function getImage()
+    public function getImage(): ?string
     {
         return $this->image;
     }
@@ -157,7 +160,7 @@ class Choice
     /**
      * @param string $image
      */
-    public function setImage($image)
+    public function setImage(string $image = null)
     {
         $this->image = $image;
     }
@@ -165,7 +168,7 @@ class Choice
     /**
      * @return bool
      */
-    public function isEnabled()
+    public function isEnabled(): bool
     {
         return $this->isEnabled;
     }
@@ -173,7 +176,7 @@ class Choice
     /**
      * @param bool $isEnabled
      */
-    public function setIsEnabled($isEnabled)
+    public function setIsEnabled(bool $isEnabled)
     {
         $this->isEnabled = $isEnabled;
     }
@@ -181,7 +184,7 @@ class Choice
     /**
      * @return ArrayCollection
      */
-    public function getProducts()
+    public function getProducts(): ArrayCollection
     {
         return $this->products;
     }

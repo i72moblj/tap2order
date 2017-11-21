@@ -61,7 +61,10 @@ class Allergen
         $this->choices = new ArrayCollection();
     }
 
-    public function __toString()
+    /**
+     * @return string
+     */
+    public function __toString(): string
     {
         return $this->getName() ?? '';
     }
@@ -69,7 +72,7 @@ class Allergen
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -77,7 +80,7 @@ class Allergen
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -85,7 +88,7 @@ class Allergen
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
@@ -93,7 +96,7 @@ class Allergen
     /**
      * @return string
      */
-    public function getLogo()
+    public function getLogo(): ?string
     {
         return $this->logo;
     }
@@ -101,7 +104,7 @@ class Allergen
     /**
      * @param string $logo
      */
-    public function setLogo($logo)
+    public function setLogo(string $logo = null)
     {
         $this->logo = $logo;
     }
@@ -109,7 +112,7 @@ class Allergen
     /**
      * @return ArrayCollection
      */
-    public function getProducts()
+    public function getProducts(): ArrayCollection
     {
         return $this->products;
     }
@@ -138,7 +141,7 @@ class Allergen
     /**
      * @return ArrayCollection
      */
-    public function getChoices()
+    public function getChoices(): ArrayCollection
     {
         return $this->choices;
     }

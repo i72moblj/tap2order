@@ -28,7 +28,7 @@ class Gallery extends BaseGallery
      *
      * @return int $id
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
