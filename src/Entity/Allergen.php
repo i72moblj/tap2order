@@ -94,7 +94,7 @@ class Allergen
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getLogo(): ?string
     {
@@ -102,7 +102,7 @@ class Allergen
     }
 
     /**
-     * @param string $logo
+     * @param string|null $logo
      */
     public function setLogo(string $logo = null)
     {

@@ -210,8 +210,9 @@ class Product
         return $this->image;
     }
 
+
     /**
-     * @param string $image
+     * @param string|null $image
      */
     public function setImage(string $image = null)
     {

@@ -68,7 +68,6 @@ class Tag
         return $this->id;
     }
 
-
     /**
      * @return null|string
      */
@@ -78,13 +77,12 @@ class Tag
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      */
     public function setName(string $name = null)
     {
         $this->name = $name;
     }
-
 
     /**
      * @return null|string
@@ -95,7 +93,7 @@ class Tag
     }
 
     /**
-     * @param string $location
+     * @param string|null $location
      */
     public function setLocation(string $location = null)
     {

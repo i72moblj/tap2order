@@ -150,7 +150,7 @@ class Choice
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getImage(): ?string
     {
@@ -158,7 +158,7 @@ class Choice
     }
 
     /**
-     * @param string $image
+     * @param string|null $image
      */
     public function setImage(string $image = null)
     {
