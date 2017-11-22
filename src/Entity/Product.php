@@ -203,7 +203,7 @@ class Product
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getImage(): ?string
     {

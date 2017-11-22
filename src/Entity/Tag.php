@@ -68,8 +68,9 @@ class Tag
         return $this->id;
     }
 
+
     /**
-     * @return string
+     * @return null|string
      */
     public function getName(): ?string
     {
@@ -84,8 +85,9 @@ class Tag
         $this->name = $name;
     }
 
+
     /**
-     * @return string
+     * @return null|string
      */
     public function getLocation(): ?string
     {
