@@ -102,13 +102,27 @@ class Product
     private $allergens;
 
     /**
-     * @var int
-     *
      * One Product has One Media.
      * @ORM\OneToOne(targetEntity="Media", cascade={"remove", "persist"})
      * @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $media;
+
+    /**
+     * @return mixed
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param mixed $media
+     */
+    public function setMedia($media)
+    {
+        $this->media = $media;
+    }
 
     /**
      * Product constructor.
@@ -122,9 +136,6 @@ class Product
         $this->allergens = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return $this->getName() ?? '';
@@ -133,7 +144,7 @@ class Product
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -141,7 +152,7 @@ class Product
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -149,7 +160,7 @@ class Product
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
     }
@@ -157,7 +168,7 @@ class Product
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -165,23 +176,23 @@ class Product
     /**
      * @param string $description
      */
-    public function setDescription(string $description)
+    public function setDescription($description)
     {
         $this->description = $description;
     }
 
     /**
-     * @return int
+     * @return integer
      */
-    public function getPrice(): int
+    public function getPrice()
     {
         return $this->price;
     }
 
     /**
-     * @param int $price
+     * @param integer $price
      */
-    public function setPrice(int $price)
+    public function setPrice($price)
     {
         $this->price = $price;
     }
@@ -189,7 +200,7 @@ class Product
     /**
      * @return string
      */
-    public function getVat(): string
+    public function getVat()
     {
         return $this->vat;
     }
@@ -197,24 +208,23 @@ class Product
     /**
      * @param string $vat
      */
-    public function setVat(string $vat)
+    public function setVat($vat)
     {
         $this->vat = $vat;
     }
 
     /**
-     * @return null|string
+     * @return string
      */
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-
     /**
-     * @param string|null $image
+     * @param string $image
      */
-    public function setImage(string $image = null)
+    public function setImage($image)
     {
         $this->image = $image;
     }
@@ -222,7 +232,7 @@ class Product
     /**
      * @return int
      */
-    public function getQuantity(): int
+    public function getQuantity()
     {
         return $this->quantity;
     }
@@ -230,7 +240,7 @@ class Product
     /**
      * @param int $quantity
      */
-    public function setQuantity(int $quantity)
+    public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
     }
@@ -238,7 +248,7 @@ class Product
     /**
      * @return bool
      */
-    public function isEnabled(): bool
+    public function isEnabled()
     {
         return $this->isEnabled;
     }
@@ -246,7 +256,7 @@ class Product
     /**
      * @param bool $isEnabled
      */
-    public function setIsEnabled(bool $isEnabled)
+    public function setIsEnabled($isEnabled)
     {
         $this->isEnabled = $isEnabled;
     }
@@ -254,7 +264,7 @@ class Product
     /**
      * @return int
      */
-    public function getSubcategory(): int
+    public function getSubcategory()
     {
         return $this->subcategory;
     }
@@ -262,7 +272,7 @@ class Product
     /**
      * @param int $subcategory
      */
-    public function setSubcategory(int $subcategory)
+    public function setSubcategory($subcategory)
     {
         $this->subcategory = $subcategory;
     }
@@ -270,7 +280,7 @@ class Product
     /**
      * @return ArrayCollection
      */
-    public function getChoices(): ArrayCollection
+    public function getChoices()
     {
         return $this->choices;
     }
@@ -297,7 +307,7 @@ class Product
     /**
      * @return ArrayCollection
      */
-    public function getAllergens(): ArrayCollection
+    public function getAllergens()
     {
         return $this->allergens;
     }
@@ -319,21 +329,5 @@ class Product
     public function removeAllergen(Allergen $allergen)
     {
         $this->allergens->removeElement($allergen);
-    }
-
-    /**
-     * @return int
-     */
-    public function getMedia(): int
-    {
-        return $this->media;
-    }
-
-    /**
-     * @param int $media
-     */
-    public function setMedia(int $media)
-    {
-        $this->media = $media;
     }
 }

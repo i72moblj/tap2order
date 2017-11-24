@@ -61,10 +61,7 @@ class Subcategory
         $this->products = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
-    public function __toString(): string
+    public function __toString()
     {
         return $this->getName() ?? '';
     }
@@ -72,7 +69,7 @@ class Subcategory
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -80,7 +77,7 @@ class Subcategory
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -88,7 +85,7 @@ class Subcategory
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
     }
@@ -96,7 +93,7 @@ class Subcategory
     /**
      * @return bool
      */
-    public function isEnabled(): bool
+    public function isEnabled()
     {
         return $this->isEnabled;
     }
@@ -104,7 +101,7 @@ class Subcategory
     /**
      * @param bool $isEnabled
      */
-    public function setIsEnabled(bool $isEnabled)
+    public function setIsEnabled($isEnabled)
     {
         $this->isEnabled = $isEnabled;
     }
@@ -112,7 +109,7 @@ class Subcategory
     /**
      * @return int
      */
-    public function getCategory(): int
+    public function getCategory()
     {
         return $this->category;
     }
@@ -120,7 +117,7 @@ class Subcategory
     /**
      * @param int $category
      */
-    public function setCategory(int $category)
+    public function setCategory($category)
     {
         $this->category = $category;
     }
@@ -128,7 +125,7 @@ class Subcategory
     /**
      * @return ArrayCollection
      */
-    public function getProducts(): ArrayCollection
+    public function getProducts()
     {
         return $this->products;
     }

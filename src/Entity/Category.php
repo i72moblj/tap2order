@@ -53,10 +53,7 @@ class Category
         $this->subcategories = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
-    public function __toString(): string
+    public function __toString()
     {
         return $this->getName() ?? '';
     }
@@ -64,7 +61,7 @@ class Category
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -72,7 +69,7 @@ class Category
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -80,7 +77,7 @@ class Category
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
     }
@@ -88,7 +85,7 @@ class Category
     /**
      * @return bool
      */
-    public function isEnabled(): bool
+    public function isEnabled()
     {
         return $this->isEnabled;
     }
@@ -96,7 +93,7 @@ class Category
     /**
      * @param bool $isEnabled
      */
-    public function setIsEnabled(bool $isEnabled)
+    public function setIsEnabled($isEnabled)
     {
         $this->isEnabled = $isEnabled;
     }
@@ -104,7 +101,7 @@ class Category
     /**
      * @return ArrayCollection
      */
-    public function getSubcategories(): ArrayCollection
+    public function getSubcategories()
     {
         return $this->subcategories;
     }

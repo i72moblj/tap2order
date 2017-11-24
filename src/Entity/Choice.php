@@ -46,10 +46,90 @@ class Choice
     private $supplement;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=128, nullable=true)
+     * @return string
      */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getSupplement()
+    {
+        return $this->supplement;
+    }
+
+    /**
+     * @param integer $supplement
+     */
+    public function setSupplement($supplement)
+    {
+        $this->supplement = $supplement;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->isEnabled;
+    }
+
+    /**
+     * @param bool $isEnabled
+     */
+    public function setIsEnabled($isEnabled)
+    {
+        $this->isEnabled = $isEnabled;
+    }
+
+    /**
+    * @var string
+    *
+    * @ORM\Column(type="string", length=128, nullable=true)
+    */
     private $image;
 
     /**
@@ -85,10 +165,7 @@ class Choice
         $this->allergens = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
-    public function __toString(): string
+    public function __toString()
     {
         return $this->getName() ?? '';
     }
@@ -96,95 +173,15 @@ class Choice
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName(string $name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     */
-    public function setDescription(string $description)
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getSupplement(): int
-    {
-        return $this->supplement;
-    }
-
-    /**
-     * @param integer $supplement
-     */
-    public function setSupplement(int $supplement)
-    {
-        $this->supplement = $supplement;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param string|null $image
-     */
-    public function setImage(string $image = null)
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isEnabled(): bool
-    {
-        return $this->isEnabled;
-    }
-
-    /**
-     * @param bool $isEnabled
-     */
-    public function setIsEnabled(bool $isEnabled)
-    {
-        $this->isEnabled = $isEnabled;
-    }
-
-    /**
      * @return ArrayCollection
      */
-    public function getProducts(): ArrayCollection
+    public function getProducts()
     {
         return $this->products;
     }
