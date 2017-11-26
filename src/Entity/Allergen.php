@@ -61,6 +61,9 @@ class Allergen
         $this->choices = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getName() ?? '';

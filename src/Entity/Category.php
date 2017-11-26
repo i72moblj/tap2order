@@ -53,6 +53,9 @@ class Category
         $this->subcategories = new ArrayCollection();
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getName() ?? '';
