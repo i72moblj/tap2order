@@ -48,7 +48,7 @@ class Subcategory
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="subcategory", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="subcategory", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $products;
 
