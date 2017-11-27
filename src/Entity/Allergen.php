@@ -41,7 +41,7 @@ class Allergen
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="allergens", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="allergens")
      */
     private $products;
 
