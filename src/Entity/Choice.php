@@ -46,6 +46,70 @@ class Choice
     private $supplement;
 
     /**
+    * @var string
+    *
+    * @ORM\Column(type="string", length=128, nullable=true)
+    */
+    private $image;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $isEnabled;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="choices")
+     */
+    private $products;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Allergen", inversedBy="choices")
+     * @ORM\JoinTable(name="choices_allergens")
+     */
+    private $allergens;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="ItemChoice", mappedBy="choice")
+     */
+    private $itemChoices;
+
+    /**
+     * Choice constructor.
+     */
+    public function __construct()
+    {
+        $this->supplement = 0;
+        $this->isEnabled = true;
+        $this->products = new ArrayCollection();
+        $this->allergens = new ArrayCollection();
+        $this->itemChoices = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName() ?? '';
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @return string
      */
     public function getName()
@@ -126,62 +190,6 @@ class Choice
     }
 
     /**
-    * @var string
-    *
-    * @ORM\Column(type="string", length=128, nullable=true)
-    */
-    private $image;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=false)
-     */
-    private $isEnabled;
-
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="choices")
-     */
-    private $products;
-
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Allergen", inversedBy="choices")
-     * @ORM\JoinTable(name="choices_allergens")
-     */
-    private $allergens;
-
-    /**
-     * Choice constructor.
-     */
-    public function __construct()
-    {
-        $this->supplement = 0;
-        $this->isEnabled = true;
-        $this->products = new ArrayCollection();
-        $this->allergens = new ArrayCollection();
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getName() ?? '';
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @return ArrayCollection
      */
     public function getProducts()
@@ -236,4 +244,31 @@ class Choice
     {
         $this->allergens->removeElement($allergen);
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getItemChoices(): ArrayCollection
+    {
+        return $this->itemChoices;
+    }
+
+    /**
+     * @param ItemChoice $itemChoice
+     * @return $this
+     */
+    public function addItemChoice(ItemChoice $itemChoice)
+    {
+        $this->itemChoices[] = $itemChoice;
+        return $this;
+    }
+
+    /**
+     * @param ItemChoice $itemChoice
+     */
+    public function removeItemChoice(ItemChoice $itemChoice)
+    {
+        $this->itemChoices->removeElement($itemChoice);
+    }
+
 }
