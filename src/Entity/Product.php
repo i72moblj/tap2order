@@ -109,20 +109,11 @@ class Product
     private $media;
 
     /**
-     * @return mixed
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="product")
      */
-    public function getMedia()
-    {
-        return $this->media;
-    }
-
-    /**
-     * @param mixed $media
-     */
-    public function setMedia($media)
-    {
-        $this->media = $media;
-    }
+    private $items;
 
     /**
      * Product constructor.
@@ -134,6 +125,7 @@ class Product
         $this->isEnabled = true;
         $this->choices = new ArrayCollection();
         $this->allergens = new ArrayCollection();
+        $this->items = new ArrayCollection();
     }
 
     /**
@@ -333,4 +325,47 @@ class Product
     {
         $this->allergens->removeElement($allergen);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param mixed $media
+     */
+    public function setMedia($media)
+    {
+        $this->media = $media;
+    }
+
+    /**
+     * @return ArrayCollection|int
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param Item $item
+     * @return $this
+     */
+    public function addItem(Item $item)
+    {
+        $this->items[] = $item;
+        return $this;
+    }
+
+    /**
+     * @param Item $item
+     */
+    public function removeItem(Item $item)
+    {
+        $this->items->removeElement($item);
+    }
+
 }
