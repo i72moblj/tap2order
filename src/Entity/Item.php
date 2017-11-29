@@ -14,6 +14,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Item
 {
+    const ACTIVE = 'activo';
+    const SERVED = 'servido';
+
     /**
      * @var number
      *
@@ -66,6 +69,7 @@ class Item
      */
     public function __construct()
     {
+        $this->status = Item::ACTIVE;
         $this->itemChoices = new ArrayCollection();
     }
 
