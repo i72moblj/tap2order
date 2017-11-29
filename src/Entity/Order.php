@@ -15,6 +15,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Order
 {
+    const ACTIVE = 'activa';
+    const SERVED = 'servida';
+
     /**
      * @var integer
      *
@@ -39,11 +42,11 @@ class Order
     private $amount;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(type="boolean", nullable=false)
+     * @ORM\Column(type="string", nullable=false)
      */
-    private $isEnabled;
+    private $status;
 
     /**
      * @var int
@@ -65,7 +68,7 @@ class Order
      */
     public function __construct()
     {
-        $this->isEnabled = true;
+        $this->status = Order::ACTIVE;
         $this->items = new ArrayCollection();
     }
 
@@ -110,19 +113,19 @@ class Order
     }
 
     /**
-     * @return bool
+     * @return string
      */
-    public function isEnabled(): bool
+    public function getStatus(): string
     {
-        return $this->isEnabled;
+        return $this->status;
     }
 
     /**
-     * @param bool $isEnabled
+     * @param string $status
      */
-    public function setIsEnabled(bool $isEnabled)
+    public function setStatus(string $status)
     {
-        $this->isEnabled = $isEnabled;
+        $this->status = $status;
     }
 
     /**
