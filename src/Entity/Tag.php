@@ -15,6 +15,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Tag
 {
+    const NFC = 'NFC';
+    const QR = 'QR';
+    const BOTH = 'ambos';
+
     /**
      * @var integer
      *
