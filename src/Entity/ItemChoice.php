@@ -24,6 +24,11 @@ class ItemChoice
     private $id;
 
     /**
+     * @var integer
+     */
+    private $price;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=32, nullable=false)
@@ -59,6 +64,22 @@ class ItemChoice
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     */
+    public function setPrice(int $price)
+    {
+        $this->price = $price;
     }
 
     /**

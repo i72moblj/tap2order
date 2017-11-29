@@ -33,6 +33,10 @@ class Item
      */
     private $quantity;
 
+    /**
+     * @var integer
+     */
+    private $price;
 
     /**
      * @var string
@@ -95,6 +99,22 @@ class Item
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     */
+    public function setPrice(int $price)
+    {
+        $this->price = $price;
     }
 
     /**
