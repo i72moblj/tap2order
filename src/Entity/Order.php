@@ -29,7 +29,7 @@ class Order
      *
      * @ORM\Column(type="datetime", nullable=false)
      */
-    private $date;
+    private $createdAt;
 
     /**
      * @var integer
@@ -80,17 +80,17 @@ class Order
     /**
      * @return \DateTime
      */
-    public function getDate(): \DateTime
+    public function getCreatedAt(): \DateTime
     {
-        return $this->date;
+        return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $date
+     * @param \DateTime $createdAt
      */
-    public function setDate(\DateTime $date)
+    public function setCreatedAt(\DateTime $createdAt)
     {
-        $this->date = $date;
+        $this->createdAt = $createdAt;
     }
 
     /**
