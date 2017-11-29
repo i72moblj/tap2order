@@ -26,6 +26,11 @@ class Tag
 
     /**
      * @var string
+     */
+    private $idTag;
+
+    /**
+     * @var string
      *
      * @ORM\Column(type="string", length=32, nullable=true)
      */
@@ -74,6 +79,22 @@ class Tag
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdTag(): string
+    {
+        return $this->idTag;
+    }
+
+    /**
+     * @param string $idTag
+     */
+    public function setIdTag(string $idTag)
+    {
+        $this->idTag = $idTag;
     }
 
     /**
