@@ -68,7 +68,7 @@ class Product
      *
      * @ORM\Column(type="integer", nullable=false)
      */
-    private $quantity;
+    private $maxChoices;
 
     /**
      * @var boolean
@@ -121,7 +121,7 @@ class Product
     public function __construct()
     {
         $this->vat = Product::VAT_REDUCED;
-        $this->quantity = 0;
+        $this->maxChoices = 0;
         $this->isEnabled = true;
         $this->choices = new ArrayCollection();
         $this->allergens = new ArrayCollection();
@@ -227,17 +227,17 @@ class Product
     /**
      * @return int
      */
-    public function getQuantity()
+    public function getMaxChoices()
     {
-        return $this->quantity;
+        return $this->maxChoices;
     }
 
     /**
-     * @param int $quantity
+     * @param int $maxChoices
      */
-    public function setQuantity($quantity)
+    public function setMaxChoices($maxChoices)
     {
-        $this->quantity = $quantity;
+        $this->maxChoices = $maxChoices;
     }
 
     /**
