@@ -21,6 +21,6 @@ return [
     'Hautelook\AliceBundle\HautelookAliceBundle' => ['dev' => true, 'test' => true],
     'Sonata\MediaBundle\SonataMediaBundle' => ['all' => true],
     'Sonata\EasyExtendsBundle\SonataEasyExtendsBundle' => ['all' => true],
-    // You need to add this dependency to make media functional
     'JMS\SerializerBundle\JMSSerializerBundle' => ['all' => true],
+    'Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle' => ['all' => true],
 ];
