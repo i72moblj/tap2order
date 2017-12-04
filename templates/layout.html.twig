@@ -9,7 +9,9 @@
         {% endblock %}
     </head>
     <body>
-        {% block header %}{% endblock %}
+        {% block header %}
+            {% include 'header.html.twig' %}
+        {% endblock %}
         {% block body %}{% endblock %}
         {% block footer %}{% endblock %}
         {% block javascripts %}
