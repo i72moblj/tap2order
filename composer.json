@@ -13,6 +13,7 @@
         "symfony/flex": "^1.0",
         "symfony/form": "^3.3",
         "symfony/framework-bundle": "^3.3",
+        "symfony/lts": "^3",
         "symfony/orm-pack": "^1.0",
         "symfony/translation": "^3.3",
         "symfony/twig-bundle": "^3.3",
