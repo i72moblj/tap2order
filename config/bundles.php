@@ -25,4 +25,5 @@ return [
     Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
     Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle::class => ['all' => true],
     Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
+    League\Tactician\Bundle\TacticianBundle::class => ['all' => true],
 ];

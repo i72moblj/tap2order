@@ -1,0 +1,25 @@
+tactician:
+    commandbus:
+        default:
+            middleware:
+                - tactician.middleware.locking
+                - tactician.middleware.doctrine
+                - tactician.middleware.command_handler
+
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: true
+
+    # Command Handlers
+    App\Handler\:
+        resource: '%kernel.project_dir%/src/Handler/'
+        tags:
+          - { name: 'tactician.handler', typehints: true }
