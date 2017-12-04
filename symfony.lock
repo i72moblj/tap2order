@@ -1,0 +1,14 @@
+{
+    "league/tactician": {
+        "version": "v1.0.3"
+    },
+    "league/tactician-bundle": {
+        "version": "v1.1.1"
+    },
+    "league/tactician-container": {
+        "version": "2.0.0"
+    },
+    "league/tactician-doctrine": {
+        "version": "v1.1"
+    }
+}
