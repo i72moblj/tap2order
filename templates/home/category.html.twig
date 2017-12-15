@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="display-4">Categories</h1>
+
+        <div class="row">
+            {% for category in categories %}
+                <div class="col-lg-6 col-md-4 col-3">
+                <div class="card" style="width: 20rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ category.name }}</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div></div>
+            {% else %}
+                No categories have been found.
+            {% endfor %}
+        </div>
+
+
+
+
+
+{% endblock %}

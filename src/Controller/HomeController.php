@@ -11,15 +11,21 @@ class HomeController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function index()
+    public function indexAction()
+    {
+        return $this->render('home/index.html.twig');
+    }
+
+    /**
+     * @Route("/categories", name="categories")
+     */
+    public function categoryAction()
     {
         $categories = $this->get('tactician.commandbus')->handle(
             new GetAllCategoriesQuery()
         );
 
-        dump($categories);
-
-        return $this->render('home/index.html.twig', [
+        return $this->render('home/category.html.twig', [
             'categories' => $categories,
         ]);
     }
