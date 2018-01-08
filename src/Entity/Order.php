@@ -5,13 +5,13 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-
+// El nombre de la tabla usa backtick (`) porque order es una palabra reservada de MariaDB.
 /**
  * Class Order
  * @package App\Entity
  *
  * @ORM\Entity
- * @ORM\Table(name="order")
+ * @ORM\Table(name="`order`")
  */
 class Order
 {
