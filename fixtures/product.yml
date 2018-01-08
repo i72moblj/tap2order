@@ -5,7 +5,7 @@ App\Entity\Product:
         price: 250
         vat: reducido
 #        image:
-        quantity: 0
+        maxChoices: 0
         isEnabled: 1
         subcategory: '@subcategory_1'
         choices: ['@choice_1']
