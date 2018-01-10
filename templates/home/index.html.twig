@@ -1,11 +1,7 @@
-{% extends 'layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="jumbotron text-center">
-        <h1 class="display-3">Tap to order</h1>
-        <p class="lead">Sistema para la realización de pedidos.</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Ir al menú</a>
-        </p>
-    </div>
+    <h1>Home</h1>
+    <p>Sistema para la realización de pedidos.</p>
+    <a href="{{ path('categories') }}">Hacer pedido</a>
 {% endblock %}
