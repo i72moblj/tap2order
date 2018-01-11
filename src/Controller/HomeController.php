@@ -17,7 +17,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/categories", name="categories")
+     * @Route("/menu", name="menu")
      */
     public function categoryAction()
     {
@@ -25,8 +25,9 @@ class HomeController extends Controller
             new GetAllCategoriesQuery()
         );
 
-        return $this->render('home/category.html.twig', [
+        return $this->render('home/menu.html.twig', [
             'categories' => $categories,
         ]);
     }
+
 }
