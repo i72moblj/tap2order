@@ -5,7 +5,7 @@
 
     {% for category in categories %}
         <p>
-            {{ category.name }}
+            <a href="{{ path('subcategory_index', {'categoryId': category.id}) }}">{{ category.name }}</a>
         </p>
     {% else %}
         No categories have been found.

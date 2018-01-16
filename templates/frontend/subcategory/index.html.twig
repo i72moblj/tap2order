@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Subcategories</h1>
+
+    {% for subcategory in subcategories %}
+        <p>
+            {{ subcategory.name }}
+        </p>
+    {% else %}
+        No categories have been found.
+    {% endfor %}
+{% endblock %}
