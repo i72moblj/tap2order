@@ -18,7 +18,7 @@ class CategoryController extends Controller
             new GetAllCategoriesQuery()
         );
 
-        return $this->render('category/index.html.twig', [
+        return $this->render('frontend/category/index.html.twig', [
             'categories' => $categories,
         ]);
     }
