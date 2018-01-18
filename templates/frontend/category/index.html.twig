@@ -8,6 +8,8 @@
             <a href="{{ path('subcategory_index', {'categoryId': category.id}) }}">{{ category.name }}</a>
         </p>
     {% else %}
-        No categories have been found.
+        <p>
+            No categories have been found.
+        </p>
     {% endfor %}
 {% endblock %}

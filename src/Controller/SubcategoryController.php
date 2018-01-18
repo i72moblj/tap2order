@@ -24,3 +24,4 @@ class SubcategoryController extends Controller
     }
 
 }
+

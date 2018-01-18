@@ -5,9 +5,11 @@
 
     {% for subcategory in subcategories %}
         <p>
-            {{ subcategory.name }}
+            <a href="{{ path('product_index', {'subcategoryId': subcategory.id}) }}">{{ subcategory.name }}</a>
         </p>
     {% else %}
-        No categories have been found.
+        <p>
+            No categories have been found.
+        </p>
     {% endfor %}
 {% endblock %}
