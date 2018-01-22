@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "cocur/slugify",
-            "version": "v3.0.1",
+            "version": "v3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "1fdf2b1219a199301db3d7c60c16d895bba6ccde"
+                "reference": "b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/1fdf2b1219a199301db3d7c60c16d895bba6ccde",
-                "reference": "1fdf2b1219a199301db3d7c60c16d895bba6ccde",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7",
+                "reference": "b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7",
                 "shasum": ""
             },
             "require": {
@@ -69,7 +69,7 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2017-09-24T10:29:04+00:00"
+            "time": "2018-01-22T09:00:48+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -3025,16 +3025,16 @@
         },
         {
             "name": "sonata-project/doctrine-orm-admin-bundle",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "17e334a87bb7d23ea8f934535f1da88caaa47955"
+                "reference": "bdc0d5cff50b8d2fb429b2a2340294a7eb1bf372"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/17e334a87bb7d23ea8f934535f1da88caaa47955",
-                "reference": "17e334a87bb7d23ea8f934535f1da88caaa47955",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/bdc0d5cff50b8d2fb429b2a2340294a7eb1bf372",
+                "reference": "bdc0d5cff50b8d2fb429b2a2340294a7eb1bf372",
                 "shasum": ""
             },
             "require": {
@@ -3099,20 +3099,20 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2018-01-18T00:02:00+00:00"
+            "time": "2018-01-20T17:47:56+00:00"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
-            "version": "2.3.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataEasyExtendsBundle.git",
-                "reference": "05ae10a944594ddbb48f10ed5ffd24670ba4f56b"
+                "reference": "85b3728fc86af48ac9bb5931c5446a013046c45b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataEasyExtendsBundle/zipball/05ae10a944594ddbb48f10ed5ffd24670ba4f56b",
-                "reference": "05ae10a944594ddbb48f10ed5ffd24670ba4f56b",
+                "url": "https://api.github.com/repos/sonata-project/SonataEasyExtendsBundle/zipball/85b3728fc86af48ac9bb5931c5446a013046c45b",
+                "reference": "85b3728fc86af48ac9bb5931c5446a013046c45b",
                 "shasum": ""
             },
             "require": {
@@ -3157,7 +3157,7 @@
                 "Easy Extends",
                 "sonata"
             ],
-            "time": "2018-01-16T10:11:26+00:00"
+            "time": "2018-01-20T17:55:04+00:00"
         },
         {
             "name": "sonata-project/exporter",
@@ -4319,16 +4319,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.0.65",
+            "version": "v1.0.66",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "6d98fe5f785e508dc6571f3a1c69d4a11103fee4"
+                "reference": "b366e902710c8dc8d8be97ed8d64ef574d9bffcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/6d98fe5f785e508dc6571f3a1c69d4a11103fee4",
-                "reference": "6d98fe5f785e508dc6571f3a1c69d4a11103fee4",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/b366e902710c8dc8d8be97ed8d64ef574d9bffcb",
+                "reference": "b366e902710c8dc8d8be97ed8d64ef574d9bffcb",
                 "shasum": ""
             },
             "require": {
@@ -4361,7 +4361,7 @@
                     "email": "fabien.potencier@gmail.com"
                 }
             ],
-            "time": "2018-01-20T08:19:00+00:00"
+            "time": "2018-01-21T09:15:48+00:00"
         },
         {
             "name": "symfony/form",
