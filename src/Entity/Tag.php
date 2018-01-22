@@ -30,6 +30,8 @@ class Tag
 
     /**
      * @var string
+     *
+     * @ORM\Column(type="string", length=64, nullable=false)
      */
     private $idTag;
 
