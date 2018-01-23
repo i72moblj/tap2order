@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Ramsey\Uuid\Uuid;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 
 /**
@@ -13,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(name="tag")
  */
-class Tag
+class Tag implements UserInterface, \Serializable
 {
     const NFC = 'NFC';
     const QR = 'QR';
@@ -77,6 +79,7 @@ class Tag
     {
         $this->isEnabled = true;
         $this->orders = new ArrayCollection();
+        $this->idTag = Uuid::uuid4()->toString();
     }
 
     /**
@@ -192,5 +195,46 @@ class Tag
     {
         $this->orders->removeElement($order);
     }
+
+    /* Métodos para Symfony Guard */
+
+    public function getUsername()
+    {
+        return $this->getIdTag();
+    }
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function getPassword()
+    {
+    }
+
+    public function getSalt()
+    {
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    public function serialize()
+    {
+        return \serialize([
+            $this->id,
+            $this->idTag
+        ]);
+    }
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->idTag
+            ) = \unserialize($serialized);
+    }
+
 
 }

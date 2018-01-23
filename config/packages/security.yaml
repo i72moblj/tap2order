@@ -2,12 +2,25 @@ security:
     # https://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
+        tags:
+            entity:
+                class: App\Entity\Tag
+                property: idTag
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            pattern: ^/
+            provider: tags
             anonymous: ~
+            logout: ~
+            guard:
+                authenticators:
+                    - App\Security\IdTagAuthenticator
+
+
 
             # activate different ways to authenticate
 
@@ -16,3 +29,6 @@ security:
 
             # form_login: ~
             # https://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+#        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
