@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b372518d88c2caeaccba537eb49f163",
+    "content-hash": "ef46d914608632da5f0d6bd0d40f8d00",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -5987,16 +5987,16 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
-                "reference": "159a7419d41f2131049d23cc32d17f3809508953"
+                "reference": "fe975b83b3901fdeb7826aa7ef161a7be432d2ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/159a7419d41f2131049d23cc32d17f3809508953",
-                "reference": "159a7419d41f2131049d23cc32d17f3809508953",
+                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/fe975b83b3901fdeb7826aa7ef161a7be432d2ad",
+                "reference": "fe975b83b3901fdeb7826aa7ef161a7be432d2ad",
                 "shasum": ""
             },
             "require": {
@@ -6068,7 +6068,7 @@
             ],
             "description": "Symfony SecurityBundle",
             "homepage": "https://symfony.com",
-            "time": "2018-01-04T15:07:28+00:00"
+            "time": "2018-01-29T09:03:43+00:00"
         },
         {
             "name": "symfony/stopwatch",
