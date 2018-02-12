@@ -1,7 +1,15 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+
     # https://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
+        users:
+            entity:
+                class: App\Entity\User
+                property: username
         tags:
             entity:
                 class: App\Entity\Tag
@@ -11,6 +19,18 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        admin:
+            anonymous: ~
+            pattern: ^/admin
+            provider: users
+            form_login:
+                login_path: /admin/login
+                check_path: /admin/check
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path: /admin/logout
+                target: /admin/login
+
         main:
             pattern: ^/
             provider: tags
@@ -21,7 +41,6 @@ security:
                     - App\Security\IdTagAuthenticator
 
 
-
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -30,5 +49,7 @@ security:
             # form_login: ~
             # https://symfony.com/doc/current/cookbook/security/form_login_setup.html
     access_control:
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }

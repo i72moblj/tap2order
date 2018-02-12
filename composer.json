@@ -19,6 +19,7 @@
         "symfony/lts": "^3",
         "symfony/orm-pack": "^1.0",
         "symfony/security-bundle": "^3.3",
+        "symfony/security-csrf": "^3.3",
         "symfony/swiftmailer-bundle": "^3.1",
         "symfony/translation": "^3.3",
         "symfony/twig-bundle": "^3.3",
