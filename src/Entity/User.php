@@ -64,6 +64,14 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getUsername();
+    }
+
+    /**
      * @return int
      */
     public function getId(): int

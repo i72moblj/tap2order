@@ -11,6 +11,10 @@ sonata_admin:
     title:      Acme
     title_logo: bundles/app/images/fancy_acme_logo.png
 
+sonata_user:
+    security_acl: false
+    manager_type: orm
+
 services:
     admin.category:
         class: App\Admin\CategoryAdmin

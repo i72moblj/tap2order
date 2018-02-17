@@ -2,6 +2,8 @@ security:
     encoders:
         App\Entity\User:
             algorithm: bcrypt
+#        FOS\UserBundle\Model\UserInterface:
+#            algorithm: bcrypt
 
     # https://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
@@ -14,22 +16,27 @@ security:
             entity:
                 class: App\Entity\Tag
                 property: idTag
+        fos_userbundle:
+            id: fos_user.user_provider.username
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
         admin:
-            anonymous: ~
             pattern: ^/admin
             provider: users
             form_login:
                 login_path: /admin/login
                 check_path: /admin/check
                 csrf_token_generator: security.csrf.token_manager
+                use_forward: false
+                failure_path: null
             logout:
                 path: /admin/logout
                 target: /admin/login
+            anonymous: ~
 
         main:
             pattern: ^/
@@ -40,16 +47,20 @@ security:
                 authenticators:
                     - App\Security\IdTagAuthenticator
 
+    role_hierarchy:
+        ROLE_ADMIN:       [ROLE_USER, ROLE_SONATA_ADMIN]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        SONATA:
+            - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT
 
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # https://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # https://symfony.com/doc/current/cookbook/security/form_login_setup.html
     access_control:
-        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        # Admin Backend
+        - { path: ^/admin/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/check$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
+
+        # Main Frontend
         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: ROLE_USER }
