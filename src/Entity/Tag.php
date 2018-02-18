@@ -141,7 +141,7 @@ class Tag implements UserInterface, \Serializable
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
