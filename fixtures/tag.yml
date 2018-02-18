@@ -1,0 +1,8 @@
+App\Entity\Tag:
+    tag_1:
+        idTag: d8fcb038-2285-4d0c-a5a2-53f0a40fe501
+        name: Tag 1
+        location: Mesa 1
+        type: NFC
+        isEnabled: 1
+        orders: []      #Cuando existan orders rellenar este campo
