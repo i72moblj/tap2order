@@ -32,3 +32,18 @@ sonata_user_admin_security:
 sonata_user_admin_resetting:
     resource: '@SonataUserBundle/Resources/config/routing/admin_resetting.xml'
     prefix: /admin/resetting
+
+fos_user_security_login:
+    path: /admin/login
+    controller: fos_user.security.controller:loginAction
+    methods: [GET, POST]
+
+fos_user_security_check:
+    path: /admin/login_check
+    controller: fos_user.security.controller:checkAction
+    methods: [POST]
+
+fos_user_security_logout:
+    path: /admin/logout
+    controller: fos_user.security.controller:logoutAction
+    methods: [GET, POST]

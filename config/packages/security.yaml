@@ -28,9 +28,10 @@ security:
             pattern: ^/admin
             provider: users
             form_login:
-                login_path: /admin/login
-                check_path: /admin/check
                 csrf_token_generator: security.csrf.token_manager
+                login_path: /admin/login
+                check_path: /admin/login_check
+                default_target_path: sonata_admin_dashboard
                 use_forward: false
                 failure_path: null
             logout:
@@ -47,19 +48,19 @@ security:
                 authenticators:
                     - App\Security\IdTagAuthenticator
 
-    role_hierarchy:
-        ROLE_ADMIN:       [ROLE_USER, ROLE_SONATA_ADMIN]
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-        SONATA:
-            - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT
+#    role_hierarchy:
+#        ROLE_ADMIN:       [ROLE_USER, ROLE_SONATA_ADMIN]
+#        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+#        SONATA:
+#            - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT
 
     access_control:
         # Admin Backend
         - { path: ^/admin/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/check$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/logout$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
+        - { path: ^/admin/, roles: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
 
         # Main Frontend
         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
