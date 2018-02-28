@@ -15,6 +15,13 @@ sonata_user:
     security_acl: false
     manager_type: orm
 
+    table:
+        user_group: "users_groups"
+
+    class:
+        user: 'App\Entity\User'
+        group: 'App\Entity\Group'
+
 services:
     admin.category:
         class: App\Admin\CategoryAdmin

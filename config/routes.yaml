@@ -47,3 +47,15 @@ fos_user_security_logout:
     path: /admin/logout
     controller: fos_user.security.controller:logoutAction
     methods: [GET, POST]
+
+#sonata_user_admin_security_login:
+#    path: /admin/login
+#    controller: SonataUserBundle:AdminSecurity:login
+#
+#sonata_user_admin_security_check:
+#    path: /admin/login_check
+#    controller: SonataUserBundle:AdminSecurity:check
+#
+#sonata_user_admin_security_logout:
+#    path: /admin/logout
+#    controller: SonataUserBundle:AdminSecurity:logout
