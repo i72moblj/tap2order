@@ -1,7 +1,0 @@
-App\Entity\User:
-    user_1:
-        username: admin
-        password: $2a$13$/37Tzn.2Jog0vrEA2C0hn.knPo9gvE4sF6AILTZQA7dsT1G/LJIoG #password: admin
-        email: admin@tto.com
-        role: ROLE_ADMIN
-        isActive: 1
