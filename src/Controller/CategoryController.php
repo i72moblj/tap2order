@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends Controller
 {
     /**
-     * @Route("/categories", name="category_index")
+     * @Route("/menu", name="menu_index")
      */
     public function index()
     {
