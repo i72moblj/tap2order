@@ -5,7 +5,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Command\GetAllProductsQuery;
+use App\Command\GetAllProductsBySubcategoryQuery;
 
 class ProductController extends Controller
 {
@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index($subcategoryId) {
         $products = $this->get('tactician.commandbus')->handle(
-            new GetAllProductsQuery($subcategoryId)
+            new GetAllProductsBySubcategoryQuery($subcategoryId)
         );
 
         return $this->render('frontend/product/index.html.twig', [

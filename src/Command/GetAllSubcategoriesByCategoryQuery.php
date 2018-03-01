@@ -4,10 +4,10 @@ namespace App\Command;
 
 
 /**
- * Class GetAllSubcategoriesQuery
+ * Class GetAllSubcategoriesByCategoryQuery
  * @package App\Command
  */
-class GetAllSubcategoriesQuery
+class GetAllSubcategoriesByCategoryQuery
 {
     /**
      * @var int
@@ -16,7 +16,7 @@ class GetAllSubcategoriesQuery
 
 
     /**
-     * GetAllSubcategoriesQuery constructor.
+     * GetAllSubcategoriesByCategoryQuery constructor.
      * @param int $categoryId
      */
     public function __construct(int $categoryId = 1)

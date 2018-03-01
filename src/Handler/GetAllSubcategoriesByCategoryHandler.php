@@ -9,11 +9,11 @@
 namespace App\Handler;
 
 
-use App\Command\GetAllSubcategoriesQuery;
+use App\Command\GetAllSubcategoriesByCategoryQuery;
 use App\Entity\Subcategory;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class GetAllSubcategoriesHandler
+class GetAllSubcategoriesByCategoryHandler
 {
     private $repository;
 
@@ -22,7 +22,7 @@ class GetAllSubcategoriesHandler
         $this->repository = $manager->getRepository(Subcategory::class);
     }
 
-    public function handle(GetAllSubcategoriesQuery $query)
+    public function handle(GetAllSubcategoriesByCategoryQuery $query)
     {
         $subcategories = $this->repository->findBy(array(
             'category' => $query->getCategoryId()

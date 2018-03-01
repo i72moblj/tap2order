@@ -9,11 +9,11 @@
 namespace App\Handler;
 
 
-use App\Command\GetAllProductsQuery;
+use App\Command\GetAllProductsBySubcategoryQuery;
 use App\Entity\Product;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class GetAllProductsHandler
+class GetAllProductsBySubcategoryHandler
 {
     private $repository;
 
@@ -22,7 +22,7 @@ class GetAllProductsHandler
         $this->repository = $manager->getRepository(Product::class);
     }
 
-    public function handle(GetAllProductsQuery $query)
+    public function handle(GetAllProductsBySubcategoryQuery $query)
     {
         $products = $this->repository->findBy([
             'subcategory' => $query->getSubcategoryId()

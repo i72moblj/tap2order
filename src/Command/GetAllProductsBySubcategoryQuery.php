@@ -4,10 +4,10 @@ namespace App\Command;
 
 
 /**
- * Class GetAllProductsQuery
+ * Class GetAllProductsBySubcategoryQuery
  * @package App\Command
  */
-class GetAllProductsQuery
+class GetAllProductsBySubcategoryQuery
 {
     /**
      * @var int
@@ -16,7 +16,7 @@ class GetAllProductsQuery
 
 
     /**
-     * GetAllProductsQuery constructor.
+     * GetAllProductsBySubcategoryQuery constructor.
      * @param int $subcategoryId
      */
     public function __construct(int $subcategoryId = 1)

@@ -5,7 +5,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Command\GetAllSubcategoriesQuery;
+use App\Command\GetAllSubcategoriesByCategoryQuery;
 use App\Entity\Category;
 
 class SubcategoryController extends Controller
@@ -16,7 +16,7 @@ class SubcategoryController extends Controller
     public function index(Category $category)
     {
         $subcategories = $this->get('tactician.commandbus')->handle(
-            new GetAllSubcategoriesQuery($category->getId())
+            new GetAllSubcategoriesByCategoryQuery($category->getId())
         );
 
         return $this->render('frontend/subcategory/index.html.twig', [
