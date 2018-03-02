@@ -3,23 +3,26 @@
 namespace App\Controller;
 
 
-use App\Command\GetAllCategoriesQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Command\GetAllSubcategoriesByCategoryQuery;
+use App\Entity\Category;
 
 class CategoryController extends Controller
 {
     /**
-     * @Route("/menu", name="menu_index")
+     * @Route("/menu/{slug}", name="category_index")
      */
-    public function index()
+    public function index(Category $category)
     {
-        $categories = $this->get('tactician.commandbus')->handle(
-            new GetAllCategoriesQuery()
+        $subcategories = $this->get('tactician.commandbus')->handle(
+            new GetAllSubcategoriesByCategoryQuery($category->getId())
         );
 
         return $this->render('frontend/category/index.html.twig', [
-            'categories' => $categories,
+            'subcategories' => $subcategories
         ]);
     }
+
 }
+

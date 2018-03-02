@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Menú</h1>
+
+    <h2>Lista de categorías</h2>
+
+    {% for category in categories %}
+        <p>
+            <a href="{{ path('category_index', {'slug': category.slug}) }}">{{ category.name }}</a>
+        </p>
+    {% else %}
+        <p>
+            No subcategories have been found.
+        </p>
+    {% endfor %}
+{% endblock %}

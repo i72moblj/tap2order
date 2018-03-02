@@ -1,11 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Categories</h1>
+    <h1>Categorias</h1>
 
-    {% for category in categories %}
+    <h2>Lista de subcategorías</h2>
+
+    {% for subcategory in subcategories %}
         <p>
-            <a href="{{ path('subcategory_index', {'slug': category.slug}) }}">{{ category.name }}</a>
+            <a href="{{ path('subcategory_index', {'subcategoryId': subcategory.id}) }}">{{ subcategory.name }}</a>
         </p>
     {% else %}
         <p>

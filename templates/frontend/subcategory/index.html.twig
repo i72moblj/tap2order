@@ -1,15 +1,17 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Subcategories</h1>
+    <h1>Sucategorías</h1>
 
-    {% for subcategory in subcategories %}
+    <h2>Lista de productos</h2>
+
+    {% for product in products %}
         <p>
-            <a href="{{ path('product_index', {'subcategoryId': subcategory.id}) }}">{{ subcategory.name }}</a>
+            {{ product.name }}
         </p>
     {% else %}
         <p>
-            No categories have been found.
+            No products have been found.
         </p>
     {% endfor %}
 {% endblock %}
