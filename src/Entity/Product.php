@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
@@ -76,6 +77,12 @@ class Product
      * @ORM\Column(type="boolean", nullable=false)
      */
     private $isEnabled;
+
+    /**
+     * @Gedmo\Slug(fields={"name"}, unique=true)
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
 
     /**
      * @var integer
@@ -254,6 +261,14 @@ class Product
     public function setIsEnabled($isEnabled)
     {
         $this->isEnabled = $isEnabled;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**
