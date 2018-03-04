@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Command\GetAllSubcategoriesByCategoryQuery;
@@ -11,7 +12,8 @@ use App\Entity\Category;
 class CategoryController extends Controller
 {
     /**
-     * @Route("/menu/{slug}", name="category_index")
+     * @Route("/menu/{categorySlug}", name="category_index")
+     * @ParamConverter("category", options={"mapping": {"categorySlug": "slug"}})
      */
     public function index(Category $category)
     {
@@ -20,7 +22,8 @@ class CategoryController extends Controller
         );
 
         return $this->render('frontend/category/index.html.twig', [
-            'subcategories' => $subcategories
+            'category' => $category,
+            'subcategories' => $subcategories,
         ]);
     }
 

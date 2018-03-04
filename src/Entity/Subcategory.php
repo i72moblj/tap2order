@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Class Subcategory
@@ -36,6 +38,12 @@ class Subcategory
      * @ORM\Column(type="boolean", nullable=false)
      */
     private $isEnabled;
+
+    /**
+     * @Gedmo\Slug(fields={"name"}, unique=true)
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
 
     /**
      * @var integer
@@ -107,6 +115,14 @@ class Subcategory
     public function setIsEnabled($isEnabled)
     {
         $this->isEnabled = $isEnabled;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

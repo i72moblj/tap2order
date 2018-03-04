@@ -7,7 +7,7 @@
 
     {% for category in categories %}
         <p>
-            <a href="{{ path('category_index', {'slug': category.slug}) }}">{{ category.name }}</a>
+            <a href="{{ path('category_index', {'categorySlug': category.slug}) }}">{{ category.name }}</a>
         </p>
     {% else %}
         <p>
