@@ -7,7 +7,7 @@
 
     {% for product in products %}
         <p>
-            {{ product.name }}
+            <a href="{{ path('product_show', {'categorySlug': category.slug ,'subcategorySlug': subcategory.slug, 'productSlug': product.slug}) }}">{{ product.name }}</a>
         </p>
     {% else %}
         <p>

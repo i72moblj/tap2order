@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>{{ product.name }}</h1>
+
+    <p>Imagen: Imagen</p>
+    <p>Nombre: {{ product.name }}</p>
+    <p>Descripción: {{ product.description }}</p>
+    <p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>
+    <p>Alérgenos:
+        {% for allergen in product.allergens %}
+            {{ allergen }},
+        {% endfor %}
+    </p>
+    <p>Número máximo elecciones: {{ product.maxChoices }}</p>
+    <p>Preferencias:
+        {% for choice in product.choices %}
+            {{ choice }}
+        {% endfor %}
+    </p>
+
+    <p>Añadir al pedido</p>
+
+{% endblock %}
