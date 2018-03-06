@@ -22,7 +22,7 @@ class CategoryController extends Controller
         );
 
         return $this->render('frontend/category/index.html.twig', [
-            'category' => $category,
+            'categorySlug' => $category->getSlug(),
             'subcategories' => $subcategories,
         ]);
     }

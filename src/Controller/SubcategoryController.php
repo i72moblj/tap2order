@@ -23,8 +23,8 @@ class SubcategoryController extends Controller
         );
 
         return $this->render('frontend/subcategory/index.html.twig', [
-            'category' => $category,
-            'subcategory' => $subcategory,
+            'categorySlug' => $category->getSlug(),
+            'subcategorySlug' => $subcategory->getSlug(),
             'products' => $products,
         ]);
     }
