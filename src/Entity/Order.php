@@ -39,7 +39,7 @@ class Order
      *
      * @ORM\Column(type="integer", nullable=false)
      */
-    private $amount;
+    private $total;
 
     /**
      * @var string
@@ -99,17 +99,17 @@ class Order
     /**
      * @return int
      */
-    public function getAmount(): int
+    public function getTotal(): int
     {
-        return $this->amount;
+        return $this->total;
     }
 
     /**
-     * @param int $amount
+     * @param int $total
      */
-    public function setAmount(int $amount)
+    public function setTotal(int $total)
     {
-        $this->amount = $amount;
+        $this->total = $total;
     }
 
     /**
