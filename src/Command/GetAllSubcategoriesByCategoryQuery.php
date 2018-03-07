@@ -14,7 +14,6 @@ class GetAllSubcategoriesByCategoryQuery
      */
     private $categoryId;
 
-
     /**
      * GetAllSubcategoriesByCategoryQuery constructor.
      * @param int $categoryId
