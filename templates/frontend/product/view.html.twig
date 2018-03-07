@@ -21,4 +21,9 @@
 
     <p>Añadir al pedido</p>
 
+    <div id="sidebar">
+        {{ render(controller(
+            'App\\Controller\\OrderController::show', {}
+        )) }}
+    </div>
 {% endblock %}
