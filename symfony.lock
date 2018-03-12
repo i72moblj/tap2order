@@ -155,6 +155,9 @@
     "league/tactician-doctrine": {
         "version": "v1.1"
     },
+    "league/tactician-logger": {
+        "version": "v0.10.0"
+    },
     "monolog/monolog": {
         "version": "1.23.0"
     },
