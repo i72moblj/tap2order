@@ -82,6 +82,12 @@ class Tag implements UserInterface, \Serializable
         $this->idTag = Uuid::uuid4()->toString();
     }
 
+    public function __toString()
+    {
+        return $this->getIdTag();
+    }
+
+
     /**
      * @return int
      */
