@@ -98,6 +98,9 @@
     "gedmo/doctrine-extensions": {
         "version": "v2.4.33"
     },
+    "guzzlehttp/psr7": {
+        "version": "1.4.2"
+    },
     "hautelook/alice-bundle": {
         "version": "1.4",
         "recipe": {
@@ -203,6 +206,9 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/log": {
         "version": "1.0.2"
     },
@@ -253,9 +259,6 @@
     },
     "sonata-project/media-bundle": {
         "version": "3.10.0"
-    },
-    "sonata-project/notification-bundle": {
-        "version": "3.2.0"
     },
     "sonata-project/user-bundle": {
         "version": "4.1.1"
@@ -529,9 +532,6 @@
     },
     "zendframework/zend-eventmanager": {
         "version": "3.2.0"
-    },
-    "zendframework/zenddiagnostics": {
-        "version": "v1.0.9"
     },
     "zircote/swagger-php": {
         "version": "2.0.13"
