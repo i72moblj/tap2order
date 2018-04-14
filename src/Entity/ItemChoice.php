@@ -36,7 +36,7 @@ class ItemChoice
     private $status;
 
     /**
-     * @var integer
+     * @var Item
      *
      * @ORM\ManyToOne(targetEntity="Item", inversedBy="itemChoices")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false, onDelete="CASCADE")
@@ -44,7 +44,7 @@ class ItemChoice
     private $item;
 
     /**
-     * @var integer
+     * @var Choice
      *
      * @ORM\ManyToOne(targetEntity="Choice", inversedBy="itemChoices")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
@@ -99,33 +99,33 @@ class ItemChoice
     }
 
     /**
-     * @return int
+     * @return Item
      */
-    public function getItem(): int
+    public function getItem(): Item
     {
         return $this->item;
     }
 
     /**
-     * @param int $item
+     * @param Item $item
      */
-    public function setItem(int $item)
+    public function setItem(Item $item)
     {
         $this->item = $item;
     }
 
     /**
-     * @return mixed
+     * @return Choice
      */
-    public function getChoice()
+    public function getChoice(): Choice
     {
         return $this->choice;
     }
 
     /**
-     * @param mixed $choice
+     * @param Choice $choice
      */
-    public function setChoice($choice)
+    public function setChoice(Choice $choice)
     {
         $this->choice = $choice;
     }
