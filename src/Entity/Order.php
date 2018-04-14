@@ -49,7 +49,7 @@ class Order
     private $status;
 
     /**
-     * @var int
+     * @var Tag
      *
      * @ORM\ManyToOne(targetEntity="Tag", inversedBy="orders")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
@@ -129,17 +129,17 @@ class Order
     }
 
     /**
-     * @return int
+     * @return Tag
      */
-    public function getTag(): int
+    public function getTag(): Tag
     {
         return $this->tag;
     }
 
     /**
-     * @param int $tag
+     * @param Tag $tag
      */
-    public function setTag(int $tag)
+    public function setTag(Tag $tag)
     {
         $this->tag = $tag;
     }
@@ -147,7 +147,7 @@ class Order
     /**
      * @return ArrayCollection
      */
-    public function getItems()
+    public function getItems(): ArrayCollection
     {
         return $this->items;
     }
