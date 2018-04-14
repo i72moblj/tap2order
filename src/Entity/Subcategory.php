@@ -46,7 +46,7 @@ class Subcategory
     private $slug;
 
     /**
-     * @var integer
+     * @var Category
      *
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="subcategories")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false, onDelete="CASCADE")
@@ -126,17 +126,17 @@ class Subcategory
     }
 
     /**
-     * @return int
+     * @return Category
      */
-    public function getCategory()
+    public function getCategory(): Category
     {
         return $this->category;
     }
 
     /**
-     * @param int $category
+     * @param Category $category
      */
-    public function setCategory($category)
+    public function setCategory(Category $category)
     {
         $this->category = $category;
     }
@@ -144,7 +144,7 @@ class Subcategory
     /**
      * @return ArrayCollection
      */
-    public function getProducts()
+    public function getProducts(): ArrayCollection
     {
         return $this->products;
     }
