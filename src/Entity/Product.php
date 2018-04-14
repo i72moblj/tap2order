@@ -85,7 +85,7 @@ class Product
     private $slug;
 
     /**
-     * @var integer
+     * @var Subcategory
      *
      * @ORM\ManyToOne(targetEntity="Subcategory", inversedBy="products")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false, onDelete="CASCADE")
@@ -272,17 +272,17 @@ class Product
     }
 
     /**
-     * @return int
+     * @return Subcategory
      */
-    public function getSubcategory()
+    public function getSubcategory(): Subcategory
     {
         return $this->subcategory;
     }
 
     /**
-     * @param int $subcategory
+     * @param Subcategory $subcategory
      */
-    public function setSubcategory($subcategory)
+    public function setSubcategory(Subcategory $subcategory)
     {
         $this->subcategory = $subcategory;
     }
@@ -290,7 +290,7 @@ class Product
     /**
      * @return ArrayCollection
      */
-    public function getChoices()
+    public function getChoices(): ArrayCollection
     {
         return $this->choices;
     }
@@ -317,7 +317,7 @@ class Product
     /**
      * @return ArrayCollection
      */
-    public function getAllergens()
+    public function getAllergens(): ArrayCollection
     {
         return $this->allergens;
     }
@@ -358,9 +358,9 @@ class Product
     }
 
     /**
-     * @return ArrayCollection|int
+     * @return ArrayCollection
      */
-    public function getItems()
+    public function getItems(): ArrayCollection
     {
         return $this->items;
     }
