@@ -46,7 +46,7 @@ class Item
     private $status;
 
     /**
-     * @var integer
+     * @var Order
      *
      * @ORM\ManyToOne(targetEntity="Order", inversedBy="items")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false, onDelete="CASCADE")
@@ -54,7 +54,7 @@ class Item
     private $order;
 
     /**
-     * @var integer
+     * @var Product
      *
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="items")
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
@@ -134,33 +134,33 @@ class Item
     }
 
     /**
-     * @return int
+     * @return Order
      */
-    public function getOrder(): int
+    public function getOrder(): Order
     {
         return $this->order;
     }
 
     /**
-     * @param int $order
+     * @param Order $order
      */
-    public function setOrder(int $order)
+    public function setOrder(Order $order)
     {
         $this->order = $order;
     }
 
     /**
-     * @return int
+     * @return Product
      */
-    public function getProduct(): int
+    public function getProduct(): Product
     {
         return $this->product;
     }
 
     /**
-     * @param int $product
+     * @param Product $product
      */
-    public function setProduct(int $product)
+    public function setProduct(Product $product)
     {
         $this->product = $product;
     }
