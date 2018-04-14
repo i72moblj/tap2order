@@ -290,7 +290,7 @@ class Product
     /**
      * @return ArrayCollection
      */
-    public function getChoices(): ArrayCollection
+    public function getChoices()
     {
         return $this->choices;
     }
@@ -317,7 +317,7 @@ class Product
     /**
      * @return ArrayCollection
      */
-    public function getAllergens(): ArrayCollection
+    public function getAllergens()
     {
         return $this->allergens;
     }
