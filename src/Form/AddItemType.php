@@ -27,6 +27,7 @@ class AddItemType extends AbstractType
             ->add('choices', EntityType::class, [
                 'class' => Choice::class,
                 'multiple' => true,
+                'expanded' => true,
                 'query_builder' => function (EntityRepository $repository) use ($product) {
                     return $repository
                         ->createQueryBuilder('c')
