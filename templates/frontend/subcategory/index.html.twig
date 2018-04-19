@@ -6,9 +6,18 @@
     <h2>Lista de productos</h2>
 
     {% for product in products %}
-        <p>
-            <a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">{{ product.name }}</a>
-        </p>
+        <a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">
+            <p>Imagen de {{ product.name }}</p>
+            <p><h1>{{ product.name }}</h1></p>
+        </a>
+            <p>Descripción: {{ product.description }}</p>
+            <p>Alérgenos:
+                {% for allergen in product.allergens %}
+                    {{ allergen }},
+                {% endfor %}
+            </p>
+            <p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>
+        <hr>
     {% else %}
         <p>
             No products have been found.
