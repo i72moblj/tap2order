@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 
-use App\Service\getTagOpenOrder;
+use App\Services\GetTagOpenOrder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class OrderController extends Controller
 {
-    public function show(getTagOpenOrder $order) {
+    public function show(GetTagOpenOrder $order) {
 
         $orderNumber = $order->getOrder($this->getUser())->getId();
 
