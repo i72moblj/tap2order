@@ -19,11 +19,27 @@
         {% endfor %}
     </p>
 
+    <p><b>Formulario</b></p>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Añadir</button>
+    {{ form_end(form) }}
+    <p><b>Fin Formulario</b></p>
+
     <p>Añadir al pedido</p>
 
-    <div id="sidebar">
-        {{ render(controller(
-            'App\\Controller\\OrderController::show', {}
-        )) }}
-    </div>
+
+    {#<p>#}
+        {#<a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">Añadir al pedido</a>#}
+    {#</p>#}
+
+
+
+    {% if is_granted('ROLE_USER') %}
+        <div id="sidebar">
+            {{ render(controller(
+                'App\\Controller\\OrderController::show', {}
+            )) }}
+        </div>
+    {% endif %}
 {% endblock %}
