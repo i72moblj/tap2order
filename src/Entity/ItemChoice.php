@@ -29,13 +29,6 @@ class ItemChoice
     private $price;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=32, nullable=false)
-     */
-    private $status;
-
-    /**
      * @var Item
      *
      * @ORM\ManyToOne(targetEntity="Item", inversedBy="itemChoices")
@@ -80,22 +73,6 @@ class ItemChoice
     public function setPrice(int $price)
     {
         $this->price = $price;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param string $status
-     */
-    public function setStatus(string $status)
-    {
-        $this->status = $status;
     }
 
     /**
