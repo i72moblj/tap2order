@@ -31,9 +31,10 @@ class AddItemType extends AbstractType
                     return $repository
                         ->createQueryBuilder('c')
                         ->leftJoin('c.products', 'p')
-                        ->where('p.id = :product')
+                        ->where('p.id = :product AND c.isEnabled = :isEnabled')
                         ->orderBy('c.name', 'ASC')
                         ->setParameter('product', $product->getId())
+                        ->setParameter('isEnabled', true)
                     ;
                 }
             ])
