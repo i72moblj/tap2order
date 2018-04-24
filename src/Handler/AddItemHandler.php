@@ -35,5 +35,7 @@ class AddItemHandler
 
         $this->manager->persist($item);
         $this->manager->flush();
+
+        return $item;
     }
 }
