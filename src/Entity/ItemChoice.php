@@ -25,6 +25,8 @@ class ItemChoice
 
     /**
      * @var integer
+     * 
+     * @ORM\Column(type="string")
      */
     private $price;
 

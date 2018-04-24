@@ -35,6 +35,8 @@ class Item
 
     /**
      * @var integer
+     *
+     * @ORM\Column(type="string", nullable=false)
      */
     private $price;
 
