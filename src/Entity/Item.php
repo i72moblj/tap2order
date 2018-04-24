@@ -36,7 +36,7 @@ class Item
     /**
      * @var integer
      *
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $price;
 
@@ -97,10 +97,14 @@ class Item
 
     /**
      * @param mixed $quantity
+     *
+     * @return Item
      */
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+
+        return $this;
     }
 
     /**
@@ -113,10 +117,14 @@ class Item
 
     /**
      * @param int $price
+     *
+     * @return Item
      */
     public function setPrice(int $price)
     {
         $this->price = $price;
+
+        return $this;
     }
 
     /**
@@ -129,10 +137,14 @@ class Item
 
     /**
      * @param string $status
+     *
+     * @return Item
      */
     public function setStatus(string $status)
     {
         $this->status = $status;
+
+        return $this;
     }
 
     /**
@@ -145,10 +157,14 @@ class Item
 
     /**
      * @param Order $order
+     *
+     * @return Item
      */
     public function setOrder(Order $order)
     {
         $this->order = $order;
+
+        return $this;
     }
 
     /**
@@ -161,10 +177,14 @@ class Item
 
     /**
      * @param Product $product
+     *
+     * @return Item
      */
     public function setProduct(Product $product)
     {
         $this->product = $product;
+
+        return $this;
     }
 
     /**
@@ -177,11 +197,13 @@ class Item
 
     /**
      * @param ItemChoice $itemChoice
-     * @return $this
+     *
+     * @return Item
      */
     public function addItemChoice(ItemChoice $itemChoice)
     {
         $this->itemChoices[] = $itemChoice;
+
         return $this;
     }
 
