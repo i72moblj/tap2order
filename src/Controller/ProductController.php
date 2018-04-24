@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Command\AddItemCommand;
 use App\Entity\Category;
 use App\Entity\Item;
 use App\Entity\Order;
@@ -11,6 +12,7 @@ use App\Entity\Subcategory;
 use App\Form\AddItemType;
 use App\Form\DTO\AddItem;
 use App\Services\GetTagOpenOrder;
+use League\Tactician\CommandBus;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +21,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends Controller
 {
     /**
+     * @var CommandBus
+     */
+    private $bus;
+
+    public function __construct(CommandBus $bus)
+    {
+        $this->bus = $bus;
+    }
+
+    /**
      * @Route("/menu/{categorySlug}/{subcategorySlug}/{productSlug}", name="product_show")
      * @ParamConverter("category", options={"mapping" : {"categorySlug": "slug"}})
      * @ParamConverter("subcategory", options={"mapping" : {"subcategorySlug": "slug"}})
@@ -26,13 +38,6 @@ class ProductController extends Controller
      */
     public function show(Request $request, Category $category, Subcategory $subcategory, Product $product)
     {
-        $item = new Item();
-        $item->setProduct($product);
-        $order =  $this->get(GetTagOpenOrder::class)->getOrder($this->getUser());
-        $item->setOrder($order);
-        $item->setQuantity(0);
-        $item->setStatus(Order::ACTIVE);
-
         $addItem = new AddItem();
         $addItem->setProduct($product);
 
@@ -40,6 +45,14 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->bus->handle(
+                new AddItemCommand(
+                    $this->get(GetTagOpenOrder::class)->getOrder($this->getUser()),
+                    $product,
+                    $form->get('quantity')->getData(),
+                    $product->getPrice()
+                )
+            );
 
             return $this->redirectToRoute('homepage');
         }
