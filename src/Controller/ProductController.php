@@ -5,8 +5,6 @@ namespace App\Controller;
 
 use App\Command\AddItemCommand;
 use App\Entity\Category;
-use App\Entity\Item;
-use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\Subcategory;
 use App\Form\AddItemType;
