@@ -25,8 +25,8 @@ class ItemChoice
 
     /**
      * @var integer
-     * 
-     * @ORM\Column(type="string")
+     *
+     * @ORM\Column(type="integer", nullable=false)
      */
     private $price;
 
