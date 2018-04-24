@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Command\AddItemChoiceCommand;
 use App\Command\AddItemCommand;
 use App\Entity\Category;
 use App\Entity\Product;
@@ -43,7 +44,7 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->bus->handle(
+            $item = $this->bus->handle(
                 new AddItemCommand(
                     $this->get(GetTagOpenOrder::class)->getOrder($this->getUser()),
                     $product,
@@ -51,6 +52,18 @@ class ProductController extends Controller
                     $product->getPrice()
                 )
             );
+
+            $choices = $form->get('choices')->getData();
+
+            foreach ($choices as $choice) {
+                $this->bus->handle(
+                    new AddItemChoiceCommand(
+                        $item,
+                        $choice,
+                        0
+                    )
+                );
+            }
 
             return $this->redirectToRoute('homepage');
         }
