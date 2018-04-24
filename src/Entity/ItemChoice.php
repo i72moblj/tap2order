@@ -71,10 +71,14 @@ class ItemChoice
 
     /**
      * @param int $price
+     *
+     * @return ItemChoice
      */
     public function setPrice(int $price)
     {
         $this->price = $price;
+
+        return $this;
     }
 
     /**
@@ -87,10 +91,14 @@ class ItemChoice
 
     /**
      * @param Item $item
+     *
+     * @return ItemChoice
      */
     public function setItem(Item $item)
     {
         $this->item = $item;
+
+        return $this;
     }
 
     /**
@@ -103,10 +111,14 @@ class ItemChoice
 
     /**
      * @param Choice $choice
+     *
+     * @return ItemChoice
      */
     public function setChoice(Choice $choice)
     {
         $this->choice = $choice;
+
+        return $this;
     }
 
 }
