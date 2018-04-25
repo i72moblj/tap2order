@@ -22,7 +22,7 @@ class AddItemChoiceHandler
 
         $item = $command->getItem();
         $choice =  $command->getChoice();
-        $price = $command->getPrice();
+        $price = $command->getChoice()->getSupplement();
 
         $itemChoice =  new ItemChoice();
         $itemChoice

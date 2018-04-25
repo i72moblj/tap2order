@@ -19,21 +19,14 @@ class AddItemChoiceCommand
     private $choice;
 
     /**
-     * @var int
-     */
-    private $price;
-
-    /**
      * addItemChoiceCommand constructor.
      * @param Item $item
      * @param Choice $choice
-     * @param int $price
      */
-    public function __construct(Item $item, Choice $choice, int $price)
+    public function __construct(Item $item, Choice $choice)
     {
         $this->item =  $item;
         $this->choice =  $choice;
-        $this->price = $price;
     }
 
     /**
@@ -51,15 +44,4 @@ class AddItemChoiceCommand
     {
         return $this->choice;
     }
-
-    /**
-     * @return int
-     */
-    public function getPrice(): int
-    {
-        return $this->price;
-    }
-
-
-
 }
