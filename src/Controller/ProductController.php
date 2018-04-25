@@ -59,8 +59,7 @@ class ProductController extends Controller
                 $this->bus->handle(
                     new AddItemChoiceCommand(
                         $item,
-                        $choice,
-                        0
+                        $choice
                     )
                 );
             }
