@@ -1,8 +1,40 @@
-<h2>Pedido nº {{ orderNumber }}</h2>
+{% extends 'layout.html.twig' %}
 
+{% block body %}
+    <h2>Pedido nº {{ order.id }}</h2>
 
-{#{% for article in articles %}#}
-    {#<a href="/article/{{ article.slug }}">#}
-        {#{{ article.title }}#}
-    {#</a>#}
-{#{% endfor %}#}
+    <table>
+        <thead>
+            <tr>
+                <td>Artículo seleccionado</td>
+                <td>Precio unitario</td>
+                <td>Cantidad</td>
+                <td>Subtotal</td>
+                <td>Variedades</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.product }}</td>
+                    <td>{{ (item.product.price / 100)|number_format(2, '.') }} €</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ (item.product.price / 100 * item.quantity)|number_format(2, '.') }} €</td>
+                    <td>
+                        variedades
+                        {#{% for itemChoice in item.itemChoices %}#}
+
+                        {#{% endfor %}#}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    Total =
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
