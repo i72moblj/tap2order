@@ -6,26 +6,30 @@
     <table>
         <thead>
             <tr>
-                <td>Artículo seleccionado</td>
-                <td>Precio unitario</td>
                 <td>Cantidad</td>
+                <td>Artículo</td>
+                <td>Elección</td>
+                <td>Precio unitario</td>
                 <td>Subtotal</td>
-                <td>Variedades</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
             {% for item in items %}
                 <tr>
-                    <td>{{ item.product }}</td>
-                    <td>{{ (item.product.price / 100)|number_format(2, '.') }} €</td>
                     <td>{{ item.quantity }}</td>
-                    <td>{{ (item.product.price / 100 * item.quantity)|number_format(2, '.') }} €</td>
+                    <td>{{ item.product }}</td>
                     <td>
-                        variedades
                         {% for itemChoice in item.itemChoices %}
                             {{ itemChoice }}
-                            {{ (itemChoice.price / 100)|number_format(2, '.') }}
+                            {{ (itemChoice.price / 100)|number_format(2, '.') }} €
                         {% endfor %}
+                    </td>
+                    <td>{{ (item.product.price / 100)|number_format(2, '.') }} €</td>
+                    <td>{{ (item.product.price / 100 * item.quantity)|number_format(2, '.') }} €</td>
+                    <td>
+                        <a href="{{ path('item_edit', { id: item.id }) }}">Modificar</a>
+                        <a href="#">Eliminar</a>
                     </td>
                 </tr>
             {% endfor %}
