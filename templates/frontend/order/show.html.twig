@@ -22,9 +22,10 @@
                     <td>{{ (item.product.price / 100 * item.quantity)|number_format(2, '.') }} €</td>
                     <td>
                         variedades
-                        {#{% for itemChoice in item.itemChoices %}#}
-
-                        {#{% endfor %}#}
+                        {% for itemChoice in item.itemChoices %}
+                            {{ itemChoice }}
+                            {{ (itemChoice.price / 100)|number_format(2, '.') }}
+                        {% endfor %}
                     </td>
                 </tr>
             {% endfor %}
