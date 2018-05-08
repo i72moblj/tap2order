@@ -19,7 +19,7 @@ class Item
     const SERVED = 'servido';
 
     /**
-     * @var number
+     * @var integer
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -81,9 +81,9 @@ class Item
     }
 
     /**
-     * @return number
+     * @return int
      */
-    public function getId(): number
+    public function getId(): int
     {
         return $this->id;
     }
