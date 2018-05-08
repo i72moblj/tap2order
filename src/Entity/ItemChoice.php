@@ -54,6 +54,14 @@ class ItemChoice
     }
 
     /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->getChoice() ?? '';
+    }
+
+    /**
      * @return mixed
      */
     public function getId()
