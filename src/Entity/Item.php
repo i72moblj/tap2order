@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -64,7 +65,7 @@ class Item
     private $product;
 
     /**
-     * @var ArrayCollection
+     * @var Collection
      *
      * @ORM\OneToMany(targetEntity="ItemChoice", mappedBy="item", cascade={"persist", "remove"}, orphanRemoval=true)
      */
@@ -188,9 +189,9 @@ class Item
     }
 
     /**
-     * @return ArrayCollection
+     * @return Collection
      */
-    public function getItemChoices(): ArrayCollection
+    public function getItemChoices(): Collection
     {
         return $this->itemChoices;
     }
