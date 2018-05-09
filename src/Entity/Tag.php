@@ -109,10 +109,13 @@ class Tag implements UserInterface, \Serializable
 
     /**
      * @param string $idTag
+     * @return Tag
      */
     public function setIdTag(string $idTag)
     {
         $this->idTag = $idTag;
+
+        return $this;
     }
 
     /**
@@ -125,10 +128,13 @@ class Tag implements UserInterface, \Serializable
 
     /**
      * @param string|null $name
+     * @return Tag
      */
     public function setName(string $name = null)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -141,10 +147,13 @@ class Tag implements UserInterface, \Serializable
 
     /**
      * @param string|null $location
+     * @return Tag
      */
     public function setLocation(string $location = null)
     {
         $this->location = $location;
+
+        return $this;
     }
 
     /**
@@ -157,10 +166,13 @@ class Tag implements UserInterface, \Serializable
 
     /**
      * @param string $type
+     * @return Tag
      */
     public function setType(string $type)
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -173,10 +185,13 @@ class Tag implements UserInterface, \Serializable
 
     /**
      * @param bool $isEnabled
+     * @return Tag
      */
     public function setIsEnabled(bool $isEnabled)
     {
         $this->isEnabled = $isEnabled;
+
+        return $this;
     }
 
     /**
@@ -189,11 +204,12 @@ class Tag implements UserInterface, \Serializable
 
     /**
      * @param Order $order
-     * @return $this
+     * @return Tag
      */
     public function addOrder(Order $order)
     {
         $this->orders[] = $order;
+
         return $this;
     }
 
