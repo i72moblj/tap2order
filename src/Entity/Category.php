@@ -86,10 +86,13 @@ class Category
 
     /**
      * @param string $name
+     * @return Category
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -102,10 +105,13 @@ class Category
 
     /**
      * @param bool $isEnabled
+     * @return Category
      */
     public function setIsEnabled($isEnabled)
     {
         $this->isEnabled = $isEnabled;
+
+        return $this;
     }
 
     /**
@@ -126,7 +132,7 @@ class Category
 
     /**
      * @param Subcategory $subcategory
-     * @return $this
+     * @return Category
      */
     public function addSubcategory(Subcategory $subcategory)
     {
