@@ -125,10 +125,13 @@ class Establishment
 
     /**
      * @param string|null $name
+     * @return Establishment
      */
     public function setName(string $name = null)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -141,10 +144,13 @@ class Establishment
 
     /**
      * @param string|null $email
+     * @return Establishment
      */
     public function setEmail(string $email = null)
     {
         $this->email = $email;
+
+        return $this;
     }
 
     /**
@@ -157,10 +163,13 @@ class Establishment
 
     /**
      * @param string|null $address
+     * @return Establishment
      */
     public function setAddress(string $address = null)
     {
         $this->address = $address;
+
+        return $this;
     }
 
     /**
@@ -173,10 +182,13 @@ class Establishment
 
     /**
      * @param string|null $country
+     * @return Establishment
      */
     public function setCountry(string $country = null)
     {
         $this->country = $country;
+
+        return $this;
     }
 
     /**
@@ -189,10 +201,13 @@ class Establishment
 
     /**
      * @param string|null $region
+     * @return Establishment
      */
     public function setRegion(string $region = null)
     {
         $this->region = $region;
+
+        return $this;
     }
 
     /**
@@ -205,10 +220,13 @@ class Establishment
 
     /**
      * @param string|null $city
+     * @return Establishment
      */
     public function setCity(string $city = null)
     {
         $this->city = $city;
+
+        return $this;
     }
 
     /**
@@ -237,10 +255,13 @@ class Establishment
 
     /**
      * @param int|null $phoneNumber
+     * @return Establishment
      */
     public function setPhoneNumber(int $phoneNumber = null)
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
     }
 
     /**
@@ -253,10 +274,13 @@ class Establishment
 
     /**
      * @param int|null $mobilePhoneNumber
+     * @return Establishment
      */
     public function setMobilePhoneNumber(int $mobilePhoneNumber = null)
     {
         $this->mobilePhoneNumber = $mobilePhoneNumber;
+
+        return $this
     }
 
     /**
@@ -269,10 +293,13 @@ class Establishment
 
     /**
      * @param string|null $logo
+     * @return Establishment
      */
     public function setLogo(string $logo = null)
     {
         $this->logo = $logo;
+
+        return $this;
     }
 
     /**
@@ -285,10 +312,13 @@ class Establishment
 
     /**
      * @param string|null $web
+     * @return Establishment
      */
     public function setWeb(string $web = null)
     {
         $this->web = $web;
+
+        return $this;
     }
 
 }
