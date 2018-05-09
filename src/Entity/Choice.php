@@ -119,10 +119,13 @@ class Choice
 
     /**
      * @param string $name
+     * @return Choice
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -135,10 +138,13 @@ class Choice
 
     /**
      * @param string $description
+     * @return Choice
      */
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
@@ -151,10 +157,13 @@ class Choice
 
     /**
      * @param integer $supplement
+     * @return Choice
      */
     public function setSupplement($supplement)
     {
         $this->supplement = $supplement;
+
+        return $this;
     }
 
     /**
@@ -167,10 +176,13 @@ class Choice
 
     /**
      * @param string $image
+     * @return Choice
      */
     public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
     }
 
     /**
@@ -183,10 +195,13 @@ class Choice
 
     /**
      * @param bool $isEnabled
+     * @return Choice
      */
     public function setIsEnabled($isEnabled)
     {
         $this->isEnabled = $isEnabled;
+
+        return $this;
     }
 
     /**
@@ -199,7 +214,7 @@ class Choice
 
     /**
      * @param Product $product
-     * @return $this
+     * @return Choice
      */
     public function addProduct(Product $product)
     {
@@ -228,7 +243,7 @@ class Choice
 
     /**
      * @param Allergen $allergen
-     * @return $this
+     * @return Choice
      */
     public function addAllergen(Allergen $allergen)
     {
@@ -255,7 +270,7 @@ class Choice
 
     /**
      * @param ItemChoice $itemChoice
-     * @return $this
+     * @return Choice
      */
     public function addItemChoice(ItemChoice $itemChoice)
     {
