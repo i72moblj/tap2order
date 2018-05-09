@@ -280,7 +280,7 @@ class Establishment
     {
         $this->mobilePhoneNumber = $mobilePhoneNumber;
 
-        return $this
+        return $this;
     }
 
     /**
