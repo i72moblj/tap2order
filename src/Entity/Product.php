@@ -161,10 +161,13 @@ class Product
 
     /**
      * @param string $name
+     * @return Product
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -177,10 +180,13 @@ class Product
 
     /**
      * @param string $description
+     * @return Product
      */
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
@@ -193,10 +199,13 @@ class Product
 
     /**
      * @param integer $price
+     * @return Product
      */
     public function setPrice($price)
     {
         $this->price = $price;
+
+        return $this;
     }
 
     /**
@@ -209,10 +218,13 @@ class Product
 
     /**
      * @param string $vat
+     * @return Product
      */
     public function setVat($vat)
     {
         $this->vat = $vat;
+
+        return $this;
     }
 
     /**
@@ -225,10 +237,13 @@ class Product
 
     /**
      * @param string $image
+     * @return Product
      */
     public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
     }
 
     /**
@@ -241,10 +256,13 @@ class Product
 
     /**
      * @param int $maxChoices
+     * @return Product
      */
     public function setMaxChoices($maxChoices)
     {
         $this->maxChoices = $maxChoices;
+
+        return $this;
     }
 
     /**
@@ -257,10 +275,13 @@ class Product
 
     /**
      * @param bool $isEnabled
+     * @return Product
      */
     public function setIsEnabled($isEnabled)
     {
         $this->isEnabled = $isEnabled;
+
+        return $this;
     }
 
     /**
@@ -281,10 +302,13 @@ class Product
 
     /**
      * @param Subcategory $subcategory
+     * @return Product
      */
     public function setSubcategory(Subcategory $subcategory)
     {
         $this->subcategory = $subcategory;
+
+        return $this;
     }
 
     /**
@@ -297,7 +321,7 @@ class Product
 
     /**
      * @param Choice $choice
-     * @return $this
+     * @return Product
      */
     public function addChoice(Choice $choice)
     {
@@ -324,7 +348,7 @@ class Product
 
     /**
      * @param Allergen $allergen
-     * @return $this
+     * @return Product
      */
     public function addAllergen(Allergen $allergen)
     {
@@ -351,10 +375,13 @@ class Product
 
     /**
      * @param mixed $media
+     * @return Product
      */
     public function setMedia($media)
     {
         $this->media = $media;
+
+        return $this;
     }
 
     /**
@@ -367,7 +394,7 @@ class Product
 
     /**
      * @param Item $item
-     * @return $this
+     * @return Product
      */
     public function addItem(Item $item)
     {
