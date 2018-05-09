@@ -95,10 +95,13 @@ class Subcategory
 
     /**
      * @param string $name
+     * @return Subcategory
      */
-    public function setName($name)
+    public function setName($name): Subcategory
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -111,10 +114,13 @@ class Subcategory
 
     /**
      * @param bool $isEnabled
+     * @return Subcategory
      */
-    public function setIsEnabled($isEnabled)
+    public function setIsEnabled($isEnabled): Subcategory
     {
         $this->isEnabled = $isEnabled;
+
+        return $this;
     }
 
     /**
@@ -128,17 +134,20 @@ class Subcategory
     /**
      * @return Category
      */
-    public function getCategory(): Category
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
 
     /**
      * @param Category $category
+     * @return Subcategory
      */
-    public function setCategory(Category $category)
+    public function setCategory(Category $category): Subcategory
     {
         $this->category = $category;
+
+        return $this;
     }
 
     /**
@@ -151,9 +160,9 @@ class Subcategory
 
     /**
      * @param Product $product
-     * @return $this
+     * @return Subcategory
      */
-    public function addProduct(Product $product)
+    public function addProduct(Product $product): Subcategory
     {
         $this->products[] = $product;
 
