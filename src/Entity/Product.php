@@ -295,7 +295,7 @@ class Product
     /**
      * @return Subcategory
      */
-    public function getSubcategory(): Subcategory
+    public function getSubcategory(): ?Subcategory
     {
         return $this->subcategory;
     }
