@@ -90,10 +90,13 @@ class Order
 
     /**
      * @param \DateTime $createdAt
+     * @return Order
      */
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
+
+        return $this;
     }
 
     /**
@@ -106,10 +109,13 @@ class Order
 
     /**
      * @param int $total
+     * @return Order
      */
     public function setTotal(int $total)
     {
         $this->total = $total;
+
+        return $this;
     }
 
     /**
@@ -122,10 +128,13 @@ class Order
 
     /**
      * @param string $status
+     * @return Order
      */
     public function setStatus(string $status)
     {
         $this->status = $status;
+
+        return $this;
     }
 
     /**
@@ -138,10 +147,13 @@ class Order
 
     /**
      * @param Tag $tag
+     * @return Order
      */
     public function setTag(Tag $tag)
     {
         $this->tag = $tag;
+
+        return $this;
     }
 
     /**
@@ -154,11 +166,12 @@ class Order
 
     /**
      * @param Item $item
-     * @return $this
+     * @return Order
      */
     public function addItem(Item $item)
     {
         $this->items[] = $item;
+
         return $this;
     }
 
