@@ -97,7 +97,7 @@ class Item
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getQuantity()
     {
@@ -105,11 +105,11 @@ class Item
     }
 
     /**
-     * @param mixed $quantity
+     * @param int $quantity
      *
      * @return Item
      */
-    public function setQuantity($quantity)
+    public function setQuantity(int $quantity)
     {
         $this->quantity = $quantity;
 
