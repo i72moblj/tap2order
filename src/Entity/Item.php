@@ -81,6 +81,14 @@ class Item
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getId() ?? '';
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
