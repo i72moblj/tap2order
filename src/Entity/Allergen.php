@@ -87,10 +87,13 @@ class Allergen
 
     /**
      * @param string $name
+     * @return Allergen
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -103,10 +106,13 @@ class Allergen
 
     /**
      * @param string $logo
+     * @return Allergen
      */
     public function setLogo($logo)
     {
         $this->logo = $logo;
+
+        return $this;
     }
 
     /**
@@ -119,7 +125,7 @@ class Allergen
 
     /**
      * @param Product $product
-     * @return $this
+     * @return Allergen
      */
     public function addProduct(Product $product)
     {
@@ -148,7 +154,7 @@ class Allergen
 
     /**
      * @param Choice $choice
-     * @return $this
+     * @return Allergen
      */
     public function addChoice(Choice $choice)
     {
