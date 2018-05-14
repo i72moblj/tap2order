@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+
+    {#<h1>Editar artículo: {{ product.name }}</h1>#}
+
+    {#<p>Imagen: Imagen</p>#}
+    {#<p>Nombre: {{ product.name }}</p>#}
+    {#<p>Descripción: {{ product.description }}</p>#}
+    {#<p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>#}
+    {#<p>Alérgenos:#}
+        {#{% for allergen in product.allergens %}#}
+            {#{{ allergen }},#}
+        {#{% endfor %}#}
+    {#</p>#}
+    {#<p>Número máximo elecciones: {{ product.maxChoices }}</p>#}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Añadir</button>
+    {{ form_end(form) }}
+
+    {#<p>Añadir al pedido</p>#}
+
+
+    {#<p>#}
+    {#<a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">Añadir al pedido</a>#}
+    {#</p>#}
+
+
+
+    {% if is_granted('ROLE_USER') %}
+        <div id="sidebar">
+            {{ render(controller(
+                'App\\Controller\\OrderController::show', {}
+            )) }}
+        </div>
+    {% endif %}
+{% endblock %}

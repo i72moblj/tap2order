@@ -83,7 +83,10 @@ class AddItem
         return $this->choices;
     }
 
-
+    /**
+     * @param Choice $choice
+     * @return AddItem
+     */
     public function addChoice(Choice $choice)
     {
         $this->choices[] = $choice;
@@ -91,6 +94,9 @@ class AddItem
         return $this;
     }
 
+    /**
+     * @param Choice $choice
+     */
     public function removeChoice(Choice $choice)
     {
         $this->choices->removeElement($choice);
