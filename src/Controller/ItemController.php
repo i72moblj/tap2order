@@ -37,12 +37,10 @@ class ItemController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $quantity = $form->get('quantity')->getData();
-            $item->setQuantity($quantity);
-
-            $this->bus->handle(
+            $item = $this->bus->handle(
                 new UpdateItemCommand(
-                    $item
+                    $item->getId(),
+                    $form->get('quantity')->getData()
                 )
             );
 

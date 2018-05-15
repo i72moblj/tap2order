@@ -19,12 +19,13 @@ class UpdateItemCommand
 
     /**
      * UpdateItemCommand constructor.
-     * @param Item $item
+     * @param int $id
+     * @param int $quantity
      */
-    public function __construct(Item $item)
+    public function __construct(int $id, int $quantity)
     {
-        $this->id = $item->getId();
-        $this->quantity = $item->getQuantity();
+        $this->id = $id;
+        $this->quantity = $quantity;
     }
 
     /**

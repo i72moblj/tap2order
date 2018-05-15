@@ -20,9 +20,9 @@ class UpdateItemHandler
         $id = $command->getId();
         $quantity = $command->getQuantity();
 
-        $item =  $this->manager->getRepository(Item::class)->find($id);
-
+        $item = $this->manager->getRepository(Item::class)->find($id);
         $item->setQuantity($quantity);
+
         $this->manager->flush();
 
         return $item;
