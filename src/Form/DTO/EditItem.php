@@ -32,13 +32,13 @@ class EditItem
      */
     private $itemChoices;
 
-    public function __construct()
+    public function __construct(Item $item)
     {
         $this->choices = new ArrayCollection();
         $this->itemChoices = new ArrayCollection();
-        $this->quantity = 0;
-//        $this->itemChoices = $this->item->getItemChoices();
-//        $this->quantity = $this->item->getQuantity();
+        $this->setItem($item);
+        $this->quantity = $item->getQuantity();
+        $this->setItemChoices($item->getItemChoices());
     }
 
     /**
@@ -104,6 +104,20 @@ class EditItem
     public function removeChoice(Choice $choice)
     {
         $this->choices->removeElement($choice);
+    }
+
+    /**
+     * @param Collection $itemChoices
+     * @return EditItem
+     */
+    public function setItemChoices(Collection $itemChoices): self
+    {
+        /** @var ItemChoice $itemChoice */
+        foreach ($itemChoices as $itemChoice) {
+            $this->choices[] = $itemChoice->getChoice();
+        }
+
+        return $this;
     }
 
     /**
