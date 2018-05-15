@@ -10,7 +10,6 @@ use App\Form\EditItemType;
 use League\Tactician\CommandBus;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -32,10 +31,7 @@ class ItemController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function edit(Request $request, Item $item) {
-        $editItem = new EditItem();
-        $editItem->setItem($item);
-        $editItem->setQuantity($item->getQuantity());
-        dump($item);
+        $editItem = new EditItem($item);
 
         $form = $this->createForm(EditItemType::class, $editItem);
         $form->handleRequest($request);
