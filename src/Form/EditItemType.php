@@ -22,26 +22,6 @@ class EditItemType extends AbstractType
         /** @var Product $product */
         $product = $item->getProduct();
 
-
-
-
-
-
-
-
-
-
-// CONSULTA:
-
-// select c.name from choice c left join itemChoice i on c.id = i.item_id where i.item_id = 1;
-
-// Sustituir el 1 por $item->getId();
-
-
-
-
-
-
         $builder
             ->add('quantity', NumberType::class, [
                 'label' => 'Cantidad',
@@ -61,16 +41,7 @@ class EditItemType extends AbstractType
                         ->setParameter('isEnabled', true)
                         ;
                 },
-//                'data' => $itemChoices,
-
-
-
             ])
-
-
-
-
-
         ;
     }
 
