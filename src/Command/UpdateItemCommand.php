@@ -3,11 +3,7 @@
 namespace App\Command;
 
 
-use App\Entity\ItemChoice;
-use App\Entity\Order;
-use App\Entity\Product;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Item;
 
 class UpdateItemCommand
 {
@@ -22,39 +18,13 @@ class UpdateItemCommand
     private $quantity;
 
     /**
-     * @var integer
-     */
-    private $price;
-
-    /**
-     * @var string
-     */
-    private $status;
-
-//    /**
-//     * @var Collection
-//     */
-//    private $itemChoices;
-
-    /**
      * UpdateItemCommand constructor.
-     * @param int $id
-     * @param int $quantity
-     * @param int $price
-     * @param string $status
-     * @param Order $order
-     * @param Product $product
-//     * @param Collection $itemChoices
+     * @param Item $item
      */
-//    public function __construct(int $id, int $quantity, int $price, string $status, Order $order, Product $product, Collection $itemChoices)
-    public function __construct(int $id, int $quantity, int $price, string $status)
+    public function __construct(Item $item)
     {
-        $this->id = $id;
-        $this->quantity = $quantity;
-        $this->price = $price;
-        $this->status = $status;
-//        $this->itemChoices = new ArrayCollection();
-//        $this->itemChoices = $itemChoices;
+        $this->id = $item->getId();
+        $this->quantity = $item->getQuantity();
     }
 
     /**
@@ -72,31 +42,4 @@ class UpdateItemCommand
     {
         return $this->quantity;
     }
-
-    /**
-     * @return int
-     */
-    public function getPrice(): int
-    {
-        return $this->price;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-
-//    /**
-//     * @return Collection
-//     */
-//    public function getItemChoices(): Collection
-//    {
-//        return $this->itemChoices;
-//    }
-
-
-
 }
