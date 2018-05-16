@@ -10,7 +10,7 @@ use App\Entity\Product;
 use App\Entity\Subcategory;
 use App\Form\AddItemType;
 use App\Form\DTO\AddItem;
-use App\Services\GetTagOpenOrder;
+use App\Services\GetTagOpenOrderService;
 use League\Tactician\CommandBus;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     private $bus;
 
-    public function __construct(CommandBus $bus)
+    public function __construct(CommandBus $bus, GetTagOpenOrderService $getTagOpenOrder)
     {
         $this->bus = $bus;
     }
@@ -44,17 +44,18 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $tag = $this->getUser();
+            $order = $this->get(GetTagOpenOrderService::class)->getOrder($tag);
+
             $item = $this->bus->handle(
                 new AddItemCommand(
-                    $this->get(GetTagOpenOrder::class)->getOrder($this->getUser()),
+                    $order,
                     $product,
-                    $form->get('quantity')->getData(),
-                    $product->getPrice()
+                    $form->get('quantity')->getData()
                 )
             );
 
             $choices = $form->get('choices')->getData();
-
             foreach ($choices as $choice) {
                 $this->bus->handle(
                     new AddItemChoiceCommand(
