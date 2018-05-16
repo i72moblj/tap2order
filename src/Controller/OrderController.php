@@ -4,7 +4,7 @@ namespace App\Controller;
 
 
 use App\Command\GetAllItemsByOrderQuery;
-use App\Services\GetTagOpenOrder;
+use App\Services\GetTagOpenOrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -13,7 +13,7 @@ class OrderController extends Controller
     /**
      * @Route("/order", name="order_show")
      */
-    public function show(GetTagOpenOrder $openOrder) {
+    public function show(GetTagOpenOrderService $openOrder) {
 
         $order = $openOrder->getOrder($this->getUser());
 
