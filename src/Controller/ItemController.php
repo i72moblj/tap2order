@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Command\AddItemChoiceCommand;
+use App\Command\DeleteItemCommand;
 use App\Command\RemoveItemChoiceCommand;
 use App\Command\UpdateItemCommand;
 use App\Entity\Item;
@@ -25,12 +26,12 @@ class ItemController extends Controller
     }
 
     /**
-     * @Route("/item/update/{item}", name="item_edit")
+     * @Route("/item/{item}/update", name="item_edit")
      * @Method({"GET", "POST"})
      *
      * @param Request $request
      * @param Item $item
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function edit(Request $request, Item $item) {
         $editItem = new EditItem($item);
@@ -76,6 +77,22 @@ class ItemController extends Controller
             'item' => $item,
         ]);
 
+    }
+
+    /**
+     * @Route("/item/{item}/delete", name="item_delete")
+     *
+     * @param Item $item
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function delete(Item $item) {
+        $this->bus->handle(
+            new DeleteItemCommand(
+                $item->getId()
+            )
+        );
+
+        return $this->redirectToRoute('order_show');
     }
 
 }
