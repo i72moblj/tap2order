@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 
+use App\Command\AddItemChoiceCommand;
+use App\Command\RemoveItemChoiceCommand;
 use App\Command\UpdateItemCommand;
 use App\Entity\Item;
 use App\Form\DTO\EditItem;
@@ -37,6 +39,7 @@ class ItemController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Item $item */
             $item = $this->bus->handle(
                 new UpdateItemCommand(
                     $item->getId(),
@@ -44,58 +47,29 @@ class ItemController extends Controller
                 )
             );
 
+            $itemChoices = $item->getItemChoices();
+
+            foreach ($itemChoices as  $itemChoice) {
+                $this->bus->handle(
+                    new RemoveItemChoiceCommand(
+                        $itemChoice
+                    )
+                );
+            }
+
+            $choices = $form->get('choices')->getData();
+
+            foreach ($choices as $choice) {
+                $this->bus->handle(
+                    new AddItemChoiceCommand(
+                        $item,
+                        $choice
+                    )
+                );
+            }
+
             return $this->redirectToRoute('order_show');
         }
-
-
-
-
-
-
-
-
-
-
-
-
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $item = $this->bus->handle(
-//                new AddItemCommand(
-//                    $this->get(GetTagOpenOrder::class)->getOrder($this->getUser()),
-//                    $product,
-//                    $form->get('quantity')->getData(),
-//                    $product->getPrice()
-//                )
-//            );
-//
-//            $choices = $form->get('choices')->getData();
-//
-//            foreach ($choices as $choice) {
-//                $this->bus->handle(
-//                    new AddItemChoiceCommand(
-//                        $item,
-//                        $choice
-//                    )
-//                );
-//            }
-//
-//            return $this->redirectToRoute('homepage');
-//        }
-
-
-
-
-
-
-
-
-
-
-//        $form = $this->createFormBuilder($item)
-//            ->add('quantity', TextType::class, [
-//                'label' => 'Cantidad',
-//            ])
-//            ->getForm();
 
         return $this->render('frontend/item/edit.html.twig', [
             'form' => $form->createView(),
