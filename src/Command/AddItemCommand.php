@@ -35,12 +35,12 @@ class AddItemCommand
      * @param int $quantity
      * @param int $price
      */
-    public function __construct(Order $order, Product $product, int $quantity, int $price)
+    public function __construct(Order $order, Product $product, int $quantity)
     {
         $this->order = $order;
         $this->product = $product;
         $this->quantity = $quantity;
-        $this->price = $price;
+        $this->price = $product->getPrice();
     }
 
     /**
