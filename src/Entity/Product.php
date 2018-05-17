@@ -69,6 +69,13 @@ class Product
      *
      * @ORM\Column(type="integer", nullable=false)
      */
+    private $minChoices;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     */
     private $maxChoices;
 
     /**
@@ -128,6 +135,7 @@ class Product
     public function __construct()
     {
         $this->vat = Product::VAT_REDUCED;
+        $this->minChoices = 0;
         $this->maxChoices = 0;
         $this->isEnabled = true;
         $this->choices = new ArrayCollection();
@@ -242,6 +250,25 @@ class Product
     public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMinChoices()
+    {
+        return $this->minChoices;
+    }
+
+    /**
+     * @param int $minChoices
+     * @return Product
+     */
+    public function setMinChoices($minChoices)
+    {
+        $this->minChoices = $minChoices;
 
         return $this;
     }
