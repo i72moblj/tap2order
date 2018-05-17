@@ -41,6 +41,11 @@ class ProductAdmin extends AbstractAdmin
             ->add('image', FileType::class, [
                 'required' => false
             ])
+            ->add('minChoices', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                ]
+            ])
             ->add('maxChoices', IntegerType::class, [
                 'attr' => [
                     'min' => 0,
@@ -85,6 +90,7 @@ class ProductAdmin extends AbstractAdmin
             ])
             ->add('vat')
             ->add('image', FileType::class, ['sortable' => false])
+            ->add('minChoices')
             ->add('maxChoices')
             ->add('choices', CollectionType::class)
             ->add('allergens', CollectionType::class)
