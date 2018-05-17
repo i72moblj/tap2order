@@ -14,6 +14,7 @@ use App\Entity\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class AddItem
 {
@@ -24,7 +25,10 @@ class AddItem
 
     /**
      * @var int
-     * @Assert\GreaterThan(value="0", message="Seleccione mínimo 1")
+     *
+     * @Assert\NotBlank(message="No puedes dejarlo en blanco")
+     * @Assert\GreaterThanOrEqual(value="1", message="Seleccione mínimo 1")
+     * @Assert\LessThanOrEqual(value="10", message="Seleccione máximo 10")
      */
     private $quantity;
 
@@ -100,6 +104,32 @@ class AddItem
     public function removeChoice(Choice $choice)
     {
         $this->choices->removeElement($choice);
+    }
+
+    /**
+     * @param ExecutionContextInterface $context
+     * @param $payload
+     *
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context, $payload)
+    {
+        $maxChoices = $this->getProduct()->getMaxChoices();
+        $minChoices = $this->getProduct()->getMinChoices();
+        $numberChoices = $this->getChoices()->count();
+
+        if ($numberChoices > $maxChoices) {
+            $context->buildViolation('Número máximo de elecciones: ' . $maxChoices)
+                ->atPath('choices')
+                ->addViolation();
+        }
+
+        if ($numberChoices < $minChoices) {
+            $context->buildViolation('Número mínimo de elecciones: ' . $minChoices)
+                ->atPath('choices')
+                ->addViolation();
+        }
+
     }
 
 }
