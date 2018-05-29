@@ -31,6 +31,7 @@ class UpdateItemHandler
 
         $this->manager->flush();
 
+        // Se eliminan los antiguos itemChoices
         $itemChoices = $item->getItemChoices();
 
         foreach ($itemChoices as $itemChoice) {
@@ -41,6 +42,7 @@ class UpdateItemHandler
             );
         }
 
+        // Se añaden los nuevos itemChoices
         $choices = $command->getChoices();
 
         foreach ($choices as $choice) {
