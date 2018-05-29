@@ -60,6 +60,16 @@ class ProductController extends Controller
                 )
             );
 
+//            $choices = $form->get('choices')->getData();
+//            foreach ($choices as $choice) {
+//                $this->bus->handle(
+//                    new AddItemChoiceCommand(
+//                        $item,
+//                        $choice
+//                    )
+//                );
+//            }
+
             return $this->redirectToRoute('homepage');
         }
 

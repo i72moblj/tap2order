@@ -6,6 +6,8 @@ namespace App\Command;
 use App\Entity\Order;
 use App\Entity\Product;
 use App\Form\DTO\AddItem;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class AddItemToOrderCommand
 {
@@ -30,6 +32,11 @@ class AddItemToOrderCommand
     private $price;
 
     /**
+     * @var Collection
+     */
+    private $choices;
+
+    /**
      * AddItemCommand constructor.
      * @param Order $order
      * @param AddItem $addItem
@@ -40,6 +47,7 @@ class AddItemToOrderCommand
         $this->product = $addItem->getProduct();
         $this->quantity = $addItem->getQuantity();
         $this->price = $addItem->getProduct()->getPrice();
+        $this->choices = $addItem->getChoices();
     }
 
     /**
@@ -74,5 +82,12 @@ class AddItemToOrderCommand
         return $this->price;
     }
 
+    /**
+     * @return Collection
+     */
+    public function getChoices(): Collection
+    {
+        return $this->choices;
+    }
 
 }
