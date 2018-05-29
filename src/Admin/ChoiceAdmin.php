@@ -24,7 +24,7 @@ class ChoiceAdmin extends AbstractAdmin
         $formMapper
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
-            ->add('supplement', MoneyType::class, [
+            ->add('price', MoneyType::class, [
                 'divisor' => 100,
             ])
             ->add('image', FileType::class, [
@@ -61,8 +61,8 @@ class ChoiceAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('name')
             ->add('description', TextareaType::class, ['sortable' => false])
-            ->add('supplement', TextType::class, [
-                'template' => 'backend/choice/list_supplement.html.twig'
+            ->add('price', TextType::class, [
+                'template' => 'backend/choice/list_price.html.twig'
             ])
             ->add('image', FileType::class, ['sortable' => false])
             ->add('products', ModelType::class)

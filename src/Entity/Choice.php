@@ -43,7 +43,7 @@ class Choice
      *
      * @ORM\Column(type="integer", nullable=false)
      */
-    private $supplement;
+    private $price;
 
     /**
     * @var string
@@ -86,7 +86,7 @@ class Choice
      */
     public function __construct()
     {
-        $this->supplement = 0;
+        $this->price = 0;
         $this->isEnabled = true;
         $this->products = new ArrayCollection();
         $this->allergens = new ArrayCollection();
@@ -150,18 +150,18 @@ class Choice
     /**
      * @return integer
      */
-    public function getSupplement()
+    public function getPrice()
     {
-        return $this->supplement;
+        return $this->price;
     }
 
     /**
-     * @param integer $supplement
+     * @param integer $price
      * @return Choice
      */
-    public function setSupplement($supplement)
+    public function setPrice($price)
     {
-        $this->supplement = $supplement;
+        $this->price = $price;
 
         return $this;
     }
