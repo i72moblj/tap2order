@@ -56,20 +56,9 @@ class ProductController extends Controller
             $item = $this->bus->handle(
                 new AddItemToOrderCommand(
                     $order,
-                    $product,
-                    $form->get('quantity')->getData()
+                    $addItem
                 )
             );
-
-            $choices = $form->get('choices')->getData();
-            foreach ($choices as $choice) {
-                $this->bus->handle(
-                    new AddItemChoiceCommand(
-                        $item,
-                        $choice
-                    )
-                );
-            }
 
             return $this->redirectToRoute('homepage');
         }

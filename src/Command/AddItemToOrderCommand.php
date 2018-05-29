@@ -5,6 +5,7 @@ namespace App\Command;
 
 use App\Entity\Order;
 use App\Entity\Product;
+use App\Form\DTO\AddItem;
 
 class AddItemToOrderCommand
 {
@@ -31,16 +32,14 @@ class AddItemToOrderCommand
     /**
      * AddItemCommand constructor.
      * @param Order $order
-     * @param Product $product
-     * @param int $quantity
-     * @param int $price
+     * @param AddItem $addItem
      */
-    public function __construct(Order $order, Product $product, int $quantity)
+    public function __construct(Order $order, AddItem $addItem)
     {
         $this->order = $order;
-        $this->product = $product;
-        $this->quantity = $quantity;
-        $this->price = $product->getPrice();
+        $this->product = $addItem->getProduct();
+        $this->quantity = $addItem->getQuantity();
+        $this->price = $addItem->getProduct()->getPrice();
     }
 
     /**
