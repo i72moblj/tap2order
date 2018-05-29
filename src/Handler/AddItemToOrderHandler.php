@@ -29,7 +29,6 @@ class AddItemToOrderHandler
         $product = $command->getProduct();
         $quantity = $command->getQuantity();
         $price = $command->getPrice();
-        $choices = $command->getChoices();
 
         $item = new Item();
         $item
@@ -39,6 +38,11 @@ class AddItemToOrderHandler
             ->setPrice($price)
         ;
 
+        $this->manager->persist($item);
+        $this->manager->flush();
+
+        $choices = $command->getChoices();
+
         foreach ($choices as $choice) {
             $this->bus->handle(
                 new AddItemChoiceCommand(
@@ -47,9 +51,6 @@ class AddItemToOrderHandler
                 )
             );
         }
-
-        $this->manager->persist($item);
-        $this->manager->flush();
 
         return $item;
     }
