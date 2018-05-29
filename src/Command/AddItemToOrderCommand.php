@@ -6,7 +6,7 @@ namespace App\Command;
 use App\Entity\Order;
 use App\Entity\Product;
 
-class AddItemCommand
+class AddItemToOrderCommand
 {
     /**
      * @var Order

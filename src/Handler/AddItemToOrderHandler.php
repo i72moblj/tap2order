@@ -3,11 +3,11 @@
 namespace App\Handler;
 
 
-use App\Command\AddItemCommand;
+use App\Command\AddItemToOrderCommand;
 use App\Entity\Item;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class AddItemHandler
+class AddItemToOrderHandler
 {
     private $manager;
 
@@ -16,7 +16,7 @@ class AddItemHandler
         $this->manager = $manager;
     }
 
-    public function handle(AddItemCommand $command)
+    public function handle(AddItemToOrderCommand $command)
     {
         $this->manager->getRepository(Item::class);
 

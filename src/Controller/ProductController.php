@@ -4,7 +4,7 @@ namespace App\Controller;
 
 
 use App\Command\AddItemChoiceCommand;
-use App\Command\AddItemCommand;
+use App\Command\AddItemToOrderCommand;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\Subcategory;
@@ -48,7 +48,7 @@ class ProductController extends Controller
             $order = $this->get(GetTagOpenOrderService::class)->getOrder($tag);
 
             $item = $this->bus->handle(
-                new AddItemCommand(
+                new AddItemToOrderCommand(
                     $order,
                     $product,
                     $form->get('quantity')->getData()
