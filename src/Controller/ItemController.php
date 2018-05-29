@@ -5,7 +5,7 @@ namespace App\Controller;
 
 use App\Command\AddItemChoiceCommand;
 use App\Command\DeleteItemCommand;
-use App\Command\RemoveItemChoiceCommand;
+use App\Command\DeleteItemChoiceCommand;
 use App\Command\UpdateItemCommand;
 use App\Entity\Item;
 use App\Form\DTO\EditItem;
@@ -46,27 +46,6 @@ class ItemController extends Controller
                     $editItem
                 )
             );
-
-//            $itemChoices = $item->getItemChoices();
-//
-//            foreach ($itemChoices as $itemChoice) {
-//                $this->bus->handle(
-//                    new RemoveItemChoiceCommand(
-//                        $itemChoice
-//                    )
-//                );
-//            }
-//
-//            $choices = $form->get('choices')->getData();
-//
-//            foreach ($choices as $choice) {
-//                $this->bus->handle(
-//                    new AddItemChoiceCommand(
-//                        $item,
-//                        $choice
-//                    )
-//                );
-//            }
 
             return $this->redirectToRoute('order_show');
         }
