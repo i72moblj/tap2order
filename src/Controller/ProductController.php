@@ -24,9 +24,15 @@ class ProductController extends Controller
      */
     private $bus;
 
+    /**
+     * @var GetTagOpenOrderService
+     */
+    private $getTagOpenOrder;
+
     public function __construct(CommandBus $bus, GetTagOpenOrderService $getTagOpenOrder)
     {
         $this->bus = $bus;
+        $this->getTagOpenOrder = $getTagOpenOrder;
     }
 
     /**
@@ -45,7 +51,7 @@ class ProductController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $tag = $this->getUser();
-            $order = $this->get(GetTagOpenOrderService::class)->getOrder($tag);
+            $order = $this->getTagOpenOrder->getOrder($tag);
 
             $item = $this->bus->handle(
                 new AddItemToOrderCommand(
