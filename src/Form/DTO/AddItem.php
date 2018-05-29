@@ -40,7 +40,7 @@ class AddItem
     public function __construct()
     {
         $this->choices = new ArrayCollection();
-        $this->quantity = 0;
+        $this->quantity = 1;
     }
 
     /**
