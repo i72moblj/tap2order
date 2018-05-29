@@ -9,11 +9,11 @@
 namespace App\Handler;
 
 
-use App\Command\RemoveItemChoiceCommand;
+use App\Command\DeleteItemChoiceCommand;
 use App\Entity\ItemChoice;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class RemoveItemChoiceHandler
+class DeleteItemChoiceHandler
 {
     private $manager;
 
@@ -22,7 +22,7 @@ class RemoveItemChoiceHandler
         $this->manager = $manager;
     }
 
-    public function handle(RemoveItemChoiceCommand $command)
+    public function handle(DeleteItemChoiceCommand $command)
     {
         $id = $command->getItemChoice()->getId();
 

@@ -11,7 +11,7 @@ namespace App\Command;
 
 use App\Entity\ItemChoice;
 
-class RemoveItemChoiceCommand
+class DeleteItemChoiceCommand
 {
     /**
      * @var ItemChoice

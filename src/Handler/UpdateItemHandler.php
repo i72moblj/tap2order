@@ -4,7 +4,7 @@ namespace App\Handler;
 
 
 use App\Command\AddItemChoiceCommand;
-use App\Command\RemoveItemChoiceCommand;
+use App\Command\DeleteItemChoiceCommand;
 use App\Command\UpdateItemCommand;
 use App\Entity\Item;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -36,7 +36,7 @@ class UpdateItemHandler
 
         foreach ($itemChoices as $itemChoice) {
             $this->bus->handle(
-                new RemoveItemChoiceCommand(
+                new DeleteItemChoiceCommand(
                     $itemChoice
                 )
             );
