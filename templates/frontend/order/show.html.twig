@@ -22,11 +22,10 @@
                     <td>
                         {% for itemChoice in item.itemChoices %}
                             {{ itemChoice }}
-                            {{ (itemChoice.price / 100)|number_format(2, '.') }} €
                         {% endfor %}
                     </td>
-                    <td>{{ (item.product.price / 100)|number_format(2, '.') }} €</td>
-                    <td>{{ (item.product.price / 100 * item.quantity)|number_format(2, '.') }} €</td>
+                    <td>{{ (item.price / 100)|number_format(2, '.') }} €</td>
+                    <td>{{ (item.price / 100 * item.quantity)|number_format(2, '.') }} €</td>
                     <td>
                         <a href="{{ path('item_edit', { item: item }) }}">Modificar</a>
                         <a href="{{ path('item_delete', { item: item }) }}">Eliminar</a>

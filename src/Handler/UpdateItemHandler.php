@@ -7,6 +7,7 @@ use App\Command\AddItemChoiceCommand;
 use App\Command\DeleteItemChoiceCommand;
 use App\Command\UpdateItemCommand;
 use App\Entity\Item;
+use App\Entity\ItemChoice;
 use Doctrine\Common\Persistence\ObjectManager;
 use League\Tactician\CommandBus;
 
@@ -29,12 +30,15 @@ class UpdateItemHandler
         $item = $this->manager->getRepository(Item::class)->find($id);
         $item->setQuantity($quantity);
 
-        $this->manager->flush();
+        $price = $item->getPrice();
 
-        // Se eliminan los antiguos itemChoices
+        // Se eliminan los antiguos itemChoices y se descuentan los suplementos de precio de los Choices
         $itemChoices = $item->getItemChoices();
 
         foreach ($itemChoices as $itemChoice) {
+            /** @var ItemChoice $itemChoice */
+            $price = $price - $itemChoice->getChoice()->getPrice();
+
             $this->bus->handle(
                 new DeleteItemChoiceCommand(
                     $itemChoice
@@ -42,17 +46,24 @@ class UpdateItemHandler
             );
         }
 
-        // Se añaden los nuevos itemChoices
+        // Se añaden los nuevos itemChoices y se añaden los suplementos de precio de los Choices
         $choices = $command->getChoices();
 
         foreach ($choices as $choice) {
-                $this->bus->handle(
-                    new AddItemChoiceCommand(
-                        $item,
-                        $choice
-                    )
-                );
-            }
+            /** @var ItemChoice $itemChoice */
+            $price = $price + $choice->getPrice();
+
+            $this->bus->handle(
+                new AddItemChoiceCommand(
+                    $item,
+                    $choice
+                )
+            );
+        }
+
+        $item->setPrice($price);
+
+        $this->manager->flush();
 
         return $item;
     }

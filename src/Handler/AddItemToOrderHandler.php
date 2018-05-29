@@ -5,6 +5,7 @@ namespace App\Handler;
 
 use App\Command\AddItemChoiceCommand;
 use App\Command\AddItemToOrderCommand;
+use App\Entity\Choice;
 use App\Entity\Item;
 use Doctrine\Common\Persistence\ObjectManager;
 use League\Tactician\CommandBus;
@@ -29,6 +30,12 @@ class AddItemToOrderHandler
         $product = $command->getProduct();
         $quantity = $command->getQuantity();
         $price = $command->getPrice();
+        $choices = $command->getChoices();
+
+        foreach ($choices as $choice) {
+            /** @var Choice $choice */
+            $price = $price + $choice->getPrice();
+        }
 
         $item = new Item();
         $item
@@ -40,8 +47,6 @@ class AddItemToOrderHandler
 
         $this->manager->persist($item);
         $this->manager->flush();
-
-        $choices = $command->getChoices();
 
         foreach ($choices as $choice) {
             $this->bus->handle(
