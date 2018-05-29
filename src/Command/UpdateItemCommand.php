@@ -4,6 +4,8 @@ namespace App\Command;
 
 
 use App\Entity\Item;
+use App\Form\DTO\EditItem;
+use Doctrine\Common\Collections\Collection;
 
 class UpdateItemCommand
 {
@@ -18,14 +20,19 @@ class UpdateItemCommand
     private $quantity;
 
     /**
-     * UpdateItemCommand constructor.
-     * @param int $id
-     * @param int $quantity
+     * @var Collection
      */
-    public function __construct(int $id, int $quantity)
+    private $choices;
+
+    /**
+     * UpdateItemCommand constructor.
+     * @param EditItem $editItem
+     */
+    public function __construct(EditItem $editItem)
     {
-        $this->id = $id;
-        $this->quantity = $quantity;
+        $this->id = $editItem->getItem()->getId();
+        $this->quantity = $editItem->getQuantity();
+        $this->choices = $editItem->getChoices();
     }
 
     /**
@@ -43,4 +50,13 @@ class UpdateItemCommand
     {
         return $this->quantity;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getChoices(): Collection
+    {
+        return $this->choices;
+    }
+
 }

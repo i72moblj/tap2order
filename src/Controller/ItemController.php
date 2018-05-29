@@ -43,31 +43,30 @@ class ItemController extends Controller
             /** @var Item $item */
             $item = $this->bus->handle(
                 new UpdateItemCommand(
-                    $item->getId(),
-                    $form->get('quantity')->getData()
+                    $editItem
                 )
             );
 
-            $itemChoices = $item->getItemChoices();
-
-            foreach ($itemChoices as  $itemChoice) {
-                $this->bus->handle(
-                    new RemoveItemChoiceCommand(
-                        $itemChoice
-                    )
-                );
-            }
-
-            $choices = $form->get('choices')->getData();
-
-            foreach ($choices as $choice) {
-                $this->bus->handle(
-                    new AddItemChoiceCommand(
-                        $item,
-                        $choice
-                    )
-                );
-            }
+//            $itemChoices = $item->getItemChoices();
+//
+//            foreach ($itemChoices as $itemChoice) {
+//                $this->bus->handle(
+//                    new RemoveItemChoiceCommand(
+//                        $itemChoice
+//                    )
+//                );
+//            }
+//
+//            $choices = $form->get('choices')->getData();
+//
+//            foreach ($choices as $choice) {
+//                $this->bus->handle(
+//                    new AddItemChoiceCommand(
+//                        $item,
+//                        $choice
+//                    )
+//                );
+//            }
 
             return $this->redirectToRoute('order_show');
         }

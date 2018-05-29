@@ -3,17 +3,23 @@
 namespace App\Handler;
 
 
+use App\Command\AddItemChoiceCommand;
+use App\Command\RemoveItemChoiceCommand;
 use App\Command\UpdateItemCommand;
 use App\Entity\Item;
 use Doctrine\Common\Persistence\ObjectManager;
+use League\Tactician\CommandBus;
 
 class UpdateItemHandler
 {
     private $manager;
 
-    public function __construct(ObjectManager $manager)
+    private $bus;
+
+    public function __construct(ObjectManager $manager, CommandBus $bus)
     {
         $this->manager = $manager;
+        $this->bus = $bus;
     }
 
     public function handle(UpdateItemCommand $command) {
@@ -25,6 +31,28 @@ class UpdateItemHandler
 
         $this->manager->flush();
 
+        $itemChoices = $item->getItemChoices();
+
+        foreach ($itemChoices as $itemChoice) {
+            $this->bus->handle(
+                new RemoveItemChoiceCommand(
+                    $itemChoice
+                )
+            );
+        }
+
+        $choices = $command->getChoices();
+
+        foreach ($choices as $choice) {
+                $this->bus->handle(
+                    new AddItemChoiceCommand(
+                        $item,
+                        $choice
+                    )
+                );
+            }
+
         return $item;
     }
+    
 }
