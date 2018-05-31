@@ -13,11 +13,6 @@
         {% endfor %}
     </p>
     <p>Número máximo elecciones: {{ product.maxChoices }}</p>
-    <p>Preferencias:
-        {% for choice in product.choices %}
-            {{ choice }}
-        {% endfor %}
-    </p>
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
