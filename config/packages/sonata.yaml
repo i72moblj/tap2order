@@ -64,3 +64,10 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Tags" }
         public: true
+
+    admin.establishment:
+            class: App\Admin\EstablishmentAdmin
+            arguments: [~, App\Entity\Establishment, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Content", label: "Establishment" }
+            public: true
