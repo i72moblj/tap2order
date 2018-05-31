@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Choice;
+use App\Entity\Item;
 use App\Entity\Product;
 use App\Form\DTO\EditItem;
 use Doctrine\ORM\EntityRepository;
