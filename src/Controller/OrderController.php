@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class OrderController extends Controller
 {
     /**
-     * @Route("/order", name="order_show")
+     * @Route("/comanda", name="order_show")
      */
     public function show(GetTagOpenOrderService $openOrder) {
 
