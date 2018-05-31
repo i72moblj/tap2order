@@ -1,0 +1,14 @@
+App\Entity\Establishment:
+    establishment_1:
+        cif: B14977763
+        name: Helados La Flor de Levante, S.L.
+        email: contacto@laflordelevante.com
+        address: C/ José María Martorell, 18 (ZOCO)
+        country: España
+        region: Andalucía
+        city: Córdoba
+        zipCode: 14005
+        phoneNumber: 957450104
+        mobilePhoneNumber: 641894321
+#        logo:
+        web: http://www.laflordelevante.com
