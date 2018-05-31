@@ -22,9 +22,10 @@ class AddItemType extends AbstractType
 
         $builder
             ->add('quantity', NumberType::class, [
-                'label' => 'Cantidad',
+                'label' => 'Cantidad:',
             ])
             ->add('choices', EntityType::class, [
+                'label' => 'Elección:',
                 'class' => Choice::class,
                 'multiple' => true,
                 'expanded' => true,
