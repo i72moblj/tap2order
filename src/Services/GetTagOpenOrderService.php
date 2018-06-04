@@ -35,7 +35,8 @@ class GetTagOpenOrderService
     {
         $repository = $this->manager->getRepository(Order::class);
         $order = $repository->findOneBy([
-            'status' => Order::ACTIVE
+            'status' => Order::ACTIVE,
+            'tag' => $tag->getId(),
         ]);
 
         if ($order === null) {
