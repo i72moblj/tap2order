@@ -3,7 +3,6 @@
 namespace App\Command;
 
 
-use App\Entity\Item;
 use App\Form\DTO\EditItem;
 use Doctrine\Common\Collections\Collection;
 
