@@ -5,6 +5,7 @@ namespace App\Handler;
 
 use App\Command\AddItemChoiceCommand;
 use App\Command\AddItemToOrderCommand;
+use App\Command\UpdateOrderTotalCommand;
 use App\Entity\Choice;
 use App\Entity\Item;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -56,6 +57,14 @@ class AddItemToOrderHandler
                 )
             );
         }
+
+        // Se actualiza precio total de la comanda con el precio del item nuevo * cantidad nueva
+        /** @var Order $order */
+        $order = $item->getOrder();
+
+        $this->bus->handle(
+            new UpdateOrderTotalCommand($order->getId(), $item->getPrice(), $item->getQuantity())
+        );
 
         return $item;
     }

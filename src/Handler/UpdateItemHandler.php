@@ -6,8 +6,11 @@ namespace App\Handler;
 use App\Command\AddItemChoiceCommand;
 use App\Command\DeleteItemChoiceCommand;
 use App\Command\UpdateItemCommand;
+use App\Command\UpdateOrderTotalCommand;
 use App\Entity\Item;
 use App\Entity\ItemChoice;
+use App\Entity\Order;
+use App\Entity\Product;
 use Doctrine\Common\Persistence\ObjectManager;
 use League\Tactician\CommandBus;
 
@@ -28,17 +31,19 @@ class UpdateItemHandler
         $quantity = $command->getQuantity();
 
         $item = $this->manager->getRepository(Item::class)->find($id);
-        $item->setQuantity($quantity);
 
-        $price = $item->getPrice();
+        // Se descuenta del total de la comanda el precio del item antiguo * cantidad antigua
+        /** @var Order $order */
+        $order = $item->getOrder();
 
-        // Se eliminan los antiguos itemChoices y se descuentan los suplementos de precio de los Choices
+        $this->bus->handle(
+            new UpdateOrderTotalCommand($order->getId(), -$item->getPrice(), $item->getQuantity())
+        );
+
+        // Se eliminan los antiguos itemChoices
         $itemChoices = $item->getItemChoices();
 
         foreach ($itemChoices as $itemChoice) {
-            /** @var ItemChoice $itemChoice */
-            $price = $price - $itemChoice->getChoice()->getPrice();
-
             $this->bus->handle(
                 new DeleteItemChoiceCommand(
                     $itemChoice
@@ -46,7 +51,12 @@ class UpdateItemHandler
             );
         }
 
-        // Se añaden los nuevos itemChoices y se añaden los suplementos de precio de los Choices
+        // Se añaden los nuevos itemChoices
+        // Se actualiza el precio del artículo en base al precio del producto más suplementos de los choices
+        /** @var Product $product */
+        $product = $item->getProduct();
+        $price = $product->getPrice();
+
         $choices = $command->getChoices();
 
         foreach ($choices as $choice) {
@@ -61,9 +71,16 @@ class UpdateItemHandler
             );
         }
 
+        // Se actualiza el artículo
+        $item->setQuantity($quantity);
         $item->setPrice($price);
 
         $this->manager->flush();
+
+        // Se actualiza precio total de la comanda con el precio del item nuevo * cantidad nueva
+        $this->bus->handle(
+            new UpdateOrderTotalCommand($order->getId(), $item->getPrice(), $item->getQuantity())
+        );
 
         return $item;
     }
