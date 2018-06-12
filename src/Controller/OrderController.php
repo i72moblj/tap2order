@@ -28,15 +28,16 @@ class OrderController extends Controller
     }
 
     /**
-     * @Route("/waiter/index", name="waiter_index")
+     * @Route("/waiters/index", name="waiters_index")
      */
     public function waiterIndex() {
         $openOrders = $this->get('tactician.commandbus')->handle(
             new GetAllOpenOrdersQuery()
         );
 
-        return $this->render('frontend/order/waiter_index.html.twig', [
+        return $this->render('frontend/order/waiters_index.html.twig', [
             'openOrders' => $openOrders,
         ]);
     }
+    
 }
