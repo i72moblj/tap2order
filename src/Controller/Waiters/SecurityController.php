@@ -6,17 +6,20 @@
  * Time: 23:46
  */
 
-namespace App\Controller;
+namespace App\Controller\Waiters;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/waiters")
+ */
 class SecurityController extends Controller
 {
     /**
-     * @Route("/waiters/login", name="waiters_login")
+     * @Route("/login", name="waiters_login")
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -32,20 +35,20 @@ class SecurityController extends Controller
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render(
-            'waiters/waiters_login.html.twig', array(
+            'waiters/order/waiters_login.html.twig', array(
             'last_username' => $lastUsername,
             'error' => $error,
         ));
     }
 
     /**
-     * @Route("/waiters/login_check", name="waiters_login_check")
+     * @Route("/login_check", name="waiters_login_check")
      */
     public function login_check() {
     }
 
     /**
-     * @Route("/waiters/logout", name="waiters_logout")
+     * @Route("/logout", name="waiters_logout")
      */
     public function logout() {
     }
