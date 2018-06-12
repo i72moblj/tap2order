@@ -13,13 +13,10 @@ use App\Command\GetAllOpenOrdersQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/waiters")
- */
 class OrderController extends Controller
 {
     /**
-     * @Route("/index", name="waiters_index")
+     * @Route("/waiters", name="waiters_index")
      */
     public function index() {
         $openOrders = $this->get('tactician.commandbus')->handle(
