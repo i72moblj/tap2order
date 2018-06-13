@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Frontend;
 
 
 use App\Command\GetAllItemsByOrderQuery;
-use App\Command\GetAllOpenOrdersQuery;
 use App\Services\GetTagOpenOrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,5 +25,5 @@ class OrderController extends Controller
             'order' => $order
         ]);
     }
-    
+
 }

@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Frontend;
 
 
-use App\Command\AddItemChoiceCommand;
 use App\Command\DeleteItemCommand;
-use App\Command\DeleteItemChoiceCommand;
 use App\Command\UpdateItemCommand;
 use App\Entity\Item;
 use App\Form\DTO\EditItem;

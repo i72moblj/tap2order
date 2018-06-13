@@ -1,26 +1,17 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Sucategorías</h1>
+    <h1>Menú</h1>
 
-    <h2>Lista de productos</h2>
+    <h2>Lista de subcategorías</h2>
 
-    {% for product in products %}
-        <a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">
-            <p>Imagen de {{ product.name }}</p>
-            <p><h1>{{ product.name }}</h1></p>
-        </a>
-            <p>Descripción: {{ product.description }}</p>
-            <p>Alérgenos:
-                {% for allergen in product.allergens %}
-                    {{ allergen }},
-                {% endfor %}
-            </p>
-            <p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>
-        <hr>
+    {% for subcategory in subcategories %}
+        <p>
+            <a href="{{ path('product_index', {'categorySlug': categorySlug ,'subcategorySlug': subcategory.slug}) }}">{{ subcategory.name }}</a>
+        </p>
     {% else %}
         <p>
-            No products have been found.
+            No categories have been found.
         </p>
     {% endfor %}
 {% endblock %}

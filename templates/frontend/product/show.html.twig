@@ -1,10 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>{{ product.name }}</h1>
+    <h1>Menú</h1>
+
+    <h2>{{ product.name }}</h2>
 
     <p>Imagen: Imagen</p>
-    <p>Nombre: {{ product.name }}</p>
     <p>Descripción: {{ product.description }}</p>
     <p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>
     <p>Alérgenos:
@@ -25,7 +26,6 @@
     {#<p>#}
         {#<a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">Añadir al pedido</a>#}
     {#</p>#}
-
 
 
     {% if is_granted('ROLE_USER') %}

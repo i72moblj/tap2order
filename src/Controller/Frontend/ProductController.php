@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Frontend;
 
 
-use App\Command\AddItemChoiceCommand;
 use App\Command\AddItemToOrderCommand;
 use App\Entity\Category;
 use App\Entity\Product;
@@ -16,7 +15,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Command\GetAllProductsBySubcategoryQuery;
 
+/**
+ * @Route("/menu")
+ */
 class ProductController extends Controller
 {
     /**
@@ -36,10 +39,35 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/menu/{categorySlug}/{subcategorySlug}/{productSlug}", name="product_show")
+     * @Route("/{categorySlug}/{subcategorySlug}", name="product_index")
+     * @ParamConverter("category", options={"mapping": {"categorySlug": "slug"}})
+     * @ParamConverter("subcategory", options={"mapping": {"subcategorySlug": "slug"}})
+     * @param Category $category
+     * @param Subcategory $subcategory
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function index(Category $category, Subcategory $subcategory) {
+        $products = $this->get('tactician.commandbus')->handle(
+            new GetAllProductsBySubcategoryQuery($subcategory->getId())
+        );
+
+        return $this->render('frontend/product/index.html.twig', [
+            'categorySlug' => $category->getSlug(),
+            'subcategorySlug' => $subcategory->getSlug(),
+            'products' => $products,
+        ]);
+    }
+
+    /**
+     * @Route("/{categorySlug}/{subcategorySlug}/{productSlug}", name="product_show")
      * @ParamConverter("category", options={"mapping" : {"categorySlug": "slug"}})
      * @ParamConverter("subcategory", options={"mapping" : {"subcategorySlug": "slug"}})
      * @ParamConverter("product", options={"mapping" : {"productSlug": "slug"}})
+     * @param Request $request
+     * @param Category $category
+     * @param Subcategory $subcategory
+     * @param Product $product
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function show(Request $request, Category $category, Subcategory $subcategory, Product $product)
     {
@@ -60,10 +88,11 @@ class ProductController extends Controller
                 )
             );
 
+            // Esto tengo que cambiarlo por un mensaje flash
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('frontend/product/view.html.twig', [
+        return $this->render('frontend/product/show.html.twig', [
             'form' => $form->createView(),
             'product' => $product,
         ]);

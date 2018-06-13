@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Frontend;
 
 
-use App\Command\GetAllCategoriesQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Command\GetAllCategoriesQuery;
 
-class MenuController extends Controller
+
+class CategoryController extends Controller
 {
     /**
-     * @Route("/menu", name="menu_index")
+     * @Route("/menu", name="category_index")
      */
     public function index()
     {
@@ -18,8 +19,10 @@ class MenuController extends Controller
             new GetAllCategoriesQuery()
         );
 
-        return $this->render('frontend/menu/index.html.twig', [
+        return $this->render('frontend/category/index.html.twig', [
             'categories' => $categories,
         ]);
     }
+
 }
+
