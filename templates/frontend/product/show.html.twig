@@ -31,7 +31,7 @@
     {% if is_granted('ROLE_USER') %}
         <div id="sidebar">
             {{ render(controller(
-                'App\\Controller\\OrderController::show', {}
+                'App\\Controller\\Frontend\\OrderController::show', {}
             )) }}
         </div>
     {% endif %}
