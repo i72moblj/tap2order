@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h1>Kitchen Index</h1>
+    {% for openOrder in openOrders %}
+        <p>COMANDA #{{ openOrder.id }}</p>
+        <hr>
+        {% for item in openOrder.items %}
+            <p>
+                {{ item.product.name }}
+                {% for itemChoice in item.itemChoices %}
+                    {{ itemChoice.choice.name }}
+                {% endfor %}
+                {{ item.status }}
+                <a href="{{ path('kitchen_index') }}">Terminado</a>
+            </p>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
