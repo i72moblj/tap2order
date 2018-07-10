@@ -2,7 +2,7 @@ App\Entity\Choice:
     choice_1:
         name: Fresa
         description: <sentence()>
-        supplement: 0
+        price: 0
 #        image:
         isEnabled: 1
 #        products: ['@product_1', '@product_2', '@product_3']
@@ -10,7 +10,7 @@ App\Entity\Choice:
     choice_2:
         name: Chocolate
         description: <sentence()>
-        supplement: 0
+        price: 0
 #        image:
         isEnabled: 1
 #        products: ['@product_<numberBetween(1,3)>']
