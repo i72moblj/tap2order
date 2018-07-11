@@ -27,3 +27,15 @@ sonata_media:
     providers:
         image:
             resizer: sonata.media.resizer.square
+            filesystem: sonata.media.filesystem.local
+            allowed_extensions:
+                - jpg
+                - png
+                - jpeg
+                - gif
+            allowed_mime_types:
+                - image/pjpeg
+                - image/jpeg
+                - image/png
+                - image/x-png
+                - image/gif
