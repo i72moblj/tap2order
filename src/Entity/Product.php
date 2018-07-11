@@ -58,11 +58,12 @@ class Product
     private $vat;
 
     /**
-     * @var string
+     * @var Media|null
      *
-     * @ORM\Column(type="string", length=128, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Media", cascade={"all"})
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
-    private $image;
+    protected $image;
 
     /**
      * @var integer
@@ -114,13 +115,6 @@ class Product
      * @ORM\JoinTable(name="products_allergens")
      */
     private $allergens;
-
-    /**
-     * One Product has One Media.
-     * @ORM\OneToOne(targetEntity="Media", cascade={"remove", "persist"})
-     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL")
-     */
-    private $media;
 
     /**
      * @var ArrayCollection
@@ -236,18 +230,18 @@ class Product
     }
 
     /**
-     * @return string
+     * @return Media|null
      */
-    public function getImage()
+    public function getImage(): ?Media
     {
         return $this->image;
     }
 
     /**
-     * @param string $image
+     * @param Media|null $image
      * @return Product
      */
-    public function setImage($image)
+    public function setImage(?Media $image): self
     {
         $this->image = $image;
 
@@ -390,25 +384,6 @@ class Product
     public function removeAllergen(Allergen $allergen)
     {
         $this->allergens->removeElement($allergen);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMedia()
-    {
-        return $this->media;
-    }
-
-    /**
-     * @param mixed $media
-     * @return Product
-     */
-    public function setMedia($media)
-    {
-        $this->media = $media;
-
-        return $this;
     }
 
     /**
