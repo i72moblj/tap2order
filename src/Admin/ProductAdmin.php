@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\MediaBundle\Form\Type\MediaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -38,8 +39,11 @@ class ProductAdmin extends AbstractAdmin
                     'Superreducido' => Product::VAT_SUPERREDUCED,
                 ],
             ])
-            ->add('image', FileType::class, [
-                'required' => false
+            ->add('image', MediaType::class, [
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'default',
+                'new_on_update' => false,
+                'required' => false,
             ])
             ->add('minChoices', IntegerType::class, [
                 'attr' => [
