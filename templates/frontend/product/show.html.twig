@@ -5,7 +5,7 @@
 
     <h2>{{ product.name }}</h2>
 
-    <p>Imagen: Imagen</p>
+    <p>Imagen: </p> {% media product.image, 'big' %}
     <p>Descripción: {{ product.description }}</p>
     <p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>
     <p>Alérgenos:
