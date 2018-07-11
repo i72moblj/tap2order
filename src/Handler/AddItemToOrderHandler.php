@@ -33,10 +33,14 @@ class AddItemToOrderHandler
         $price = $command->getPrice();
         $choices = $command->getChoices();
 
+        // Esto iría dentro del servicio porque el servicio siempre me va a devolver  un precio
+
         foreach ($choices as $choice) {
             /** @var Choice $choice */
             $price = $price + $choice->getPrice();
         }
+
+        // Servicio que detecte si el producto  tiene oferta y dev precio normal si no hay oferta y si hay oferta el nuevo precio
 
         $item = new Item();
         $item
