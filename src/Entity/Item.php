@@ -16,6 +16,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Item
 {
     const ACTIVE = 'activo';
+    const PREPARED = 'preparado';
     const SERVED = 'servido';
 
     /**

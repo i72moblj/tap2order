@@ -16,6 +16,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Order
 {
+    const OPEN= 'abierta';
     const ACTIVE = 'activa';
     const SERVED = 'servida';
 
@@ -69,7 +70,7 @@ class Order
      */
     public function __construct()
     {
-        $this->status = Order::ACTIVE;
+        $this->status = Order::OPEN;
         $this->items = new ArrayCollection();
     }
 
