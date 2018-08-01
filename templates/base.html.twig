@@ -8,6 +8,9 @@
     {% block stylesheets %}
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="{{ asset('css/scrolling-nav.css') }}">
     {% endblock %}
 
     <title>{% block title %}Tap to order - Restaurantes NFC{% endblock %}</title>
@@ -21,6 +24,12 @@
         <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('js/popper.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="{{ asset('js/scrolling-nav.js') }}"></script>
+
+        <!-- Custom JavaScript for this theme -->
+        <script src="{{ asset('js/jquery.easing.min.js') }}"></script>
     {% endblock %}
 </body>
 </html>
