@@ -233,6 +233,18 @@
     "ramsey/uuid": {
         "version": "3.7.3"
     },
+    "sebastian/comparator": {
+        "version": "3.0.2"
+    },
+    "sebastian/diff": {
+        "version": "3.0.1"
+    },
+    "sebastian/exporter": {
+        "version": "3.1.0"
+    },
+    "sebastian/recursion-context": {
+        "version": "3.0.0"
+    },
     "sensio/framework-extra-bundle": {
         "version": "4.0",
         "recipe": {
