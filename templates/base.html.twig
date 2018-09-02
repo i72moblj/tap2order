@@ -11,11 +11,15 @@
 
         <!-- Custom styles for this template -->
         <link rel="stylesheet" href="{{ asset('css/scrolling-nav.css') }}">
+
+        <!-- My Custom styles for this template -->
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     {% endblock %}
 
     <title>{% block title %}Tap to order - Restaurantes NFC{% endblock %}</title>
 </head>
-<body>
+<body id="page-top">
+    {% block navbar %}{% endblock %}
     {% block header %}{% endblock %}
     {% block body %}{% endblock %}
     {% block footer %}{% endblock %}
