@@ -3,8 +3,10 @@
     <div class="container">
         <a class="navbar-brand" href="{{ path('homepage') }}">
             <img src="{{ asset('images/logo_LFDL-transparente.png') }}" height="30" class="d-inline-block align-top" alt="Logo de LFDL">
-            La Flor de Levante
+            <div id="texto-expandido">&nbsp;La Flor de Levante</div>
+            <div id="texto-iniciales">&nbsp;LFDL</div>
         </a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,14 +21,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Seguimiento pedido</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </li>
             </ul>
         </div>
-        <a class="nav-link" href="#">
+
+        <a class="navbar-dark shopping-cart-icon" href="#">
             <i class="fas fa-shopping-cart"></i>
         </a>
     </div>
