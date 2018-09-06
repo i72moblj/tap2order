@@ -23,6 +23,7 @@
         "symfony/flex": "^1.0",
         "symfony/form": "^3.3",
         "symfony/framework-bundle": "^3.3",
+        "symfony/intl": "^3.3",
         "symfony/lts": "^3",
         "symfony/maker-bundle": "^1.4",
         "symfony/orm-pack": "^1.0",
