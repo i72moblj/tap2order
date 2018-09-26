@@ -185,9 +185,9 @@ class Offer
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -204,9 +204,9 @@ class Offer
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -239,9 +239,9 @@ class Offer
     }
 
     /**
-     * @return Product
+     * @return Product|null
      */
-    public function getBaseProduct(): Product
+    public function getBaseProduct(): ?Product
     {
         return $this->baseProduct;
     }
@@ -258,9 +258,9 @@ class Offer
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getBaseProductQuantity(): int
+    public function getBaseProductQuantity(): ?int
     {
         return $this->baseProductQuantity;
     }
@@ -334,9 +334,9 @@ class Offer
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getValue(): int
+    public function getValue(): ?int
     {
         return $this->value;
     }
@@ -353,9 +353,9 @@ class Offer
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getStartingDate(): \DateTime
+    public function getStartingDate(): ?\DateTime
     {
         return $this->startingDate;
     }
@@ -369,9 +369,9 @@ class Offer
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getEndingDate(): \DateTime
+    public function getEndingDate(): ?\DateTime
     {
         return $this->endingDate;
     }
@@ -383,6 +383,25 @@ class Offer
     public function setEndingDate(\DateTime $endingDate): self
     {
         $this->endingDate = $endingDate;
+
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     * @return Offer
+     */
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

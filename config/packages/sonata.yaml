@@ -8,8 +8,8 @@ sonata_block:
             contexts: [admin]
 
 sonata_admin:
-    title:      Acme
-    title_logo: bundles/app/images/fancy_acme_logo.png
+    title:      'La Flor de Levante'
+    title_logo: 'images/logo_LFDL-transparente.png'
 
 sonata_user:
     security_acl: false
@@ -63,6 +63,13 @@ services:
         arguments: [~, App\Entity\Tag, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Tags" }
+        public: true
+
+    admin.offer:
+        class: App\Admin\OfferAdmin
+        arguments: [~, App\Entity\Offer, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Offers" }
         public: true
 
     admin.establishment:
