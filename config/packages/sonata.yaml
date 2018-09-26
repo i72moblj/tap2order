@@ -9,7 +9,7 @@ sonata_block:
 
 sonata_admin:
     title:      'La Flor de Levante'
-    title_logo: 'images/logo_LFDL-transparente.png'
+    title_logo: 'images/brand/logo_LFDL.png'
 
 sonata_user:
     security_acl: false
