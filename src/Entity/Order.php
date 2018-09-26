@@ -66,6 +66,14 @@ class Order
     private $items;
 
     /**
+     * @var Offer
+     *
+     * @ORM\ManyToOne(targetEntity="Offer", inversedBy="orders")
+     * @ORM\JoinColumn(referencedColumnName="id", nullable=true)
+     */
+    private $offer;
+
+    /**
      * Order constructor.
      */
     public function __construct()
@@ -184,5 +192,26 @@ class Order
     {
         $this->items->removeElement($item);
     }
+
+    /**
+     * @return Offer
+     */
+    public function getOffer(): Offer
+    {
+        return $this->offer;
+    }
+
+    /**
+     * @param Offer $offer
+     * @return Order
+     */
+    public function setOffer(Offer $offer): self
+    {
+        $this->offer = $offer;
+
+        return $this;
+    }
+
+
 
 }
