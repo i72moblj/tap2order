@@ -15,8 +15,8 @@
             </a>
         </div>
     </header>
+{% endblock %}
 
-    <h1>Home</h1>
-    <p>Sistema para la realización de pedidos.</p>
-    <a href="{{ path('category_index') }}">Menú</a>
+{% block footer %}
+    {% include 'frontend/footer.html.twig' %}
 {% endblock %}
