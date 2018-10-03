@@ -17,7 +17,7 @@ class Offer
 {
     // Constantes de tipo de oferta
     const DISCOUNT = 'descuento';
-    const MIXED_DISCOUNT = 'descuento combinado';
+    const COMBINDED_DISCOUNT = 'descuento combinado';
 
     // Constantes de modo de descuento
     const NEW_PRICE = 'nuevo precio';
@@ -69,8 +69,9 @@ class Offer
     /**
      * @var Product
      *
-     * @ORM\OneToOne(targetEntity="Product")
-     * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
+     *
+     * @ORM\ManyToOne(targetEntity="Product")
+     * @ORM\JoinColumn(name="base_product_id", referencedColumnName="id", nullable=false)
      */
     private $baseProduct;
 
@@ -84,17 +85,17 @@ class Offer
     /**
      * @var Product
      *
-     * @ORM\OneToOne(targetEntity="Product")
-     * @ORM\JoinColumn(referencedColumnName="id", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Product")
+     * @ORM\JoinColumn(name="combined_product_id", referencedColumnName="id", nullable=true)
      */
-    private $mixedProduct;
+    private $combinedProduct;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $mixedProductQuantity;
+    private $combinedProductQuantity;
 
     /**
      * @var string
@@ -279,18 +280,18 @@ class Offer
     /**
      * @return Product|null
      */
-    public function getMixedProduct(): ?Product
+    public function getCombinedProduct(): ?Product
     {
-        return $this->mixedProduct;
+        return $this->combinedProduct;
     }
 
     /**
-     * @param Product|null $mixedProduct
+     * @param Product|null $combinedProduct
      * @return Offer
      */
-    public function setMixedProduct(?Product $mixedProduct): self
+    public function setCombinedProduct(?Product $combinedProduct): self
     {
-        $this->mixedProduct = $mixedProduct;
+        $this->combinedProduct = $combinedProduct;
 
         return $this;
     }
@@ -298,18 +299,18 @@ class Offer
     /**
      * @return int|null
      */
-    public function getMixedProductQuantity(): ?int
+    public function getCombinedProductQuantity(): ?int
     {
-        return $this->mixedProductQuantity;
+        return $this->combinedProductQuantity;
     }
 
     /**
-     * @param int|null $mixedProductQuantity
+     * @param int|null $combinedProductQuantity
      * @return Offer
      */
-    public function setMixedProductQuantity(?int $mixedProductQuantity): self
+    public function setCombinedProductQuantity(?int $combinedProductQuantity): self
     {
-        $this->mixedProductQuantity = $mixedProductQuantity;
+        $this->combinedProductQuantity = $combinedProductQuantity;
 
         return $this;
     }

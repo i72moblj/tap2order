@@ -25,7 +25,7 @@ class OfferAdmin extends AbstractAdmin
             ->add('type', ChoiceType::class, [
                 'choices' => [
                     'descuento' => Offer::DISCOUNT,
-                    'descuento combinado' => Offer::MIXED_DISCOUNT
+                    'descuento combinado' => Offer::COMBINDED_DISCOUNT
                 ]
             ])
             ->add('description', TextareaType::class)
@@ -36,10 +36,10 @@ class OfferAdmin extends AbstractAdmin
             ])
             ->add('baseProduct', ModelType::class)
             ->add('baseProductQuantity', IntegerType::class)
-            ->add('mixedProduct', ModelType::class, [
+            ->add('combinedProduct', ModelType::class, [
                 'required' => false,
             ])
-            ->add('mixedProductQuantity', IntegerType::class, [
+            ->add('combinedProductQuantity', IntegerType::class, [
                 'required' => false,
             ])
             ->add('mode', ChoiceType::class, [
@@ -71,7 +71,7 @@ class OfferAdmin extends AbstractAdmin
             ->add('name')
             ->add('type')
             ->add('baseProduct')
-            ->add('mixedProduct')
+            ->add('combinedProduct')
             ->add('mode')
             ->add('startingDate')
             ->add('status')
@@ -85,8 +85,8 @@ class OfferAdmin extends AbstractAdmin
             ->add('type')
             ->add('baseProduct')
             ->add('baseProductQuantity')
-            ->add('mixedProduct')
-            ->add('mixedProductQuantity')
+            ->add('combinedProduct')
+            ->add('combinedProductQuantity')
             ->add('mode')
             ->add('value')
             ->add('startingDate')
