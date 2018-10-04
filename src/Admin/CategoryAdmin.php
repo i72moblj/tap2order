@@ -6,7 +6,9 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\MediaBundle\Form\Type\MediaType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Category;
 
@@ -17,6 +19,12 @@ class CategoryAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name', TextType::class)
+            ->add('image', MediaType::class, [
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'default',
+                'new_on_update' => false,
+                'required' => true,
+            ])
             ->add('isEnabled', CheckboxType::class, [
                 'required' => false,
             ])
@@ -37,6 +45,7 @@ class CategoryAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('image', FileType::class, ['sortable' => false])
             ->add('isEnabled')
         ;
     }
