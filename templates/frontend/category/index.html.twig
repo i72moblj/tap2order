@@ -5,23 +5,41 @@
 {% endblock %}
 
 {% block content %}
+    <!-- Page Content -->
     <div class="container">
-        <h1>Menú</h1>
+        <section class="categories">
+            <!-- Page Heading -->
+            <h1 class="my-4">Menú</h1>
 
-        <h2>Lista de categorías</h2>
-
-        {% for category in categories %}
-            <p>
-                <a href="{{ path('subcategory_index', {'categorySlug': category.slug}) }}">{{ category.name }}</a>
-            </p>
-        {% else %}
-            <p>
-                No subcategories have been found.
-            </p>
-        {% endfor %}
+            <div class="row">
+                {% for category in categories %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+                        <div class="card h-100">
+                            <a href="#">
+                                {% media category.image, 'small' with {'class': 'card-img-top'} %}
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="{{ path('subcategory_index', {'categorySlug': category.slug}) }}">{{ category.name }}</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p>
+                        No subcategories have been found.
+                    </p>
+                {% endfor %}
+            </div>
+            <!-- /.row -->
+        </section>
     </div>
+    <!-- /.container -->
 {% endblock %}
 
 {% block footer %}
     {% include 'frontend/footer.html.twig' %}
 {% endblock %}
+
+
+
