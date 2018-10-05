@@ -171,3 +171,22 @@ footer a:focus {
 .categories .card {
     border: none;
 }
+
+.breadcrumb {
+    margin: 2rem 0;
+    font-size: 1.7rem;
+    background-color: transparent;
+    padding-left: 0;
+}
+
+/*******************************************************************************************************
+ * Subcategories Section
+*******************************************************************************************************/
+
+.subcategories .card-body {
+    text-align: center;
+}
+
+.subcategories .card {
+    border: none;
+}

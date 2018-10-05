@@ -8,26 +8,31 @@
     <!-- Page Content -->
     <div class="container">
         <section class="categories">
-            <!-- Page Heading -->
-            <h1 class="my-4">Menú</h1>
+
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Menú</li>
+                </ol>
+            </nav>
 
             <div class="row">
                 {% for category in categories %}
                     <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                         <div class="card h-100">
-                            <a href="#">
+                            <a href="{{ path('subcategory_index', {'categorySlug': category.slug}) }}">
                                 {% media category.image, 'small' with {'class': 'card-img-top'} %}
                             </a>
                             <div class="card-body">
-                                <h4 class="card-title">
+                                <h5 class="card-title">
                                     <a href="{{ path('subcategory_index', {'categorySlug': category.slug}) }}">{{ category.name }}</a>
-                                </h4>
+                                </h5>
                             </div>
                         </div>
                     </div>
                 {% else %}
                     <p>
-                        No subcategories have been found.
+                        No categories have been found.
                     </p>
                 {% endfor %}
             </div>

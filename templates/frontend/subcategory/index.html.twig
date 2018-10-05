@@ -1,21 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block header %}
-    {% include 'frontend/header.html.twig' %}
+{% block navbar %}
+    {% include 'frontend/navbar.html.twig' %}
 {% endblock %}
 
-{% block body %}
-    <h1>Menú</h1>
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <section class="subcategories">
 
-    <h2>Lista de subcategorías</h2>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('category_index') }}">Menú</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ categorySlug|capitalize }}</li>
+                </ol>
+            </nav>
 
-    {% for subcategory in subcategories %}
-        <p>
-            <a href="{{ path('product_index', {'categorySlug': categorySlug ,'subcategorySlug': subcategory.slug}) }}">{{ subcategory.name }}</a>
-        </p>
-    {% else %}
-        <p>
-            No categories have been found.
-        </p>
-    {% endfor %}
+            <div class="row">
+                {% for subcategory in subcategories %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+                        <div class="card h-100">
+                            <a href="{{ path('product_index', {'categorySlug': categorySlug ,'subcategorySlug': subcategory.slug}) }}">
+                                {% media subcategory.image, 'small' with {'class': 'card-img-top'} %}
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{{ path('product_index', {'categorySlug': categorySlug ,'subcategorySlug': subcategory.slug}) }}">{{ subcategory.name }}</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p>
+                        No subcategories have been found.
+                    </p>
+                {% endfor %}
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+    <!-- /.container -->
+{% endblock %}
+
+{% block footer %}
+    {% include 'frontend/footer.html.twig' %}
 {% endblock %}
