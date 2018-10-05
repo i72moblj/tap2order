@@ -33,6 +33,14 @@ class Subcategory
     private $name;
 
     /**
+     * @var Media|null
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Media", cascade={"all"})
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     */
+    protected $image;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=false)
@@ -100,6 +108,25 @@ class Subcategory
     public function setName($name): Subcategory
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Media|null
+     */
+    public function getImage(): ?Media
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param Media|null $image
+     * @return Subcategory
+     */
+    public function setImage(?Media $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
