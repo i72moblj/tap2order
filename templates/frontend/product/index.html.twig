@@ -1,36 +1,123 @@
 {% extends 'base.html.twig' %}
 
-{% block header %}
-    {% include 'frontend/header.html.twig' %}
+{% block navbar %}
+    {% include 'frontend/navbar.html.twig' %}
 {% endblock %}
 
-{% block body %}
-    <h1>Menú</h1>
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <section class="subcategories">
 
-    <h2>Lista de productos</h2>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('category_index') }}">Menú</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('subcategory_index', {'categorySlug': categorySlug}) }}">{{ categorySlug|capitalize }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ subcategorySlug|capitalize }}</li>
+                </ol>
+            </nav>
 
-    {% for product in products %}
-        <a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">
-            <p><h1>{{ product.name }}</h1></p>
-            <p>Imagen de {{ product.name }}</p>
-        </a>
-        <p>Descripción: {{ product.description }}</p>
-        <p>Alérgenos:
-            {% for allergen in product.allergens %}
-                {{ allergen }},
-            {% endfor %}
-        </p>
-        <p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>
-        <hr>
-    {% else %}
-        <p>
-            No products have been found.
-        </p>
-    {% endfor %}
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+                        <div class="card h-100">
+                            <a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">
+                                {% media product.image, 'small' with {'class': 'card-img-top'} %}
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">{{ product.name }}</a>
+                                </h5>
+                                <p>{{ (product.price / 100)|number_format(2, '.') }} €</p>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p>
+                        No products have been found.
+                    </p>
+                {% endfor %}
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+    <!-- /.container -->
+{% endblock %}
+
+{% block footer %}
+    {% include 'frontend/footer.html.twig' %}
 {% endblock %}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block header %}#}
+    {#{% include 'frontend/header.html.twig' %}#}
+{#{% endblock %}#}
+
+{#{% block body %}#}
+    {#<h1>Menú</h1>#}
+
+    {#<h2>Lista de productos</h2>#}
+
+    {#{% for product in products %}#}
+        {#<a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">#}
+            {#<p><h1>{{ product.name }}</h1></p>#}
+            {#<p>Imagen de {{ product.name }}</p>#}
+        {#</a>#}
+        {#<p>Descripción: {{ product.description }}</p>#}
+        {#<p>Alérgenos:#}
+            {#{% for allergen in product.allergens %}#}
+                {#{{ allergen }},#}
+            {#{% endfor %}#}
+        {#</p>#}
+        {#<p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>#}
+        {#<hr>#}
+    {#{% else %}#}
+        {#<p>#}
+            {#No products have been found.#}
+        {#</p>#}
+    {#{% endfor %}#}
+{#{% endblock %}#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#ANTIGUO#}
 
 
 {#{% extends 'layout.html.twig' %}#}
