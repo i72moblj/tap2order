@@ -7,21 +7,22 @@
 {% block content %}
     <!-- Page Content -->
     <div class="container">
-        <section class="subcategories">
+        <section class="product">
 
-        <!-- Breadcrumb -->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ path('category_index') }}">Menú</a></li>
-                <li class="breadcrumb-item"><a href="{{ path('subcategory_index', {'categorySlug': category.slug}) }}">{{ category.name|capitalize }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ path('product_index', {'categorySlug': category.slug, 'subcategorySlug': subcategory.slug}) }}">{{ subcategory.name|capitalize }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ product.name|capitalize }}</li>
-            </ol>
-        </nav>
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('category_index') }}">Menú</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('subcategory_index', {'categorySlug': category.slug}) }}">{{ category.name|capitalize }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('product_index', {'categorySlug': category.slug, 'subcategorySlug': subcategory.slug}) }}">{{ subcategory.name|capitalize }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ product.name|capitalize }}</li>
+                </ol>
+            </nav>
 
 
 
-            {##}
+
+
             {#<h1>Menú</h1>#}
 
             {#<h2>{{ product.name }}</h2>#}
@@ -56,6 +57,7 @@
                     {#)) }}#}
                 {#</div>#}
             {#{% endif %}#}
+
         </section>
     </div>
 {% endblock %}
