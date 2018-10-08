@@ -13,7 +13,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ path('category_index') }}">Menú</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ categorySlug|capitalize }}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ category.name|capitalize }}</li>
                 </ol>
             </nav>
 
@@ -21,12 +21,12 @@
                 {% for subcategory in subcategories %}
                     <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                         <div class="card h-100">
-                            <a href="{{ path('product_index', {'categorySlug': categorySlug ,'subcategorySlug': subcategory.slug}) }}">
+                            <a href="{{ path('product_index', {'categorySlug': category.slug ,'subcategorySlug': subcategory.slug}) }}">
                                 {% media subcategory.image, 'small' with {'class': 'card-img-top'} %}
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <a href="{{ path('product_index', {'categorySlug': categorySlug ,'subcategorySlug': subcategory.slug}) }}">{{ subcategory.name }}</a>
+                                    <a href="{{ path('product_index', {'categorySlug': category.slug ,'subcategorySlug': subcategory.slug}) }}">{{ subcategory.name }}</a>
                                 </h5>
                             </div>
                         </div>

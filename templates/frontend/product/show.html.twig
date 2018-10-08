@@ -1,42 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block header %}
-    {% include 'frontend/header.html.twig' %}
+{% block navbar %}
+    {% include 'frontend/navbar.html.twig' %}
 {% endblock %}
 
-{% block body %}
-    <h1>Menú</h1>
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <section class="subcategories">
 
-    <h2>{{ product.name }}</h2>
-
-    <p>Imagen: </p> {% media product.image, 'big' %}
-    <p>Descripción: {{ product.description }}</p>
-    <p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>
-    <p>Alérgenos:
-        {% for allergen in product.allergens %}
-            {{ allergen }},
-        {% endfor %}
-    </p>
-    <p>Número máximo elecciones: {{ product.maxChoices }}</p>
-
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit">Añadir</button>
-    {{ form_end(form) }}
-
-    <p>Añadir al pedido</p>
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('category_index') }}">Menú</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('subcategory_index', {'categorySlug': category.slug}) }}">{{ category.name|capitalize }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('product_index', {'categorySlug': category.slug, 'subcategorySlug': subcategory.slug}) }}">{{ subcategory.name|capitalize }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ product.name|capitalize }}</li>
+            </ol>
+        </nav>
 
 
-    {#<p>#}
-        {#<a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">Añadir al pedido</a>#}
-    {#</p>#}
+
+            {##}
+            {#<h1>Menú</h1>#}
+
+            {#<h2>{{ product.name }}</h2>#}
+
+            {#<p>Imagen: </p> {% media product.image, 'big' %}#}
+            {#<p>Descripción: {{ product.description }}</p>#}
+            {#<p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>#}
+            {#<p>Alérgenos:#}
+                {#{% for allergen in product.allergens %}#}
+                    {#{{ allergen }},#}
+                {#{% endfor %}#}
+            {#</p>#}
+            {#<p>Número máximo elecciones: {{ product.maxChoices }}</p>#}
+
+            {#{{ form_start(form) }}#}
+            {#{{ form_widget(form) }}#}
+            {#<button type="submit">Añadir</button>#}
+            {#{{ form_end(form) }}#}
+
+            {#<p>Añadir al pedido</p>#}
 
 
-    {% if is_granted('ROLE_USER') %}
-        <div id="sidebar">
-            {{ render(controller(
-                'App\\Controller\\Frontend\\OrderController::show', {}
-            )) }}
-        </div>
-    {% endif %}
+            {#<p>#}
+                {#<a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">Añadir al pedido</a>#}
+            {#</p>#}
+
+
+            {#{% if is_granted('ROLE_USER') %}#}
+                {#<div id="sidebar">#}
+                    {#{{ render(controller(#}
+                        {#'App\\Controller\\Frontend\\OrderController::show', {}#}
+                    {#)) }}#}
+                {#</div>#}
+            {#{% endif %}#}
+        </section>
+    </div>
 {% endblock %}

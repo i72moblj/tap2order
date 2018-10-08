@@ -52,8 +52,8 @@ class ProductController extends Controller
         );
 
         return $this->render('frontend/product/index.html.twig', [
-            'categorySlug' => $category->getSlug(),
-            'subcategorySlug' => $subcategory->getSlug(),
+            'category' => $category,
+            'subcategory' => $subcategory,
             'products' => $products,
         ]);
     }
@@ -94,6 +94,8 @@ class ProductController extends Controller
 
         return $this->render('frontend/product/show.html.twig', [
             'form' => $form->createView(),
+            'category' => $category,
+            'subcategory' => $subcategory,
             'product' => $product,
         ]);
     }

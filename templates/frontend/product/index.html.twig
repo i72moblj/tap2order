@@ -13,8 +13,8 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ path('category_index') }}">Menú</a></li>
-                    <li class="breadcrumb-item"><a href="{{ path('subcategory_index', {'categorySlug': categorySlug}) }}">{{ categorySlug|capitalize }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ subcategorySlug|capitalize }}</li>
+                    <li class="breadcrumb-item"><a href="{{ path('subcategory_index', {'categorySlug': category.slug}) }}">{{ category.name|capitalize }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ subcategory.name|capitalize }}</li>
                 </ol>
             </nav>
 
@@ -22,12 +22,12 @@
                 {% for product in products %}
                     <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                         <div class="card h-100">
-                            <a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">
+                            <a href="{{ path('product_show', {'categorySlug': category.slug ,'subcategorySlug': subcategory.slug, 'productSlug': product.slug}) }}">
                                 {% media product.image, 'small' with {'class': 'card-img-top'} %}
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">{{ product.name }}</a>
+                                    <a href="{{ path('product_show', {'categorySlug': category.slug ,'subcategorySlug': subcategory.slug, 'productSlug': product.slug}) }}">{{ product.name }}</a>
                                 </h5>
                                 <p>{{ (product.price / 100)|number_format(2, '.') }} €</p>
                             </div>
