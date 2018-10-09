@@ -16,25 +16,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    padding: 0;
 }
 
 .container {
     flex: 1;
-}
-
-.card-body {
-    text-align: center;
-}
-
-.card {
-    border: none;
-}
-
-.breadcrumb {
-    margin: 2rem 0;
-    font-size: 1.7rem;
-    background-color: transparent;
-    padding-left: 0;
 }
 
 /*******************************************************************************************************
@@ -120,6 +106,7 @@ header {
     background-size: cover;
     height: 100vh;
     display: flex;
+    padding-top: 56px
 }
 
 header .container {
@@ -176,6 +163,112 @@ footer a:focus {
 }
 
 /*********************************************************************************************************/
- /** Product Section*/
+/** Categories, Subcategories, Products Sections                                                         */
 /*********************************************************************************************************/
 
+.card-body {
+    text-align: center;
+}
+
+.card {
+    border: none;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    padding-left: 0;
+}
+
+.categories,
+.subcategories,
+.products,
+.product {
+    padding-top: 56px;
+}
+
+.categories h1,
+.subcategories h1,
+.products h1,
+.product h1 {
+    padding-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .categories h1,
+    .subcategories h1,
+    .products h1,
+    .product h1 {
+        text-align: center;
+    }
+}
+
+/*********************************************************************************************************/
+ /** Product Section                                                                                     */
+/*********************************************************************************************************/
+
+.product-details {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-details h1 {
+    padding-bottom: 1rem;
+}
+
+.product-details p {
+    margin-bottom: 1.5rem;
+    color: grey;
+}
+
+.allergen {
+    color: saddlebrown;
+}
+
+.allergen-free {
+    color: green;
+}
+
+.price {
+    color: #9f191f;
+    font-size: 1.4rem;
+    padding-left: 0.6rem;
+}
+
+.product-image {
+    max-width: 100%;
+}
+
+.choices-section {
+    padding-top: 3rem;
+}
+
+.choices-section h5 {
+    padding-bottom: 1rem;
+}
+
+.choices-section form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.quantity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.quantity .form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+}
+
+.quantity .form-group label {
+    margin: 0;
+}
+
+.quantity .form-group select {
+    margin: 0 1rem;
+    max-width: 5rem;
+}

@@ -18,12 +18,14 @@
                 </ol>
             </nav>
 
+            <h1>{{ subcategory.name|capitalize }}</h1>
+
             <div class="row">
                 {% for product in products %}
                     <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
                         <div class="card h-100">
                             <a href="{{ path('product_show', {'categorySlug': category.slug ,'subcategorySlug': subcategory.slug, 'productSlug': product.slug}) }}">
-                                {% media product.image, 'small' with {'class': 'card-img-top'} %}
+                                {% media product.image, 'small' with {'class': 'card-img-top img-fluid'} %}
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">
