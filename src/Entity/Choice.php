@@ -46,11 +46,12 @@ class Choice
     private $price;
 
     /**
-    * @var string
-    *
-    * @ORM\Column(type="string", length=128, nullable=true)
-    */
-    private $image;
+     * @var Media|null
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Media", cascade={"all"})
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     */
+    protected $image;
 
     /**
      * @var boolean
@@ -167,18 +168,18 @@ class Choice
     }
 
     /**
-     * @return string
+     * @return Media|null
      */
-    public function getImage()
+    public function getImage(): ?Media
     {
         return $this->image;
     }
 
     /**
-     * @param string $image
+     * @param Media|null $image
      * @return Choice
      */
-    public function setImage($image)
+    public function setImage(?Media $image): self
     {
         $this->image = $image;
 
