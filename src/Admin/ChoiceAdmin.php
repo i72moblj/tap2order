@@ -9,10 +9,10 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\MediaBundle\Form\Type\MediaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 
@@ -27,8 +27,11 @@ class ChoiceAdmin extends AbstractAdmin
             ->add('price', MoneyType::class, [
                 'divisor' => 100,
             ])
-            ->add('image', FileType::class, [
-                'required' => false
+            ->add('image', MediaType::class, [
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'default',
+                'new_on_update' => false,
+                'required' => false,
             ])
             ->add('products', ModelType::class, [
                 'by_reference' => false,
@@ -64,7 +67,7 @@ class ChoiceAdmin extends AbstractAdmin
             ->add('price', TextType::class, [
                 'template' => 'backend/choice/list_price.html.twig'
             ])
-            ->add('image', FileType::class, ['sortable' => false])
+            ->add('image', MediaType::class, ['sortable' => false])
             ->add('products', ModelType::class)
             ->add('allergens', ModelType::class)
             ->add('isEnabled')
