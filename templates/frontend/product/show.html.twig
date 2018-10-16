@@ -21,6 +21,7 @@
                 </ol>
             </nav>
 
+            <!-- Product Details -->
             <div class="product-details">
                 <div class="product-image col-xs-12 col-md-4">
                     {% media product.image, 'medium' with {'class': 'img-fluid'} %}
@@ -39,12 +40,157 @@
                         {% endif %}
 
                     </p>
+                    <p>Número máximo de elecciones: {{ product.maxChoices }}</p>
                     <p>Precio: <spam class="price">{{ (product.price/100)|number_format(2,',','.') }} €</spam></p>
                 </div>
             </div>
 
+            <!-- Choice selection -->
             <div class="choices-section">
+                {{ form_start(form) }}
                 {% if product.maxChoices > 0 %}
+                    <div class="product-choices col-xs-12 col-lg-8">
+
+                        <div class="choice-name">
+                            {{ form_row(form.choices) }}
+                        </div>
+
+                        <div class="choices-images">
+                            {% for choice in product.choices %}
+                                <div class="choice-image">
+                                    {% if choice.image is null %}
+                                        <p style="text-align: center;">No image</p>
+                                    {% endif %}
+
+                                    {% media choice.image, 'small' with {'class': 'img-fluid'} %}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="choices-allergens">
+                            {% for choice in product.choices %}
+                                <div class="choice-allergens">
+                                    Alérgenos:
+                                    {% if choice.allergens|length > 0 %}
+                                        {% for allergen in choice.allergens %}
+                                            <div class="choice-allergen">
+                                                <spam class="allergen">{{ allergen }}</spam>,
+                                            </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <div class="choice-allergen">
+                                            <spam class="allergen-free">Ninguno</spam>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="choices-prices">
+                            {% for choice in product.choices %}
+                                <div class="choice-price">
+                                    <p>{{ (choice.price/100)|number_format(2,',','.') }} €</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                <div class="product-choices col-xs-12 col-lg-4">
+                    <div class="choice-name">
+                        {{ form_row(form.choices) }}
+                        <span class="allergen" style="padding-bottom: 1rem;">Este producto no dispone de ninguna variedad</span>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="quantity col-xs-12 col-lg-4">
+                    {{ form_row(form.quantity) }}
+                    <button type="submit" class="btn btn-success">Añadir</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'frontend/footer.html.twig' %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#{% form_theme form 'bootstrap_4_layout.html.twig' %}#}
+
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block navbar %}#}
+    {#{% include 'frontend/navbar.html.twig' %}#}
+{#{% endblock %}#}
+
+{#{% block content %}#}
+    {#<!-- Page Content -->#}
+    {#<div class="container">#}
+        {#<section class="product">#}
+
+            {#<!-- Breadcrumb -->#}
+            {#<nav aria-label="breadcrumb">#}
+                {#<ol class="breadcrumb">#}
+                    {#<li class="breadcrumb-item"><a href="{{ path('category_index') }}">Menú</a></li>#}
+                    {#<li class="breadcrumb-item"><a href="{{ path('subcategory_index', {'categorySlug': category.slug}) }}">{{ category.name|capitalize }}</a></li>#}
+                    {#<li class="breadcrumb-item"><a href="{{ path('product_index', {'categorySlug': category.slug, 'subcategorySlug': subcategory.slug}) }}">{{ subcategory.name|capitalize }}</a></li>#}
+                    {#<li class="breadcrumb-item active" aria-current="page">{{ product.name|capitalize }}</li>#}
+                {#</ol>#}
+            {#</nav>#}
+
+            {#<div class="product-details">#}
+                {#<div class="product-image col-xs-12 col-md-4">#}
+                    {#{% media product.image, 'medium' with {'class': 'img-fluid'} %}#}
+                {#</div>#}
+                {#<div class="product-description col-xs-12 col-md-8">#}
+                    {#<h1>{{ product.name }}</h1>#}
+                    {#<p class="">{{ product.description }}</p>#}
+                    {#<p>#}
+                        {#Alérgenos:#}
+                        {#{% if product.allergens|length > 0 %}#}
+                            {#{% for allergen in product.allergens %}#}
+                                {#<spam class="allergen">{{ allergen }}</spam>#}
+                            {#{% endfor %}#}
+                        {#{% else %}#}
+                            {#<spam class="allergen-free">Ninguno</spam>#}
+                        {#{% endif %}#}
+
+                    {#</p>#}
+                    {#<p>Precio: <spam class="price">{{ (product.price/100)|number_format(2,',','.') }} €</spam></p>#}
+                {#</div>#}
+            {#</div>#}
+
+            {#<div class="choices-section">#}
+                {#{% if product.maxChoices > 0 %}#}
 
 
                     {#<div class="checkbox-variedades" style="color: grey;">#}
@@ -59,20 +205,20 @@
                         {#</div>#}
                     {#</div>#}
 
-                    {{ form_start(form) }}
-                    <div class="choices col-xs-12 col-lg-6">
-                        <h5>Personaliza tu pedido <small>(máximo: {{ product.maxChoices }})</small></h5>
-                        {{ form_row(form.choices) }}
-                    </div>
-                    <div class="quantity col-xs-12 col-lg-6">
-                        {{ form_row(form.quantity) }}
-                        <button type="submit" class="btn btn-success">Añadir</button>
-                    </div>
-                    {{ form_end(form) }}
-                {% else %}
-                    <h5>Personaliza tu pedido <small>(máximo: {{ product.maxChoices }})</small></h5>
-                {% endif %}
-            </div>
+                    {#{{ form_start(form) }}#}
+                    {#<div class="choices col-xs-12 col-lg-6">#}
+                        {#<h5>Personaliza tu pedido <small>(máximo: {{ product.maxChoices }})</small></h5>#}
+                        {#{{ form_row(form.choices) }}#}
+                    {#</div>#}
+                    {#<div class="quantity col-xs-12 col-lg-6">#}
+                        {#{{ form_row(form.quantity) }}#}
+                        {#<button type="submit" class="btn btn-success">Añadir</button>#}
+                    {#</div>#}
+                    {#{{ form_end(form) }}#}
+                {#{% else %}#}
+                    {#<h5>Personaliza tu pedido <small>(máximo: {{ product.maxChoices }})</small></h5>#}
+                {#{% endif %}#}
+            {#</div>#}
 
 
 
@@ -111,10 +257,10 @@
                 {#</div>#}
             {#{% endif %}#}
 
-        </section>
-    </div>
-{% endblock %}
+        {#</section>#}
+    {#</div>#}
+{#{% endblock %}#}
 
-{% block footer %}
-    {% include 'frontend/footer.html.twig' %}
-{% endblock %}
+{#{% block footer %}#}
+    {#{% include 'frontend/footer.html.twig' %}#}
+{#{% endblock %}#}

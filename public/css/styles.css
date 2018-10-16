@@ -206,6 +206,10 @@ footer a:focus {
  /** Product Section                                                                                     */
 /*********************************************************************************************************/
 
+.product {
+    padding-bottom: 5rem;
+}
+
 .product-details {
     display: flex;
     flex-wrap: wrap;
@@ -216,7 +220,7 @@ footer a:focus {
 }
 
 .product-details p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     color: grey;
 }
 
@@ -240,6 +244,7 @@ footer a:focus {
 
 .choices-section {
     padding-top: 3rem;
+    color: grey;
 }
 
 .choices-section h5 {
@@ -272,3 +277,86 @@ footer a:focus {
     margin: 0 1rem;
     max-width: 5rem;
 }
+
+.product-choices {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 2rem;
+}
+
+.form-check {
+    padding: 1.5rem 0.5rem;
+}
+
+.choices-images {
+    display: flex;
+    flex-direction: column;
+    padding-top: 38px;
+}
+
+.choice-image {
+    max-width: 62px;
+    padding: 5px 0;
+}
+
+.choices-allergens {
+    display: flex;
+    flex-direction: column;
+    padding-top: 38px;
+}
+
+.choice-allergens {
+    display: flex;
+    padding: 1.5rem 0.5rem;
+}
+
+.choice-allergen {
+    padding-left: 5px;
+}
+
+.choices-prices {
+    padding: 38px 0.5rem 0 0.5rem;
+    /*padding: 0 0.5rem;*/
+    /*padding-top: 38px;*/
+    min-width: 5rem;
+}
+
+.choices-prices p {
+    margin-bottom: 0;
+}
+
+.choice-price {
+    padding: 1.5rem 0;
+}
+
+@media (max-width: 768px) {
+    .choices-images {
+        display: none;
+    }
+}
+
+@media (min-width: 0px) {
+    .choices-allergens,
+    .choices-prices {
+        padding-top: 62px;
+    }
+}
+
+@media (min-width: 491px) {
+    .choices-allergens,
+    .choices-prices {
+        padding-top: 38px;
+    }
+}
+
+/*@media (min-width: 1200px) {*/
+    /*.choices-images,*/
+    /*.choices-allergens,*/
+    /*.choices-prices {*/
+        /*padding-top: 38px;*/
+    /*}*/
+
+    /*.choice-image {*/
+        /*padding: 5px 0;*/
+    /*}*/
+/*}*/
