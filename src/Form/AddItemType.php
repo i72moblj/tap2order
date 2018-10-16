@@ -33,7 +33,7 @@ class AddItemType extends AbstractType
                         ->where('p.id = :product AND c.isEnabled = :isEnabled')
                         ->setParameter('product', $product->getId())
                         ->setParameter('isEnabled', true)
-                        ;
+                    ;
                 },
             ])
             ->add('quantity', ChoiceType::class, [

@@ -41,7 +41,7 @@
 
                     </p>
                     <p>Número máximo de elecciones: {{ product.maxChoices }}</p>
-                    <p>Precio: <spam class="price">{{ (product.price/100)|number_format(2,',','.') }} €</spam></p>
+                    <p>Precio: <span class="price">{{ (product.price/100)|number_format(2,',','.') }} €</span></p>
                 </div>
             </div>
 
@@ -74,12 +74,12 @@
                                     {% if choice.allergens|length > 0 %}
                                         {% for allergen in choice.allergens %}
                                             <div class="choice-allergen">
-                                                <spam class="allergen">{{ allergen }}</spam>,
+                                                <span class="allergen">{{ allergen }}</span>,
                                             </div>
                                         {% endfor %}
                                     {% else %}
                                         <div class="choice-allergen">
-                                            <spam class="allergen-free">Ninguno</spam>
+                                            <span class="allergen-free">Ninguno</span>
                                         </div>
                                     {% endif %}
                                 </div>
@@ -116,151 +116,3 @@
 {% block footer %}
     {% include 'frontend/footer.html.twig' %}
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{#{% form_theme form 'bootstrap_4_layout.html.twig' %}#}
-
-{#{% extends 'base.html.twig' %}#}
-
-{#{% block navbar %}#}
-    {#{% include 'frontend/navbar.html.twig' %}#}
-{#{% endblock %}#}
-
-{#{% block content %}#}
-    {#<!-- Page Content -->#}
-    {#<div class="container">#}
-        {#<section class="product">#}
-
-            {#<!-- Breadcrumb -->#}
-            {#<nav aria-label="breadcrumb">#}
-                {#<ol class="breadcrumb">#}
-                    {#<li class="breadcrumb-item"><a href="{{ path('category_index') }}">Menú</a></li>#}
-                    {#<li class="breadcrumb-item"><a href="{{ path('subcategory_index', {'categorySlug': category.slug}) }}">{{ category.name|capitalize }}</a></li>#}
-                    {#<li class="breadcrumb-item"><a href="{{ path('product_index', {'categorySlug': category.slug, 'subcategorySlug': subcategory.slug}) }}">{{ subcategory.name|capitalize }}</a></li>#}
-                    {#<li class="breadcrumb-item active" aria-current="page">{{ product.name|capitalize }}</li>#}
-                {#</ol>#}
-            {#</nav>#}
-
-            {#<div class="product-details">#}
-                {#<div class="product-image col-xs-12 col-md-4">#}
-                    {#{% media product.image, 'medium' with {'class': 'img-fluid'} %}#}
-                {#</div>#}
-                {#<div class="product-description col-xs-12 col-md-8">#}
-                    {#<h1>{{ product.name }}</h1>#}
-                    {#<p class="">{{ product.description }}</p>#}
-                    {#<p>#}
-                        {#Alérgenos:#}
-                        {#{% if product.allergens|length > 0 %}#}
-                            {#{% for allergen in product.allergens %}#}
-                                {#<spam class="allergen">{{ allergen }}</spam>#}
-                            {#{% endfor %}#}
-                        {#{% else %}#}
-                            {#<spam class="allergen-free">Ninguno</spam>#}
-                        {#{% endif %}#}
-
-                    {#</p>#}
-                    {#<p>Precio: <spam class="price">{{ (product.price/100)|number_format(2,',','.') }} €</spam></p>#}
-                {#</div>#}
-            {#</div>#}
-
-            {#<div class="choices-section">#}
-                {#{% if product.maxChoices > 0 %}#}
-
-
-                    {#<div class="checkbox-variedades" style="color: grey;">#}
-                        {#<div class="form-check" style="display: flex; align-items: center;">#}
-                        {#<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">#}
-                        {#<label class="form-check-label" for="defaultCheck1">#}
-                        {#<img src="{{ asset('images/coca-cola.jpg') }}" alt="" width="50px">#}
-                        {#<span style="padding-right: 3rem;">Coca Cola</span>#}
-                        {#<span style="padding-right: 3rem;">Alérgenos: <span style="color: saddlebrown">azúcar</span></span>#}
-                        {#+ 0,00 €#}
-                        {#</label>#}
-                        {#</div>#}
-                    {#</div>#}
-
-                    {#{{ form_start(form) }}#}
-                    {#<div class="choices col-xs-12 col-lg-6">#}
-                        {#<h5>Personaliza tu pedido <small>(máximo: {{ product.maxChoices }})</small></h5>#}
-                        {#{{ form_row(form.choices) }}#}
-                    {#</div>#}
-                    {#<div class="quantity col-xs-12 col-lg-6">#}
-                        {#{{ form_row(form.quantity) }}#}
-                        {#<button type="submit" class="btn btn-success">Añadir</button>#}
-                    {#</div>#}
-                    {#{{ form_end(form) }}#}
-                {#{% else %}#}
-                    {#<h5>Personaliza tu pedido <small>(máximo: {{ product.maxChoices }})</small></h5>#}
-                {#{% endif %}#}
-            {#</div>#}
-
-
-
-
-
-            {#<h2>{{ product.name }}</h2>#}
-
-            {#<p>Imagen: </p> {% media product.image, 'big' %}#}
-            {#<p>Descripción: {{ product.description }}</p>#}
-            {#<p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>#}
-            {#<p>Alérgenos:#}
-                {#{% for allergen in product.allergens %}#}
-                    {#{{ allergen }},#}
-                {#{% endfor %}#}
-            {#</p>#}
-            {#<p>Número máximo elecciones: {{ product.maxChoices }}</p>#}
-
-            {#{{ form_start(form) }}#}
-            {#{{ form_widget(form) }}#}
-            {#<button type="submit">Añadir</button>#}
-            {#{{ form_end(form) }}#}
-
-            {#<p>Añadir al pedido</p>#}
-
-
-            {#<p>#}
-                {#<a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">Añadir al pedido</a>#}
-            {#</p>#}
-
-
-            {#{% if is_granted('ROLE_USER') %}#}
-                {#<div id="sidebar">#}
-                    {#{{ render(controller(#}
-                        {#'App\\Controller\\Frontend\\OrderController::show', {}#}
-                    {#)) }}#}
-                {#</div>#}
-            {#{% endif %}#}
-
-        {#</section>#}
-    {#</div>#}
-{#{% endblock %}#}
-
-{#{% block footer %}#}
-    {#{% include 'frontend/footer.html.twig' %}#}
-{#{% endblock %}#}
