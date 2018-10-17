@@ -348,3 +348,8 @@ footer a:focus {
         padding-top: 38px;
     }
 }
+
+.mensaje {
+    margin-top: 5rem;
+    margin-bottom: 0;
+}

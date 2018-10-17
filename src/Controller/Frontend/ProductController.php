@@ -88,8 +88,12 @@ class ProductController extends Controller
                 )
             );
 
-            // Esto tengo que cambiarlo por un mensaje flash
-            return $this->redirectToRoute('homepage');
+            $this->addFlash(
+                'success',
+                'El artículo ha sido añadido al pedido.'
+            );
+
+            return $this->redirectToRoute('category_index');
         }
 
         return $this->render('frontend/product/show.html.twig', [
