@@ -5,46 +5,111 @@
 {% endblock %}
 
 {% block content %}
-    <h2 style="padding-top: 5rem;">Pedido nº {{ order.id }}</h2>
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Flash message -->
+        <div class="row">
+            <div class="col-sm-12">
+                {% for message in app.flashes('success') %}
+                    <div class="mensaje alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <td>Cantidad</td>
-                <td>Artículo</td>
-                <td>Elección</td>
-                <td>Precio unitario</td>
-                <td>Subtotal</td>
-                <td></td>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in order.items %}
-                <tr>
-                    <td>{{ item.quantity }}</td>
-                    <td>{{ item.product }}</td>
-                    <td>
-                        {% for itemChoice in item.itemChoices %}
-                            {{ itemChoice }}
-                        {% endfor %}
-                    </td>
-                    <td>{{ (item.price / 100)|number_format(2, '.') }} €</td>
-                    <td>{{ (item.price / 100 * item.quantity)|number_format(2, '.') }} €</td>
-                    <td>
-                        <a href="{{ path('item_edit', { item: item }) }}">Modificar</a>
-                        <a href="{{ path('item_delete', { item: item }) }}">Eliminar</a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td>
-                    Total = {{ (order.total / 100)|number_format(2, '.') }} €
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+        <section class="order">
+            <h1 class="my-4">Pedido nº {{ order.id }}</h1>
+
+            <div class="product-table">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Artículo</th>
+                            <th scope="col">Precio unitario</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for item in order.items %}
+                        <tr>
+                            <th scope="row">
+                                <div>{{ item.product }}</div>
+                                {% for itemChoice in item.itemChoices %}
+                                    <div><small>{{ itemChoice }}</small></div>
+                                {% endfor %}
+                            </th>
+
+                            <td>
+                                <div>{{ (item.product.price / 100)|number_format(2, '.') }} €</div>
+                                {% for itemChoice in item.itemChoices %}
+                                    <div><small>{{ (itemChoice.price / 100)|number_format(2, '.') }} €</small></div>
+                                {% endfor %}
+                            </td>
+
+                            <td>
+                                {{ item.quantity }}
+                            </td>
+
+                            <td>
+                                {{ (item.price / 100 * item.quantity)|number_format(2, '.') }} €
+                            </td>
+
+                            <td>
+                                <a href="{{ path('item_edit', { item: item }) }}">
+                                    <button type="button" class="btn btn-warning">Modificar</button>
+                                </a>
+                                <a href="{{ path('item_delete', { item: item }) }}">
+                                    <button type="button" class="btn btn-danger">Eliminar</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- Fin product-table -->
+
+            <div class="ofertas-precio">
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {#<tfoot>#}
+                {#<tr>#}
+                    {#<td>#}
+                        {#Total = {{ (order.total / 100)|number_format(2, '.') }} €#}
+                    {#</td>#}
+                {#</tr>#}
+                {#</tfoot>#}
+            {#</table>#}
+
+
+        </section>
+    </div>
 {% endblock %}
 
 {% block footer %}

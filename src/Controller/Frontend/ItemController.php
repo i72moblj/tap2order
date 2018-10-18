@@ -45,6 +45,11 @@ class ItemController extends Controller
                 )
             );
 
+            $this->addFlash(
+                'success',
+                'El artículo ha sido modificado con éxito.'
+            );
+
             return $this->redirectToRoute('order_show');
         }
 
