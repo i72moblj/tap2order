@@ -1,44 +1,175 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
 {% extends 'base.html.twig' %}
 
-{% block header %}
-    {% include 'frontend/header.html.twig' %}
+{% block navbar %}
+    {% include 'frontend/navbar.html.twig' %}
 {% endblock %}
 
-{% block body %}
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <section class="edit-item">
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <div class="product-image col-xs-12 col-md-4">
+                    {% media item.product.image, 'medium' with {'class': 'img-fluid'} %}
+                </div>
+                <div class="product-description col-xs-12 col-md-8">
+                    <h1>{{ item.product.name }}</h1>
+                    <p class="">{{ item.product.description }}</p>
+                    <p>
+                        Alérgenos:
+                        {% if item.product.allergens|length > 0 %}
+                            {% for allergen in item.product.allergens %}
+                                <spam class="allergen">{{ allergen }}</spam>
+                            {% endfor %}
+                        {% else %}
+                            <spam class="allergen-free">Ninguno</spam>
+                        {% endif %}
+
+                    </p>
+                    <p>Número máximo de elecciones: {{ item.product.maxChoices }}</p>
+                    <p>Precio: <span class="price">{{ (item.product.price/100)|number_format(2,',','.') }} €</span></p>
+                </div>
+            </div>
+
+            <!-- Choice selection -->
+            <div class="choices-section">
+                {{ form_start(form) }}
+                {% if item.product.maxChoices > 0 %}
+                    <div class="product-choices col-xs-12 col-lg-8">
+
+                        <div class="choice-name">
+                            {{ form_row(form.choices) }}
+                        </div>
+
+                        <div class="choices-images">
+                            {% for choice in item.product.choices %}
+                                <div class="choice-image">
+                                    {% if choice.image is null %}
+                                        <p style="text-align: center;">No image</p>
+                                    {% endif %}
+
+                                    {% media choice.image, 'small' with {'class': 'img-fluid'} %}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="choices-allergens">
+                            {% for choice in item.product.choices %}
+                                <div class="choice-allergens">
+                                    Alérgenos:
+                                    {% if choice.allergens|length > 0 %}
+                                        {% for allergen in choice.allergens %}
+                                            <div class="choice-allergen">
+                                                <span class="allergen">{{ allergen }}</span>,
+                                            </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <div class="choice-allergen">
+                                            <span class="allergen-free">Ninguno</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="choices-prices">
+                            {% for choice in item.product.choices %}
+                                <div class="choice-price">
+                                    <p>{{ (choice.price/100)|number_format(2,',','.') }} €</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="product-choices col-xs-12 col-lg-4">
+                        <div class="choice-name">
+                            {{ form_row(form.choices) }}
+                            <span class="allergen" style="padding-bottom: 1rem;">Este producto no dispone de ninguna variedad</span>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="quantity col-xs-12 col-lg-4">
+                    {{ form_row(form.quantity) }}
+                    <button type="submit" class="btn btn-success">Actualizar</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
 
 
-    {#<h1>Editar artículo: {{ product.name }}</h1>#}
-
-    {#<p>Imagen: Imagen</p>#}
-    {#<p>Nombre: {{ product.name }}</p>#}
-    {#<p>Descripción: {{ product.description }}</p>#}
-    {#<p>Precio: {{ (product.price/100)|number_format(2,',','.') }}</p>#}
-    {#<p>Alérgenos:#}
-        {#{% for allergen in product.allergens %}#}
-            {#{{ allergen }},#}
-        {#{% endfor %}#}
-    {#</p>#}
-    {#<p>Número máximo elecciones: {{ product.maxChoices }}</p>#}
-
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {#<button type="submit">Añadir</button>#}
-    {{ form_end(form) }}
-
-    {#<p>Añadir al pedido</p>#}
-
-
-    {#<p>#}
-    {#<a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">Añadir al pedido</a>#}
-    {#</p>#}
 
 
 
-    {% if is_granted('ROLE_USER') %}
-        <div id="sidebar">
-            {{ render(controller(
-                'App\\Controller\\Frontend\\OrderController::show', {}
-            )) }}
-        </div>
-    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {#<p>Añadir al pedido</p>#}
+
+
+            {#<p>#}
+            {#<a href="{{ path('product_show', {'categorySlug': categorySlug ,'subcategorySlug': subcategorySlug, 'productSlug': product.slug}) }}">Añadir al pedido</a>#}
+            {#</p>#}
+
+
+
+            {#{% if is_granted('ROLE_USER') %}#}
+            {#<div id="sidebar">#}
+            {#{{ render(controller(#}
+            {#'App\\Controller\\Frontend\\OrderController::show', {}#}
+            {#)) }}#}
+            {#</div>#}
+            {#{% endif %}#}
+
+
+
+
+
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'frontend/footer.html.twig' %}
 {% endblock %}
