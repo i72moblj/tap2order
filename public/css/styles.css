@@ -182,14 +182,18 @@ footer a:focus {
 .categories,
 .subcategories,
 .products,
-.product {
+.product,
+.order,
+.offers {
     padding-top: 56px;
 }
 
 .categories h1,
 .subcategories h1,
 .products h1,
-.product h1 {
+.product h1,
+.order h1,
+.offers h1 {
     padding-bottom: 1rem;
 }
 
@@ -200,6 +204,11 @@ footer a:focus {
     .product h1 {
         text-align: center;
     }
+}
+
+.mensaje {
+    margin-top: 5rem;
+    margin-bottom: 0;
 }
 
 /*********************************************************************************************************/
@@ -316,8 +325,6 @@ footer a:focus {
 
 .choices-prices {
     padding: 38px 0.5rem 0 0.5rem;
-    /*padding: 0 0.5rem;*/
-    /*padding-top: 38px;*/
     min-width: 5rem;
 }
 
@@ -349,7 +356,28 @@ footer a:focus {
     }
 }
 
-.mensaje {
-    margin-top: 5rem;
-    margin-bottom: 0;
+/*********************************************************************************************************/
+/** edit-item Section                                                                                     */
+/*********************************************************************************************************/
+
+.edit-item {
+    padding-top: 5rem;
+}
+
+.product-table button {
+    margin-bottom: 5px;
+}
+
+/*********************************************************************************************************/
+/** order Section                                                                                     */
+/*********************************************************************************************************/
+
+.ofertas-precio-total {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .ofertas-precio-total {
+        flex-direction: column;
+    }
 }

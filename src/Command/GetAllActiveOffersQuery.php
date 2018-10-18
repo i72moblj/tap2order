@@ -9,7 +9,7 @@
 namespace App\Command;
 
 
-class GetAllOffersQuery
+class GetAllActiveOffersQuery
 {
 
 }

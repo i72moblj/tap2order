@@ -9,11 +9,11 @@
 namespace App\Handler;
 
 
-use App\Command\GetAllOffersQuery;
+use App\Command\GetAllActiveOffersQuery;
 use App\Entity\Offer;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class GetAllOffersHandler
+class GetAllActiveOffersHandler
 {
     private $repository;
 
@@ -22,9 +22,11 @@ class GetAllOffersHandler
         $this->repository = $manager->getRepository(Offer::class);
     }
 
-    public function handle(GetAllOffersQuery $query)
+    public function handle(GetAllActiveOffersQuery $query)
     {
-        $offers = $this->repository->findAll();
+        $offers = $this->repository->findBy([
+            'status' => Offer::ENABLED,
+        ]);
 
         return $offers;
     }
