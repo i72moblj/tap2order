@@ -73,6 +73,11 @@ class ItemController extends Controller
             )
         );
 
+        $this->addFlash(
+            'success',
+            'El artículo ha sido eliminado con éxito.'
+        );
+
         return $this->redirectToRoute('order_show');
     }
 
