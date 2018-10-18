@@ -9,6 +9,7 @@ use App\Form\DTO\EditItem;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,8 +26,20 @@ class EditItemType extends AbstractType
         $product = $item->getProduct();
 
         $builder
-            ->add('quantity', NumberType::class, [
-                'label' => 'Cantidad',
+            ->add('quantity', ChoiceType::class, [
+                'label' => 'Cantidad: ',
+                'choices' => [
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5,
+                    '6' => 6,
+                    '7' => 7,
+                    '8' => 8,
+                    '9' => 9,
+                    '10' => 10,
+                ]
             ])
             ->add('choices', EntityType::class, [
                 'label' => 'Elección',
@@ -44,7 +57,6 @@ class EditItemType extends AbstractType
                         ;
                 },
             ])
-            ->add('update', SubmitType::class, ['label' => 'Actualizar'])
         ;
     }
 
