@@ -184,7 +184,7 @@ footer a:focus {
 .products,
 .product,
 .order,
-.offers {
+.offers-section {
     padding-top: 56px;
 }
 
@@ -193,7 +193,7 @@ footer a:focus {
 .products h1,
 .product h1,
 .order h1,
-.offers h1 {
+.offers-section h1 {
     padding-bottom: 1rem;
 }
 
@@ -378,6 +378,46 @@ footer a:focus {
 
 @media (max-width: 768px) {
     .ofertas-precio-total {
+        flex-direction: column;
+    }
+}
+
+.offers {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+}
+
+.offer {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 2rem;
+}
+
+.offer h3 {
+    padding-bottom: 1.5rem;
+}
+
+.offer-description {
+    color: grey;
+}
+
+@media (max-width: 768px) {
+    .offers-section h1 {
+        text-align: center;
+    }
+
+    .offer h3 {
+        text-align: center;
+        padding: 1.5rem 0;
+    }
+    
+    .offer-details {
+        text-align: center;
+    }
+    
+    .offer {
+        display: flex;
         flex-direction: column;
     }
 }

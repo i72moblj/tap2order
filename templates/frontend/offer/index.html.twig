@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block navbar %}
+    {% include 'frontend/navbar.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <section class="offers-section">
+
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Ofertas</li>
+                </ol>
+            </nav>
+
+            <h1>Ofertas</h1>
+
+            <div class="offers">
+                {% for offer in offers %}
+                    <div class="offer">
+                        <div class="offer-image col-xs-12 col-md-6">
+                            {% media offer.image, 'big' with {'class': 'card-img-top img-fluid'} %}
+                        </div>
+                        <div class="offer-details col-xs-12 col-md-6">
+                            <h3>{{ offer.name }}</h3>
+                            <div class="offer-description">{{ offer.description|nl2br }}</div>
+                        </div>
+                    </div>
+                {% else %}
+                    No offers have been found.
+                {% endfor %}
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+    <!-- /.container -->
+{% endblock %}
+
+{% block footer %}
+    {% include 'frontend/footer.html.twig' %}
+{% endblock %}
+
+
+
