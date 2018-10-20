@@ -3,6 +3,7 @@
 namespace App\Controller\Frontend;
 
 
+use App\Command\GetAllActiveOffersQuery;
 use App\Command\UpdateOrderCommand;
 use App\Entity\Offer;
 use App\Services\GetTagOpenOrderService;
@@ -30,6 +31,9 @@ class OrderController extends Controller
                 'class' => Offer::class,
                 'expanded' => true,
                 'multiple' => false,
+                'choices' => $this->get('tactician.commandbus')->handle(
+                    new GetAllActiveOffersQuery()
+                ),
             ])
             ->getForm()
         ;
