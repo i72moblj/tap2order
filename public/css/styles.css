@@ -368,12 +368,15 @@ footer a:focus {
     margin-bottom: 5px;
 }
 
+
+
 /*********************************************************************************************************/
 /** order Section                                                                                     */
 /*********************************************************************************************************/
 
 .ofertas-precio-total {
     display: flex;
+    margin-bottom: 5rem;
 }
 
 @media (max-width: 768px) {
@@ -420,4 +423,12 @@ footer a:focus {
         display: flex;
         flex-direction: column;
     }
+}
+
+.ofertas .col-form-label {
+    font-size: 1.5rem;
+}
+
+.ofertas .form-check {
+    padding: 0.5rem 0.5rem 0.5rem 1.4rem;
 }

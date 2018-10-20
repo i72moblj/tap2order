@@ -1,3 +1,5 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
 {% extends 'base.html.twig' %}
 
 {% block navbar %}
@@ -75,12 +77,18 @@
 
             <div class="ofertas-precio-total">
                 <div class="ofertas col-xs-12 col-md-6">
-                    hola asdfa fasd fasdf asdfa sdfasdf asdfasdfa sdfasdfa fsdasdf asdf asdfasdfasdfasdf
-
-
-
-
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button type="submit" class="btn btn-primary">Aplicar</button>
+                    {{ form_end(form) }}
                 </div>
+
+
+
+
+
+
+
                 <div class="precio-total col-xs-12 col-md-6">
                     adios asdfasdf asdf adsfasd fasdf asdfa sdfasdfa sdfa sdf
 

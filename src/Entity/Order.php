@@ -194,9 +194,9 @@ class Order
     }
 
     /**
-     * @return Offer
+     * @return Offer|null
      */
-    public function getOffer(): Offer
+    public function getOffer(): ?Offer
     {
         return $this->offer;
     }
