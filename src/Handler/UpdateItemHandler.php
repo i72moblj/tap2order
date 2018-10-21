@@ -6,7 +6,7 @@ namespace App\Handler;
 use App\Command\AddItemChoiceCommand;
 use App\Command\DeleteItemChoiceCommand;
 use App\Command\UpdateItemCommand;
-use App\Command\UpdateOrderTotalCommand;
+use App\Command\UpdateOrderSubtotalCommand;
 use App\Entity\Item;
 use App\Entity\ItemChoice;
 use App\Entity\Order;
@@ -37,7 +37,7 @@ class UpdateItemHandler
         $order = $item->getOrder();
 
         $this->bus->handle(
-            new UpdateOrderTotalCommand($order->getId(), -$item->getPrice(), $item->getQuantity())
+            new UpdateOrderSubtotalCommand($order->getId(), -$item->getPrice(), $item->getQuantity())
         );
 
         // Se eliminan los antiguos itemChoices
@@ -79,7 +79,7 @@ class UpdateItemHandler
 
         // Se actualiza precio total de la comanda con el precio del item nuevo * cantidad nueva
         $this->bus->handle(
-            new UpdateOrderTotalCommand($order->getId(), $item->getPrice(), $item->getQuantity())
+            new UpdateOrderSubtotalCommand($order->getId(), $item->getPrice(), $item->getQuantity())
         );
 
         return $item;

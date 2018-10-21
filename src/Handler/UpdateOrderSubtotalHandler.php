@@ -3,11 +3,11 @@
 namespace App\Handler;
 
 
-use App\Command\UpdateOrderTotalCommand;
+use App\Command\UpdateOrderSubtotalCommand;
 use App\Entity\Order;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class UpdateOrderTotalHandler
+class UpdateOrderSubtotalHandler
 {
     private $manager;
 
@@ -16,7 +16,7 @@ class UpdateOrderTotalHandler
         $this->manager = $manager;
     }
 
-    public function handle(UpdateOrderTotalCommand $command)
+    public function handle(UpdateOrderSubtotalCommand $command)
     {
         $orderId = $command->getOrderId();
         $itemPrice = $command->getItemPrice();
@@ -24,10 +24,9 @@ class UpdateOrderTotalHandler
 
         $order = $this->manager->getRepository(Order::class)->find($orderId);
 
-        $total = $order->getTotal();
-        $total = $total + ($itemPrice * $itemQuantity);
+        $subtotal = $order->getSubtotal() + ($itemPrice * $itemQuantity);
 
-        $order->setTotal($total);
+        $order->setSubtotal($subtotal);
 
         $this->manager->flush();
 

@@ -5,7 +5,7 @@ namespace App\Handler;
 
 use App\Command\AddItemChoiceCommand;
 use App\Command\AddItemToOrderCommand;
-use App\Command\UpdateOrderTotalCommand;
+use App\Command\UpdateOrderSubtotalCommand;
 use App\Entity\Choice;
 use App\Entity\Item;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -67,7 +67,7 @@ class AddItemToOrderHandler
         $order = $item->getOrder();
 
         $this->bus->handle(
-            new UpdateOrderTotalCommand($order->getId(), $item->getPrice(), $item->getQuantity())
+            new UpdateOrderSubtotalCommand($order->getId(), $item->getPrice(), $item->getQuantity())
         );
 
         return $item;

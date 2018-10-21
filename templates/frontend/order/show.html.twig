@@ -83,52 +83,20 @@
                     {{ form_end(form) }}
                 </div>
 
-
-
-
-
-
-
                 <div class="precio-total col-xs-12 col-md-6">
-                    adios asdfasdf asdf adsfasd fasdf asdfa sdfasdfa sdfa sdf
+
+
+
+
+
+                    <p>Subtotal = {{ (order.subtotal / 100)|number_format(2, '.') }} €</p>
+                    <p>Descuento = {{ (order.discount / 100)|number_format(2, '.') }} €</p>
+                    <p>Total = {{ (order.total / 100)|number_format(2, '.') }} €</p>
+
 
 
                 </div>
-
-
-
-
-
-
-
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                {#<tfoot>#}
-                {#<tr>#}
-                    {#<td>#}
-                        {#Total = {{ (order.total / 100)|number_format(2, '.') }} €#}
-                    {#</td>#}
-                {#</tr>#}
-                {#</tfoot>#}
-            {#</table>#}
-
-
         </section>
     </div>
 {% endblock %}

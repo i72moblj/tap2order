@@ -41,8 +41,6 @@ class GetTagOpenOrderService
 
         if ($order === null) {
             $order = new Order();
-            $order->setCreatedAt(new \DateTime());
-            $order->setTotal(0);
             $order->setTag($tag);
             $this->manager->persist($order);
             $this->manager->flush();

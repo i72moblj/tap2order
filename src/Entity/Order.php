@@ -41,6 +41,20 @@ class Order
      *
      * @ORM\Column(type="integer", nullable=false)
      */
+    private $subtotal;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $discount;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=false)
+     */
     private $total;
 
     /**
@@ -78,6 +92,10 @@ class Order
      */
     public function __construct()
     {
+        $this->subtotal = 0;
+        $this->discount = 0;
+        $this->total = 0;
+        $this->createdAt = new \DateTime();
         $this->status = Order::OPEN;
         $this->items = new ArrayCollection();
     }
@@ -105,6 +123,44 @@ class Order
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSubtotal(): int
+    {
+        return $this->subtotal;
+    }
+
+    /**
+     * @param int $subtotal
+     * @return Order
+     */
+    public function setSubtotal(int $subtotal): self
+    {
+        $this->subtotal = $subtotal;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDiscount(): int
+    {
+        return $this->discount;
+    }
+
+    /**
+     * @param int $discount
+     * @return Order
+     */
+    public function setDiscount(int $discount): self
+    {
+        $this->discount = $discount;
 
         return $this;
     }

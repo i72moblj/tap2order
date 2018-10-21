@@ -3,7 +3,7 @@
 namespace App\Command;
 
 
-class UpdateOrderTotalCommand
+class UpdateOrderSubtotalCommand
 {
     /**
      * @var int
