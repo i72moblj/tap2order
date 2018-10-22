@@ -5,6 +5,7 @@ namespace App\Handler;
 
 use App\Command\AddItemChoiceCommand;
 use App\Command\AddItemToOrderCommand;
+use App\Command\UpdateOrderDiscountCommand;
 use App\Command\UpdateOrderSubtotalCommand;
 use App\Entity\Choice;
 use App\Entity\Item;
@@ -68,6 +69,12 @@ class AddItemToOrderHandler
 
         $this->bus->handle(
             new UpdateOrderSubtotalCommand($order->getId(), $item->getPrice(), $item->getQuantity())
+        );
+
+        $this->bus->handle(
+            new UpdateOrderDiscountCommand(
+                $order
+            )
         );
 
         return $item;

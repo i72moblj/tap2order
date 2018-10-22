@@ -5,6 +5,7 @@ namespace App\Controller\Frontend;
 
 use App\Command\GetAllActiveOffersQuery;
 use App\Command\UpdateOrderCommand;
+use App\Command\UpdateOrderDiscountCommand;
 use App\Entity\Offer;
 use App\Services\GetTagOpenOrderService;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -43,6 +44,12 @@ class OrderController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $order = $this->get('tactician.commandbus')->handle(
                 new UpdateOrderCommand(
+                    $order
+                )
+            );
+
+            $order = $this->get('tactician.commandbus')->handle(
+                new UpdateOrderDiscountCommand(
                     $order
                 )
             );
