@@ -8,6 +8,7 @@ use App\Command\DeleteItemChoiceCommand;
 use App\Command\UpdateItemCommand;
 use App\Command\UpdateOrderDiscountCommand;
 use App\Command\UpdateOrderSubtotalCommand;
+use App\Command\UpdateOrderTotalCommand;
 use App\Entity\Item;
 use App\Entity\ItemChoice;
 use App\Entity\Order;
@@ -85,6 +86,12 @@ class UpdateItemHandler
 
         $this->bus->handle(
             new UpdateOrderDiscountCommand(
+                $order
+            )
+        );
+
+        $this->bus->handle(
+            new UpdateOrderTotalCommand(
                 $order
             )
         );

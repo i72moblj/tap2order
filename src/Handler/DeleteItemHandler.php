@@ -12,6 +12,7 @@ namespace App\Handler;
 use App\Command\DeleteItemCommand;
 use App\Command\UpdateOrderDiscountCommand;
 use App\Command\UpdateOrderSubtotalCommand;
+use App\Command\UpdateOrderTotalCommand;
 use App\Entity\Item;
 use Doctrine\Common\Persistence\ObjectManager;
 use League\Tactician\CommandBus;
@@ -43,6 +44,12 @@ class DeleteItemHandler
 
         $this->bus->handle(
             new UpdateOrderDiscountCommand(
+                $order
+            )
+        );
+
+        $this->bus->handle(
+            new UpdateOrderTotalCommand(
                 $order
             )
         );

@@ -7,6 +7,7 @@ use App\Command\AddItemChoiceCommand;
 use App\Command\AddItemToOrderCommand;
 use App\Command\UpdateOrderDiscountCommand;
 use App\Command\UpdateOrderSubtotalCommand;
+use App\Command\UpdateOrderTotalCommand;
 use App\Entity\Choice;
 use App\Entity\Item;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -73,6 +74,12 @@ class AddItemToOrderHandler
 
         $this->bus->handle(
             new UpdateOrderDiscountCommand(
+                $order
+            )
+        );
+
+        $this->bus->handle(
+            new UpdateOrderTotalCommand(
                 $order
             )
         );
