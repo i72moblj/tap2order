@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block navbar %}
-    {% include 'frontend/navbar.html.twig' %}
+    {% include 'kitchen/navbar.html.twig' %}
 {% endblock %}
 
 {% block content %}
@@ -13,76 +13,72 @@
 
                 {% for order in orders %}
 
-                <h3>Comanda {{ order.id }}</h3>
-
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">Artículo</th>
-                        <th scope="col">Ubicación</th>
-                        <th scope="col" class="status-th">Estado</th>
-                        <th scope="col" class="status-th">Acciones</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
+                    {# Buscar si hay artículos con estado activo, sino no se muestran #}
+                    {% set encontrado = "no" %}
                     {% for item in order.items %}
-                    <tr>
-                        <th scope="row">
-                            <div>{{ item.product }}</div>
-                            {% for itemChoice in item.itemChoices %}
-                            <div><small>{{ itemChoice }}</small></div>
-                            {% endfor %}
-                        </th>
-
-                        <td>
-                            {{ order.tag.location }}
-                        </td>
-
-                        <td>
-                            {% if item.status == "activo" %}
-                            <div class="status-active">Pendiente de elaboración</div>
-                            {% elseif item.status == "preparado" %}
-                            <div class="status-prepared">Pendiente de servir</div>
-                            {% elseif item.status == "servido" %}
-                            <div class="status-served">Servido</div>
-                            {% endif %}
-                        </td>
-
-                        <td>
-                            <a href="#">
-                            {#<a href="{{ path('item_edit', { item: item }) }}">#}
-                                <button type="button" class="btn btn-primary">Elaborado</button>
-                            </a>
-                        </td>
-                    </tr>
+                        {% if item.status == "activo" %}
+                            {% set encontrado = "si" %}
+                        {% endif %}
                     {% endfor %}
-                    </tbody>
-                </table>
+
+                    {% if encontrado == "si" %}
+                        <h3>Comanda {{ order.id }}</h3>
+
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Artículo</th>
+                                <th scope="col">Ubicación</th>
+                                <th scope="col" class="status-th">Estado</th>
+                                <th scope="col" class="status-th">Acciones</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for item in order.items %}
+                                {% if item.status == "activo" %}
+                                <tr>
+                                    <th scope="row">
+                                        <div>{{ item.product }}</div>
+                                        {% for itemChoice in item.itemChoices %}
+                                        <div><small>{{ itemChoice }}</small></div>
+                                        {% endfor %}
+                                    </th>
+
+                                    <td>
+                                        {{ order.tag.location }}
+                                    </td>
+
+                                    <td>
+                                        {% if item.status == "activo" %}
+                                        <div class="status-active">Pendiente de elaboración</div>
+                                        {% elseif item.status == "preparado" %}
+                                        <div class="status-prepared">Pendiente de servir</div>
+                                        {% elseif item.status == "servido" %}
+                                        <div class="status-served">Servido</div>
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {#<a href="#">#}
+                                        <a href="{{ path('item_elaborated', { item: item }) }}">
+                                            <button type="button" class="btn btn-primary">Elaborado</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
+                {% endfor %}
             </div>
             <!-- Fin product-table -->
-            {% endfor %}
-
-
 
         </section>
     </div>
+{% endblock %}
 
-
-
-    {#<h1>Kitchen Index</h1>#}
-    {#{% for openOrder in openOrders %}#}
-        {#<p>COMANDA #{{ openOrder.id }}</p>#}
-        {#<hr>#}
-        {#{% for item in openOrder.items %}#}
-            {#<p>#}
-                {#{{ item.product.name }}#}
-                {#{% for itemChoice in item.itemChoices %}#}
-                    {#{{ itemChoice.choice.name }}#}
-                {#{% endfor %}#}
-                {#{{ item.status }}#}
-                {#<a href="{{ path('kitchen_index') }}">Terminado</a>#}
-            {#</p>#}
-        {#{% endfor %}#}
-    {#{% endfor %}#}
+{% block footer %}
+    {% include 'kitchen/footer.html.twig' %}
 {% endblock %}
