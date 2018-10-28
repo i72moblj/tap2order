@@ -81,7 +81,7 @@ class OrderController extends Controller
     /**
      * @Route("/comanda/status", name="order_status")
      *
-     * @param GetTagActiveOrder $activeOrder
+     * @param GetTagActiveOrderService $activeOrder
      * @return Response
      */
     public function showStatus(GetTagActiveOrderService $activeOrder)
