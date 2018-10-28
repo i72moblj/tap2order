@@ -7,7 +7,7 @@
 {% block content %}
     <div class="container">
         <section class="order-status-section">
-            <h1>Artículos pendientes de elaboración</h1>
+            <h1>Artículos pendientes de servir</h1>
 
             <div class="product-table">
 
@@ -16,7 +16,7 @@
                     {# Buscar si hay artículos con estado preparado, sino no se muestran #}
                     {% set encontrado = "no" %}
                     {% for item in order.items %}
-                        {% if item.status == "activo" %}
+                        {% if item.status == "preparado" %}
                             {% set encontrado = "si" %}
                         {% endif %}
                     {% endfor %}
@@ -36,7 +36,7 @@
 
                             <tbody>
                             {% for item in order.items %}
-                                {% if item.status == "activo" %}
+                                {% if item.status == "preparado" %}
                                     <tr>
                                         <th scope="row">
                                             <div>{{ item.product }}</div>
@@ -60,8 +60,8 @@
                                         </td>
 
                                         <td>
-                                            <a href="{{ path('item_elaborated', { item: item }) }}">
-                                                <button type="button" class="btn btn-primary">Elaborado</button>
+                                            <a href="{{ path('item_served', { item: item }) }}">
+                                                <button type="button" class="btn btn-primary">Servido</button>
                                             </a>
                                         </td>
                                     </tr>
