@@ -457,8 +457,7 @@ footer a:focus {
 }
 
 .status-th {
-    text-align: center;
-    width: 12rem;
+    width: 13rem;
     padding: 5px;
     margin-left: auto;
 }
@@ -466,9 +465,9 @@ footer a:focus {
 .status-active {
     text-align: center;
     background-color: darkgrey;
-    width: 12rem;
+    width: 13rem;
     color: white;
-    padding: 5px;
+    padding: 7px;
     margin-left: auto;
 
 }
@@ -476,17 +475,17 @@ footer a:focus {
 .status-prepared {
     text-align: center;
     background-color: #ff9b00;
-    width: 12rem;
+    width: 13rem;
     color: white;
-    padding: 5px;
+    padding: 7px;
     margin-left: auto;
 }
 
 .status-served {
     text-align: center;
-    width: 12rem;
+    width: 13rem;
     background-color: green;
     color: white;
-    padding: 5px;
+    padding: 7px;
     margin-left: auto;
 }

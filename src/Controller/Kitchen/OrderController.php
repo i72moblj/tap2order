@@ -20,12 +20,12 @@ class OrderController extends Controller
      */
     public function kitchenIndex()
     {
-        $openOrders = $this->get('tactician.commandbus')->handle(
+        $orders = $this->get('tactician.commandbus')->handle(
             new GetAllOpenOrdersQuery()
         );
 
         return $this->render('kitchen/order/kitchen_index.html.twig', [
-            'openOrders' => $openOrders,
+            'orders' => $orders,
         ]);
     }
 }

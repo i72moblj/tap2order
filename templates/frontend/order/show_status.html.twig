@@ -33,17 +33,10 @@
                                 {% if item.status == "activo" %}
                                 <div class="status-active">Pendiente de elaboración</div>
                                 {% elseif item.status == "preparado" %}
-                                <p class="status-prepared">Pendiente de servir</p>
+                                <div class="status-prepared">Pendiente de servir</div>
                                 {% elseif item.status == "servido" %}
-                                <p class="status-served">Servido</p>
+                                <div class="status-served">Servido</div>
                                 {% endif %}
-                                {#{% if item.status == "activo" %}#}
-                                    {#<p class="status-active">Pendiente de elaboración</p>#}
-                                {#{% elseif item.status == "preparado" %}#}
-                                    {#<p class="status-prepared">Pendiente de servir</p>#}
-                                {#{% elseif item.status == "servido" %}#}
-                                    {#<p class="status-served">Servido</p>#}
-                                {#{% endif %}#}
                             </td>
                         </tr>
                     {% endfor %}
