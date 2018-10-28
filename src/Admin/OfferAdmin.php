@@ -48,7 +48,9 @@ class OfferAdmin extends AbstractAdmin
                     'porcentaje de descuento' => Offer::DISCOUNT_PERCENTAGE,
                 ]
             ])
-            ->add('value', IntegerType::class)
+            ->add('value', IntegerType::class, [
+                'label' => 'Valor (si el modo es nuevo precio, introduce el precio en céntimos)'
+            ])
             ->add('startingDate', DatePickerType::class, [
                 'format' => 'yyyy-MM-dd',
             ])
