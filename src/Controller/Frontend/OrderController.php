@@ -86,6 +86,10 @@ class OrderController extends Controller
      */
     public function showStatus(GetTagActiveOrderService $activeOrder)
     {
-        return new Response('hola');
+        $order = $activeOrder->getOrder($this->getUser());
+
+        return $this->render('frontend/order/show_status.html.twig', [
+            'order' => $order
+        ]);
     }
 }

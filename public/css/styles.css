@@ -184,7 +184,8 @@ footer a:focus {
 .products,
 .product,
 .order,
-.offers-section {
+.offers-section
+.order-status-section {
     padding-top: 56px;
 }
 
@@ -193,7 +194,8 @@ footer a:focus {
 .products h1,
 .product h1,
 .order h1,
-.offers-section h1 {
+.offers-section h1,
+.order-status-section h1 {
     padding-bottom: 1rem;
 }
 
@@ -448,4 +450,43 @@ footer a:focus {
 
 .precio-total button {
     margin-top: 2rem;
+}
+
+.order-status-section h1 {
+    margin-top: 5rem;
+}
+
+.status-th {
+    text-align: center;
+    width: 12rem;
+    padding: 5px;
+    margin-left: auto;
+}
+
+.status-active {
+    text-align: center;
+    background-color: darkgrey;
+    width: 12rem;
+    color: white;
+    padding: 5px;
+    margin-left: auto;
+
+}
+
+.status-prepared {
+    text-align: center;
+    background-color: #ff9b00;
+    width: 12rem;
+    color: white;
+    padding: 5px;
+    margin-left: auto;
+}
+
+.status-served {
+    text-align: center;
+    width: 12rem;
+    background-color: green;
+    color: white;
+    padding: 5px;
+    margin-left: auto;
 }

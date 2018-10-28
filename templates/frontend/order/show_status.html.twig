@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block navbar %}
+    {% include 'frontend/navbar.html.twig' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <section class="order-status-section">
+            <h1>Estado del pedido</h1>
+
+            <div class="product-table">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Artículo</th>
+                        <th scope="col" class="status-th">Estado</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for item in order.items %}
+                        <tr>
+                            <th scope="row">
+                                <div>{{ item.product }}</div>
+                                {% for itemChoice in item.itemChoices %}
+                                    <div><small>{{ itemChoice }}</small></div>
+                                {% endfor %}
+                            </th>
+
+                            <td style="text-align: right">
+                                {% if item.status == "activo" %}
+                                <div class="status-active">Pendiente de elaboración</div>
+                                {% elseif item.status == "preparado" %}
+                                <p class="status-prepared">Pendiente de servir</p>
+                                {% elseif item.status == "servido" %}
+                                <p class="status-served">Servido</p>
+                                {% endif %}
+                                {#{% if item.status == "activo" %}#}
+                                    {#<p class="status-active">Pendiente de elaboración</p>#}
+                                {#{% elseif item.status == "preparado" %}#}
+                                    {#<p class="status-prepared">Pendiente de servir</p>#}
+                                {#{% elseif item.status == "servido" %}#}
+                                    {#<p class="status-served">Servido</p>#}
+                                {#{% endif %}#}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- Fin product-table -->
+
+        </section>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'frontend/footer.html.twig' %}
+{% endblock %}
