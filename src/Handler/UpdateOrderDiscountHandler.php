@@ -70,7 +70,9 @@ class UpdateOrderDiscountHandler
                 if ($offer->getBaseProduct() === $offer->getCombinedProduct()) {
                     $offersQuantity = intdiv($orderBaseProductQuantity, $offer->getBaseProductQuantity());
 
-                    $discount = ($offer->getBaseProduct()->getPrice() * $offer->getBaseProductQuantity()) - $offer->getValue();
+                    $discount = $offer->getValue();
+
+//                    $discount = $offersQuantity;
                 }
                 // Producto base != Producto combinado
                 else {
