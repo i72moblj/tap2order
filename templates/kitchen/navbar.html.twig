@@ -1,0 +1,21 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('kitchen_index') }}">
+            <img src="{{ asset('images/logo_LFDL-transparente.png') }}" height="30" class="d-inline-block align-top" alt="Logo de LFDL">
+            <div id="texto-expandido">&nbsp;La Flor de Levante</div>
+            <div id="texto-iniciales">&nbsp;LFDL</div>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('kitchen_logout') }}"><i class="fas fa-user"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
