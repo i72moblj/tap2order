@@ -84,16 +84,12 @@
                 </div>
 
                 <div class="precio-total col-xs-12 col-md-6">
-
-
-
-
-
                     <p>Subtotal = {{ (order.subtotal / 100)|number_format(2, '.') }} €</p>
-                    <p>Descuento = {{ (order.discount / 100)|number_format(2, '.') }} €</p>
-                    <p>Total = {{ (order.total / 100)|number_format(2, '.') }} €</p>
-
-
+                    <p>Descuento = <span class="discount">{{ (order.discount / 100)|number_format(2, '.') }} €</span></p>
+                    <h4>Total = <span class="total">{{ (order.total / 100)|number_format(2, '.') }} €</span></h4>
+                    <a href="{{ path('order_add', { order: order }) }}">
+                        <button type="button" class="btn btn-success">Finalizar</button>
+                    </a>
 
                 </div>
             </div>

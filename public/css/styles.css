@@ -432,3 +432,20 @@ footer a:focus {
 .ofertas .form-check {
     padding: 0.5rem 0.5rem 0.5rem 1.4rem;
 }
+
+.discount {
+    color: green;
+}
+
+.total {
+    /*color: #0f9187;*/
+    color: orange;
+}
+
+.precio-total {
+    padding-top: 2rem;
+}
+
+.precio-total button {
+    margin-top: 2rem;
+}
