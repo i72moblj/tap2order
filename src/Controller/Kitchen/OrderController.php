@@ -10,12 +10,9 @@ namespace App\Controller\Kitchen;
 
 
 use App\Command\GetAllOpenOrdersQuery;
-use App\Command\UpdateItemCommand;
 use App\Command\UpdateItemStatusCommand;
 use App\Entity\Item;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends Controller
@@ -36,7 +33,6 @@ class OrderController extends Controller
 
     /**
      * @Route("/kitchen/{item}/elaborated", name="item_elaborated")
-     * @Method({"GET", "POST"})
      *
      * @param Item $item
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
