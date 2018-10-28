@@ -1,42 +1,136 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Waiters - Index de Comandas abiertas</h1>
-    {% for openOrder in openOrders %}
-        <p>COMANDA #{{ openOrder.id }}</p>
-        <hr>
-        <table>
-            <thead>
-                <tr>
-                    <td>Cantidad</td>
-                    <td>Artículo</td>
-                    <td>Elección</td>
-                    <td>Precio unitario</td>
-                    <td>Subtotal</td>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in openOrder.items %}
-                <tr>
-                    <td>{{ item.quantity }}</td>
-                    <td>{{ item.product.name }}</td>
-                    <td>
-                        {% for itemChoice in item.itemChoices %}
-                            {{ itemChoice.choice.name }}
-                        {% endfor %}
-                    </td>
-                    <td>{{ (item.price / 100)|number_format(2, '.') }} €</td>
-                    <td>{{ (item.price / 100 * item.quantity)|number_format(2, '.') }} €</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>Total = {{ (openOrder.total / 100)|number_format(2, '.') }} €</td>
-                </tr>
-            </tfoot>
-        </table>
-        <a href="{{ path('waiters_index') }}">Cerrar</a>
-    {% endfor %}
+{% block navbar %}
+    {% include 'kitchen/navbar.html.twig' %}
 {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <section class="order-status-section">
+            <h1>Artículos pendientes de elaboración</h1>
+
+            <div class="product-table">
+
+                {% for order in orders %}
+
+                    {# Buscar si hay artículos con estado preparado, sino no se muestran #}
+                    {% set encontrado = "no" %}
+                    {% for item in order.items %}
+                        {% if item.status == "activo" %}
+                            {% set encontrado = "si" %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if encontrado == "si" %}
+                        <h3>Comanda {{ order.id }}</h3>
+
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Artículo</th>
+                                <th scope="col">Ubicación</th>
+                                <th scope="col" class="status-th">Estado</th>
+                                <th scope="col" class="status-th">Acciones</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for item in order.items %}
+                                {% if item.status == "activo" %}
+                                    <tr>
+                                        <th scope="row">
+                                            <div>{{ item.product }}</div>
+                                            {% for itemChoice in item.itemChoices %}
+                                                <div><small>{{ itemChoice }}</small></div>
+                                            {% endfor %}
+                                        </th>
+
+                                        <td>
+                                            {{ order.tag.location }}
+                                        </td>
+
+                                        <td>
+                                            {% if item.status == "activo" %}
+                                                <div class="status-active">Pendiente de elaboración</div>
+                                            {% elseif item.status == "preparado" %}
+                                                <div class="status-prepared">Pendiente de servir</div>
+                                            {% elseif item.status == "servido" %}
+                                                <div class="status-served">Servido</div>
+                                            {% endif %}
+                                        </td>
+
+                                        <td>
+                                            <a href="{{ path('item_elaborated', { item: item }) }}">
+                                                <button type="button" class="btn btn-primary">Elaborado</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <!-- Fin product-table -->
+
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'kitchen/footer.html.twig' %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block body %}#}
+    {#<h1>Waiters - Index de Comandas abiertas</h1>#}
+    {#{% for openOrder in openOrders %}#}
+        {#<p>COMANDA #{{ openOrder.id }}</p>#}
+        {#<hr>#}
+        {#<table>#}
+            {#<thead>#}
+                {#<tr>#}
+                    {#<td>Cantidad</td>#}
+                    {#<td>Artículo</td>#}
+                    {#<td>Elección</td>#}
+                    {#<td>Precio unitario</td>#}
+                    {#<td>Subtotal</td>#}
+                {#</tr>#}
+            {#</thead>#}
+            {#<tbody>#}
+                {#{% for item in openOrder.items %}#}
+                {#<tr>#}
+                    {#<td>{{ item.quantity }}</td>#}
+                    {#<td>{{ item.product.name }}</td>#}
+                    {#<td>#}
+                        {#{% for itemChoice in item.itemChoices %}#}
+                            {#{{ itemChoice.choice.name }}#}
+                        {#{% endfor %}#}
+                    {#</td>#}
+                    {#<td>{{ (item.price / 100)|number_format(2, '.') }} €</td>#}
+                    {#<td>{{ (item.price / 100 * item.quantity)|number_format(2, '.') }} €</td>#}
+                {#</tr>#}
+                {#{% endfor %}#}
+            {#</tbody>#}
+            {#<tfoot>#}
+                {#<tr>#}
+                    {#<td>Total = {{ (openOrder.total / 100)|number_format(2, '.') }} €</td>#}
+                {#</tr>#}
+            {#</tfoot>#}
+        {#</table>#}
+        {#<a href="{{ path('waiters_index') }}">Cerrar</a>#}
+    {#{% endfor %}#}
+{#{% endblock %}#}
 
