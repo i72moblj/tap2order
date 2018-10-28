@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block navbar %}
-    {% include 'kitchen/navbar.html.twig' %}
+    {% include 'waiters/navbar.html.twig' %}
 {% endblock %}
 
 {% block content %}
@@ -79,58 +79,5 @@
 {% endblock %}
 
 {% block footer %}
-    {% include 'kitchen/footer.html.twig' %}
+    {% include 'waiters/footer.html.twig' %}
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-{#{% extends 'base.html.twig' %}#}
-
-{#{% block body %}#}
-    {#<h1>Waiters - Index de Comandas abiertas</h1>#}
-    {#{% for openOrder in openOrders %}#}
-        {#<p>COMANDA #{{ openOrder.id }}</p>#}
-        {#<hr>#}
-        {#<table>#}
-            {#<thead>#}
-                {#<tr>#}
-                    {#<td>Cantidad</td>#}
-                    {#<td>Artículo</td>#}
-                    {#<td>Elección</td>#}
-                    {#<td>Precio unitario</td>#}
-                    {#<td>Subtotal</td>#}
-                {#</tr>#}
-            {#</thead>#}
-            {#<tbody>#}
-                {#{% for item in openOrder.items %}#}
-                {#<tr>#}
-                    {#<td>{{ item.quantity }}</td>#}
-                    {#<td>{{ item.product.name }}</td>#}
-                    {#<td>#}
-                        {#{% for itemChoice in item.itemChoices %}#}
-                            {#{{ itemChoice.choice.name }}#}
-                        {#{% endfor %}#}
-                    {#</td>#}
-                    {#<td>{{ (item.price / 100)|number_format(2, '.') }} €</td>#}
-                    {#<td>{{ (item.price / 100 * item.quantity)|number_format(2, '.') }} €</td>#}
-                {#</tr>#}
-                {#{% endfor %}#}
-            {#</tbody>#}
-            {#<tfoot>#}
-                {#<tr>#}
-                    {#<td>Total = {{ (openOrder.total / 100)|number_format(2, '.') }} €</td>#}
-                {#</tr>#}
-            {#</tfoot>#}
-        {#</table>#}
-        {#<a href="{{ path('waiters_index') }}">Cerrar</a>#}
-    {#{% endfor %}#}
-{#{% endblock %}#}
-
