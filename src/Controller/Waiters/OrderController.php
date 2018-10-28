@@ -26,16 +26,15 @@ class OrderController extends Controller
             new GetAllOpenOrdersQuery()
         );
 
+        dump($orders);
+
         foreach ($orders as $order) {
             $allItemServed = true;
-
-            dump($allItemServed);
 
             foreach ($order->getItems() as $item) {
                 if ($item->getStatus() !== "servido") {
                     $allItemServed = false;
                 }
-
             }
 
             if ($allItemServed === true) {
