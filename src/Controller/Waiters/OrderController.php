@@ -11,6 +11,7 @@ namespace App\Controller\Waiters;
 
 use App\Command\GetAllOpenOrdersQuery;
 use App\Command\UpdateItemStatusCommand;
+use App\Command\UpdateOrderCommand;
 use App\Entity\Item;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,6 +25,31 @@ class OrderController extends Controller
         $orders = $this->get('tactician.commandbus')->handle(
             new GetAllOpenOrdersQuery()
         );
+
+        foreach ($orders as $order) {
+            $allItemServed = true;
+
+            dump($allItemServed);
+
+            foreach ($order->getItems() as $item) {
+                if ($item->getStatus() !== "servido") {
+                    $allItemServed = false;
+                }
+
+            }
+
+            if ($allItemServed === true) {
+                $order->setStatus('servida');
+
+                dump($order);
+
+                $this->get('tactician.commandbus')->handle(
+                    new UpdateOrderCommand(
+                        $order
+                    )
+                );
+            }
+        }
 
         return $this->render('waiters/order/waiters_index.html.twig', [
             'orders' => $orders,
