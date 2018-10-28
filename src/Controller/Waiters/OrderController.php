@@ -26,8 +26,6 @@ class OrderController extends Controller
             new GetAllOpenOrdersQuery()
         );
 
-        dump($orders);
-
         foreach ($orders as $order) {
             $allItemServed = true;
 
@@ -39,8 +37,6 @@ class OrderController extends Controller
 
             if ($allItemServed === true) {
                 $order->setStatus('servida');
-
-                dump($order);
 
                 $this->get('tactician.commandbus')->handle(
                     new UpdateOrderCommand(
