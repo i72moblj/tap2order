@@ -1,5 +1,5 @@
 {% extends "base.html.twig" %}
-{% block body %}
+{% block content %}
     {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') or is_granted('ROLE_WAITER') %}
 
         {{app.user.name}} {{app.user.surname}} {{app.user.email}}  {{ app.user.role }}
